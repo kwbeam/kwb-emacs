@@ -1,7 +1,3 @@
-;;; starter-kit-misc.el --- Things that don't fit anywhere else
-;;
-;; Part of the Emacs Starter Kit
-
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
@@ -154,4 +150,3 @@
               (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
 
 (provide 'kwb-misc)
-;;; starter-kit-misc.el ends here

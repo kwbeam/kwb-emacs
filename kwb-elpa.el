@@ -1,7 +1,3 @@
-;;; starter-kit-elpa.el --- Install a base set of packages automatically.
-;;
-;; Part of the Emacs Starter Kit
-
 (require 'cl)
 
 (defvar starter-kit-packages (list 'idle-highlight-mode

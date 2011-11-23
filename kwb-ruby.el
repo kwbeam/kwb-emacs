@@ -1,7 +1,3 @@
-;;; starter-kit-ruby.el --- Some helpful Ruby code
-;;
-;; Part of the Emacs Starter Kit
-
 (eval-after-load 'ruby-mode
   '(progn
      ;; work around possible elpa bug
@@ -101,4 +97,3 @@ exec-to-string command, but it works and seems fast"
 ;; TODO: electric
 
 (provide 'kwb-ruby)
-;; starter-kit-ruby.el ends here

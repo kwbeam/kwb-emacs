@@ -1,12 +1,7 @@
 (require 'cl)
 
 (defvar starter-kit-packages (list 'idle-highlight-mode
-                                   'ruby-mode
-                                   'inf-ruby
-                                   'css-mode
-                                   'yaml-mode
-                                   'find-file-in-project
-                                   'magit)
+                                   'find-file-in-project)
   "Libraries that should be installed by default.")
 
 (defun starter-kit-elpa-install ()

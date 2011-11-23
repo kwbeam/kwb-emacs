@@ -1,7 +1,3 @@
-;;; starter-kit-defuns.el --- Define some custom functions
-;;
-;; Part of the Emacs Starter Kit
-
 (require 'thingatpt)
 (require 'imenu)
 

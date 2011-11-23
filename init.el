@@ -51,12 +51,18 @@
 ;; existing emacs window
 (server-start)
 
+;; set geometry
+(add-to-list 'default-frame-alist '(height . 55))
+(add-to-list 'default-frame-alist '(width . 200))
+
 ;; set the default font
 (set-default-font "Inconsolata")
 (set-face-attribute 'default nil :height 120)
 
+;; set the color theme
 (require 'color-theme)
 (require 'color-theme-zenburn)
+(color-theme-zenburn)
 
 ;; tabs are two spaces
 (setq default-tab-width 2)

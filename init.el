@@ -18,8 +18,6 @@
 
 (add-to-list 'load-path dotfiles-dir)
 
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
-
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
@@ -41,9 +39,6 @@
 (require 'ansi-color)
 (require 'recentf)
 
-;; backport some functionality to Emacs 22 if needed
-(require 'dominating-file)
-
 ;; Load up starter kit customizations
 
 (require 'kwb-defuns)
@@ -54,6 +49,7 @@
 
 (regen-autoloads)
 (load custom-file 'noerror)
+
 
 ;; ***************************************************************************
 ;; General Emacs Stuff
@@ -73,56 +69,9 @@
 ;; blink the cursor so I can see it
 (blink-cursor-mode 1)
 
-;; add color theme!
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
-(require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-zenburn)))
-
-;; setup shell path
-;; see:
-;;   http://stackoverflow.com/questions/2266905/emacs-is-ignoring-my-path-when-it-runs-a-compile-command/2566945#2566945
-;;
-(defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell 
-      (replace-regexp-in-string "[[:space:]\n]*$" "" 
-        (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator))))
-(set-exec-path-from-shell-PATH)
-
 ;; automatically sync up external changes to files
 (global-auto-revert-mode t)
 
-
-;; ***************************************************************************
-;; Cool Modes
-;; ***************************************************************************
-
-;; Twittering mode
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/twittering-mode"))
-(require 'twittering-mode)
-
-
-;; ***************************************************************************
-;; General Programming Stuff
-;; ***************************************************************************
-
-;; yasnippet
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/yas"))
-(require 'yasnippet-bundle)
-
-
-;; ***************************************************************************
-;; Ruby on Rails
-;; ***************************************************************************
-
-;; setup rinari
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/rinari"))
-(require 'rinari)
-(setq rinari-tags-file-name "TAGS")
 
 ;; ***************************************************************************
 ;; Ruby
@@ -133,11 +82,6 @@
           (lambda () (linum-mode 1)))
 (add-hook 'ruby-mode-hook
           (lambda () (run-hooks 'kwb-code-modes-hook)))
-
-;; rvm emacs integration
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/rvm.el"))
-(require 'rvm)
-(rvm-use-default)
 
 
 ;; ***************************************************************************

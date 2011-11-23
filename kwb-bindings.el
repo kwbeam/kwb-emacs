@@ -1,3 +1,6 @@
+;; Window switching
+(windmove-default-keybindings) ;; Shift+direction
+
 ;; Completion that uses many different methods to find options.
 (global-set-key (kbd "M-/") 'hippie-expand)
 

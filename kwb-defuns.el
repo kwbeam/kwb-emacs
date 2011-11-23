@@ -5,19 +5,6 @@
 (require 'thingatpt)
 (require 'imenu)
 
-;; Network
-
-(defun view-url ()
-  "Open a new buffer containing the contents of URL."
-  (interactive)
-  (let* ((default (thing-at-point-url-at-point))
-         (url (read-from-minibuffer "URL: " default)))
-    (switch-to-buffer (url-retrieve-synchronously url))
-    (rename-buffer url t)
-    ;; TODO: switch to nxml/nxhtml mode
-    (cond ((search-forward "<?xml" nil t) (xml-mode))
-          ((search-forward "<html" nil t) (html-mode)))))
-
 ;; Buffer-related
 
 (defun ido-imenu ()
@@ -34,15 +21,15 @@ Symbols matching the text at point are put first in the completion list."
                              (cond
                               ((and (listp symbol) (imenu--subalist-p symbol))
                                (addsymbols symbol))
-                              
+
                               ((listp symbol)
                                (setq name (car symbol))
                                (setq position (cdr symbol)))
-                              
+
                               ((stringp symbol)
                                (setq name symbol)
                                (setq position (get-text-property 1 'org-imenu-marker symbol))))
-                             
+
                              (unless (or (null position) (null name))
                                (add-to-list 'symbol-names name)
                                (add-to-list 'name-and-pos (cons name position))))))))
@@ -107,7 +94,7 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'coding-hook 'pretty-lambdas)
 (add-hook 'coding-hook 'add-watchwords)
 (add-hook 'coding-hook 'turn-on-idle-highlight)
-  
+
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."
   (run-hooks 'coding-hook))
@@ -180,17 +167,6 @@ Symbols matching the text at point are put first in the completion list."
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
-(defun lorem ()
-  "Insert a lorem ipsum."
-  (interactive)
-  (insert "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do "
-          "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim"
-          "ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut "
-          "aliquip ex ea commodo consequat. Duis aute irure dolor in "
-          "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
-          "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in "
-          "culpa qui officia deserunt mollit anim id est laborum."))
-
 (defun switch-or-start (function buffer)
   "If the buffer is current, bury it, otherwise invoke the function."
   (if (equal (buffer-name (current-buffer)) buffer)
@@ -203,11 +179,6 @@ Symbols matching the text at point are put first in the completion list."
   "Insert a time-stamp according to locale's date and time format."
   (interactive)
   (insert (format-time-string "%c" (current-time))))
-
-(defun pairing-bot ()
-  "If you can't pair program with a human, use this instead."
-  (interactive)
-  (message (if (y-or-n-p "Do you have a test for that? ") "Good." "Bad!")))
 
 (defun esk-paredit-nonlisp ()
   "Turn on paredit mode for non-lisps."
@@ -264,4 +235,3 @@ Symbols matching the text at point are put first in the completion list."
     (vc-git-command buf 0 name "blame" "-w" rev)))
 
 (provide 'kwb-defuns)
-;;; starter-kit-defuns.el ends here

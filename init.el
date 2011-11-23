@@ -60,8 +60,7 @@
 
 ;; set the color theme
 (require 'color-theme)
-(require 'color-theme-zenburn)
-(color-theme-zenburn)
+(require 'color-theme-railscasts)
 
 ;; tabs are two spaces
 (setq default-tab-width 2)

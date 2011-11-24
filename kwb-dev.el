@@ -1,5 +1,3 @@
-;;; These belong in coding-hook:
-
 (defun local-column-number-mode ()
   (make-local-variable 'column-number-mode)
   (column-number-mode t))

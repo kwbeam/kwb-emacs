@@ -5,12 +5,12 @@
 ;; and brighter; it simply makes everything else vanish."
 ;; -Neal Stephenson, "In the Beginning was the Command Line"
 
-;; Load path etc.
+;; Load path
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 (add-to-list 'load-path dotfiles-dir)
-(setq custom-file (concat dotfiles-dir "custom.el"))
 
+;; Package manager
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
@@ -24,13 +24,15 @@
 (require 'ansi-color)
 (require 'recentf)
 
-;; Load up starter kit customizations
-(require 'kwb-defuns)
+;; set and load custom file
+(setq custom-file (concat dotfiles-dir "custom.el"))
+(load custom-file 'noerror)
+
+;; Load up customizations
 (require 'kwb-bindings)
 (require 'kwb-misc)
+(require 'kwb-dev)
 (require 'kwb-ruby)
-
-(load custom-file 'noerror)
 
 ;; ***************************************************************************
 ;; General Emacs Stuff

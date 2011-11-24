@@ -37,4 +37,4 @@
   "Enable things that are convenient across all coding buffers."
   (run-hooks 'coding-hook))
 
-(provide 'kwb-defuns)
+(provide 'kwb-dev)

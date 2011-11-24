@@ -32,7 +32,6 @@
 (require 'kwb-defuns)
 (require 'kwb-bindings)
 (require 'kwb-misc)
-(require 'kwb-lisp)
 (require 'kwb-ruby)
 
 (regen-autoloads)

@@ -35,15 +35,7 @@
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
 
-;; Set this to whatever browser you use
-;; (setq browse-url-browser-function 'browse-url-firefox)
-;; (setq browse-url-browser-function 'browse-default-macosx-browser)
-;; (setq browse-url-browser-function 'browse-default-windows-browser)
-;; (setq browse-url-browser-function 'browse-default-kde)
-;; (setq browse-url-browser-function 'browse-default-epiphany)
-;; (setq browse-url-browser-function 'browse-default-w3m)
-;; (setq browse-url-browser-function 'browse-url-generic
-;;       browse-url-generic-program "~/src/conkeror/conkeror")
+(setq browse-url-browser-function 'browse-default-macosx-browser)
 
 ;; Transparently open compressed files
 (auto-compression-mode t)
@@ -91,12 +83,6 @@
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat dotfiles-dir "backups")))))
 
-;; nxhtml stuff
-(setq mumamo-chunk-coloring 'submode-colored
-      nxhtml-skip-welcome t
-      indent-region-mode t
-      rng-nxml-auto-validate-flag nil)
-
 ;; Associate modes with file extensions
 
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
@@ -115,11 +101,6 @@
 ;; Default to unified diffs
 (setq diff-switches "-u -w")
 
-;; Cosmetics
-
-;; (set-face-background 'vertical-border "white")
-;; (set-face-foreground 'vertical-border "white")
-
 (eval-after-load 'diff-mode
   '(progn
      (set-face-foreground 'diff-added "green4")
@@ -130,10 +111,6 @@
      (set-face-foreground 'magit-diff-add "green3")
      (set-face-foreground 'magit-diff-del "red3")))
 
-(eval-after-load 'mumamo
-  '(eval-after-load 'zenburn
-     '(ignore-errors (set-face-background
-                      'mumamo-background-chunk-submode "gray22"))))
 
 ;; Platform-specific stuff
 (when (eq system-type 'darwin)
@@ -142,11 +119,5 @@
 
 ;; make emacs use the clipboard
 (setq x-select-enable-clipboard t)
-
-;; Get around the emacswiki spam protection
-(add-hook 'oddmuse-mode-hook
-          (lambda ()
-            (unless (string-match "question" oddmuse-post)
-              (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
 
 (provide 'kwb-misc)

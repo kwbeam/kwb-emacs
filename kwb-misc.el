@@ -1,8 +1,7 @@
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
-  (mouse-wheel-mode t)
-  (blink-cursor-mode -1))
+  (mouse-wheel-mode t))
 
 (add-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
@@ -15,7 +14,6 @@
       fringe-mode (cons 4 0)
       echo-keystrokes 0.1
       font-lock-maximum-decoration t
-      inhibit-startup-message t
       transient-mark-mode t
       color-theme-is-global t
       shift-select-mode nil

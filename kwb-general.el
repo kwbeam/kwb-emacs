@@ -76,8 +76,6 @@
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
 
-(setq browse-url-browser-function 'browse-default-macosx-browser)
-
 ;; Transparently open compressed files
 (auto-compression-mode t)
 

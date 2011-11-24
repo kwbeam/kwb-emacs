@@ -1,3 +1,7 @@
+;; RVM
+(require 'rvm)
+(rvm-use-default)
+
 (eval-after-load 'ruby-mode
   '(progn
      ;; work around possible elpa bug

@@ -4,6 +4,9 @@
   (make-local-variable 'column-number-mode)
   (column-number-mode t))
 
+(defun add-line-numbers ()
+  (linum-mode 1))
+
 (defun local-comment-auto-fill ()
   (set (make-local-variable 'comment-auto-fill-only-comments) t)
   (auto-fill-mode t))
@@ -27,6 +30,7 @@
   (idle-highlight-mode t))
 
 (add-hook 'coding-hook 'local-column-number-mode)
+(add-hook 'coding-hook 'add-line-numbers)
 (add-hook 'coding-hook 'local-comment-auto-fill)
 (add-hook 'coding-hook 'turn-on-save-place-mode)
 (add-hook 'coding-hook 'pretty-lambdas)

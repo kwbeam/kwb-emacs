@@ -76,18 +76,6 @@
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 ;; ***************************************************************************
-;; Ruby
-;; ***************************************************************************
-(require 'rvm)
-(rvm-use-default)
-
-;; add line numbers
-(add-hook 'kwb-code-modes-hook
-          (lambda () (linum-mode 1)))
-(add-hook 'ruby-mode-hook
-          (lambda () (run-hooks 'kwb-code-modes-hook)))
-
-;; ***************************************************************************
 ;; Scheme
 ;; ***************************************************************************
 (setq scheme-program-name "mit-scheme")

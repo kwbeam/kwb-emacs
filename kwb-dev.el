@@ -27,6 +27,8 @@
 (defun turn-on-idle-highlight ()
   (idle-highlight-mode t))
 
+(defvar coding-hook nil
+  "Hook that gets run on activation of any programming mode.")
 (add-hook 'coding-hook 'local-column-number-mode)
 (add-hook 'coding-hook 'add-line-numbers)
 (add-hook 'coding-hook 'local-comment-auto-fill)

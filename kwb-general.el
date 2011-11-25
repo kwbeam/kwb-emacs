@@ -39,51 +39,28 @@
 ;; ERC
 (setq erc-nick "kwbeam")
 
-;; Cleanup starting here
-
+;; Better frame titles
 (when window-system
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (tooltip-mode -1)
-  (mouse-wheel-mode t))
+  (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
 
-(add-hook 'before-make-frame-hook 'turn-off-tool-bar)
+;; Default to unified diffs
+(setq diff-switches "-u -w")
 
+;; Platform-specific stuff
+(when (eq system-type 'darwin)
+  ;; Work around a bug on OS X where system-name is FQDN
+  (setq system-name (car (split-string system-name "\\."))))
+
+;; make emacs use the clipboard
+(setq x-select-enable-clipboard t)
+
+;; **************************************************************
+;; GROK and organize the stuff below.  Because I don't yet.
+;; **************************************************************
+;; Encodings (?)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-(ansi-color-for-comint-mode-on)
-
-(setq visible-bell t
-      fringe-mode (cons 4 0)
-      echo-keystrokes 0.1
-      font-lock-maximum-decoration t
-      transient-mark-mode t
-      color-theme-is-global t
-      shift-select-mode nil
-      mouse-yank-at-point t
-      require-final-newline t
-      truncate-partial-width-windows nil
-      uniquify-buffer-name-style 'forward
-      ffap-machine-p-known 'reject
-      whitespace-style '(trailing lines space-before-tab
-                                  face indentation space-after-tab)
-      whitespace-line-column 100
-      ediff-window-setup-function 'ediff-setup-windows-plain
-      oddmuse-directory (concat dotfiles-dir "oddmuse")
-      xterm-mouse-mode t
-      save-place-file (concat dotfiles-dir "places"))
-
-(add-to-list 'safe-local-variable-values '(lexical-binding . t))
-(add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
-
-;; Transparently open compressed files
-(auto-compression-mode t)
-
-;; Enable syntax highlighting for older Emacsen that have it off
-(global-font-lock-mode t)
-
-;; Save a list of recent files visited.
-(recentf-mode 1)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
@@ -104,10 +81,8 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
-(defvar coding-hook nil
-  "Hook that gets run on activation of any programming mode.")
-
 (defalias 'yes-or-no-p 'y-or-n-p)
+
 (random t) ;; Seed the random-number generator
 
 (defalias 'auto-revert-tail-mode 'tail-mode)
@@ -123,7 +98,6 @@
                                         (concat dotfiles-dir "backups")))))
 
 ;; Associate modes with file extensions
-
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
@@ -132,31 +106,12 @@
 (add-to-list 'auto-mode-alist '("\\.js\\(on\\)?$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
 
-(eval-after-load 'grep
-  '(when (boundp 'grep-find-ignored-files)
-    (add-to-list 'grep-find-ignored-files "target")
-    (add-to-list 'grep-find-ignored-files "*.class")))
+;; What?
+(setq echo-keystrokes 0.1
+      require-final-newline t
+      save-place-file (concat dotfiles-dir "places"))
 
-;; Default to unified diffs
-(setq diff-switches "-u -w")
-
-(eval-after-load 'diff-mode
-  '(progn
-     (set-face-foreground 'diff-added "green4")
-     (set-face-foreground 'diff-removed "red3")))
-
-(eval-after-load 'magit
-  '(progn
-     (set-face-foreground 'magit-diff-add "green3")
-     (set-face-foreground 'magit-diff-del "red3")))
-
-
-;; Platform-specific stuff
-(when (eq system-type 'darwin)
-  ;; Work around a bug on OS X where system-name is FQDN
-  (setq system-name (car (split-string system-name "\\."))))
-
-;; make emacs use the clipboard
-(setq x-select-enable-clipboard t)
+(add-to-list 'safe-local-variable-values '(lexical-binding . t))
+(add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
 
 (provide 'kwb-general)

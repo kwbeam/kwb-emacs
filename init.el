@@ -13,6 +13,7 @@
 ;; Package manager
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
 (package-initialize)
 
 ;; These should be loaded on startup rather than autoloaded on demand

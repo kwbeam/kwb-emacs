@@ -14,7 +14,7 @@
 
 ;; set the default font
 (set-default-font "Inconsolata")
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 120)
 
 ;; set the color theme
 (require 'color-theme)

@@ -13,8 +13,7 @@
 (add-to-list 'default-frame-alist '(width . 220))
 
 ;; set the default font
-(set-default-font "Inconsolata")
-(set-face-attribute 'default nil :height 100)
+(set-default-font "Inconsolata-12")
 
 ;; set the color theme
 (require 'color-theme)

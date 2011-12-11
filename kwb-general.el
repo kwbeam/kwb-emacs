@@ -5,8 +5,12 @@
 (server-start)
 
 ;; take away distracting stuff
+(setq inhibit-startup-message t)
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+;; no bells!
+(setq visible-bell t)
 
 ;; set geometry
 (add-to-list 'default-frame-alist '(height . 60))

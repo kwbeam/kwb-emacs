@@ -10,7 +10,7 @@
                     (or (buffer-file-name) load-file-name)))
 (add-to-list 'load-path dotfiles-dir)
 
-;; Package manager
+;; Setup the ELPA Package manager
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))

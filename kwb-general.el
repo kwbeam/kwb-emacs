@@ -41,9 +41,6 @@
   ;; Work around a bug on OS X where system-name is FQDN
   (setq system-name (car (split-string system-name "\\."))))
 
-;; ERC
-(setq erc-nick "kwbeam")
-
 ;; better frame titles
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))

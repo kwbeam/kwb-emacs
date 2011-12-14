@@ -33,5 +33,4 @@
 (require 'kwb-dev)
 (require 'kwb-ruby)
 (require 'kwb-scheme)
-(require 'kwb-lisp)
 (require 'kwb-markdown)

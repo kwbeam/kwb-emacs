@@ -29,6 +29,7 @@
 (add-hook 'ruby-mode-hook 'run-dev-hook)
 
 ;; RVM
+(require 'rvm)
 (rvm-use-default)
 
 ;; nicely indent things as we go

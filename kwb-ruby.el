@@ -1,5 +1,7 @@
+;; Ruby is a dev mode
+(add-hook 'ruby-mode-hook 'run-dev-hook)
+
 ;; RVM
-(require 'rvm)
 (rvm-use-default)
 
 (eval-after-load 'ruby-mode
@@ -18,9 +20,6 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
-
-;; Ruby is a dev mode
-(add-hook 'ruby-mode-hook 'run-dev-hook)
 
 ;;; Flymake
 (defun flymake-ruby-init ()

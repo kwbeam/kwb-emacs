@@ -10,12 +10,6 @@
                     (or (buffer-file-name) load-file-name)))
 (add-to-list 'load-path dotfiles-dir)
 
-;; load frequently-used stuff
-(require 'cl)
-(require 'ffap)
-(require 'uniquify)
-(require 'ansi-color)
-
 ;; setup the ELPA Package manager
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))

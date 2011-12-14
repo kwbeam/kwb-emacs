@@ -44,22 +44,25 @@
 ;; ERC
 (setq erc-nick "kwbeam")
 
-;; Better frame titles
+;; better frame titles
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
+
+;; show me the column number
+(column-number-mode t)
 
 ;; make emacs use the clipboard
 (setq x-select-enable-clipboard t)
 
-;; Encodings
+;; encodings
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;; Highlight matching parentheses when the point is on them.
+;; highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
-;; Turn on ido-mode
+;; turn on ido-mode
 (ido-mode t)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
@@ -67,29 +70,29 @@
       ido-use-filename-at-point 'guess
       ido-max-prospects 10)
 
-;; Show empty lines at the end of the file
+;; show empty lines at the end of the file
 (set-default 'indicate-empty-lines t)
 
-;; Auto fill in text
+;; auto fill in text
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
-;; Automatically check spelling
+;; automatically check spelling
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
 ;; y or n is okay
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Seed the random-number generator
+;; seed the random-number generator
 (random t)
 
-;; Don't clutter up directories with backup files
+;; don't clutter up directories with backup files
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat dotfiles-dir "backups")))))
 
-;; Show multi-key commands quickly
+;; show multi-key commands quickly
 (setq echo-keystrokes 0.1)
 
-;; Put a newline in
+;; put a newline in
 (setq require-final-newline t)
 
 ;; lexical binding is better

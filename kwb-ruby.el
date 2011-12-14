@@ -19,7 +19,8 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 
-(add-hook 'ruby-mode-hook 'run-coding-hook)
+;; Ruby is a dev mode
+(add-hook 'ruby-mode-hook 'run-dev-hook)
 
 ;;; Flymake
 (defun flymake-ruby-init ()

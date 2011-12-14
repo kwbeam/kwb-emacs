@@ -31,6 +31,3 @@
 (require 'kwb-general)
 (require 'kwb-bindings)
 (require 'kwb-dev)
-(require 'kwb-ruby)
-(require 'kwb-scheme)
-(require 'kwb-markdown)

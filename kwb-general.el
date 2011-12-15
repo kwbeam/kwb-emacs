@@ -6,9 +6,9 @@
 
 ;; take away distracting stuff
 (setq inhibit-startup-message t)
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; no bells!
 (setq visible-bell t)
@@ -24,8 +24,9 @@
 (require 'color-theme)
 (require 'color-theme-railscasts)
 
-;; expand tabs into spaces
+;; deal with tabs correctly
 (set-default 'indent-tabs-mode nil)
+(setq tab-width 2)
 
 ;; blink the cursor so I can see it
 (blink-cursor-mode 1)
@@ -60,12 +61,11 @@
 (show-paren-mode 1)
 
 ;; turn on ido-mode
-(ido-mode t)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-max-prospects 10)
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-create-new-buffer 'always)
+(setq ido-everywhere t)
+(ido-mode 1)
 
 ;; show empty lines at the end of the file
 (set-default 'indicate-empty-lines t)

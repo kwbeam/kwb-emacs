@@ -12,4 +12,7 @@
 ;; File finding
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+;; Always indent stuff
+(define-key global-map (kbd "RET") 'newline-and-indent)
+
 (provide 'kwb-bindings)

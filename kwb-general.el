@@ -18,7 +18,7 @@
 (add-to-list 'default-frame-alist '(width . 220))
 
 ;; set the default font
-(set-default-font "Inconsolata-12")
+(set-default-font "Inconsolata-10")
 
 ;; set the color theme
 (require 'color-theme)

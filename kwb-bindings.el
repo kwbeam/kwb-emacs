@@ -5,11 +5,7 @@
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
-;; Use regex searches by default
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-
-;; File finding
+;; use interactive buffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; Always indent stuff

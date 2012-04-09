@@ -35,6 +35,10 @@
 (require 'color-theme-blackboard)
 (color-theme-blackboard)
 
+;; add expand-region
+(require 'expand-region)
+(global-set-key (kbd "C-!") 'er/expand-region)
+
 ;; deal with tabs correctly
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)

@@ -65,4 +65,10 @@
 (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
 
 
+;; ***********************************************
+;; SCSS
+;; ***********************************************
+(setq exec-path (cons (expand-file-name "/home/elrond/.rvm/gems/ruby-1.9.2-p290/bin/sass") exec-path))
+
+
 (provide 'kwb-dev)

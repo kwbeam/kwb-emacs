@@ -32,7 +32,7 @@
 
 ;; set the color theme
 (require 'color-theme)
-(require 'color-theme-railscasts)
+(require 'color-theme-blackboard)
 
 ;; deal with tabs correctly
 (set-default 'indent-tabs-mode nil)

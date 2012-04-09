@@ -33,6 +33,7 @@
 ;; set the color theme
 (require 'color-theme)
 (require 'color-theme-blackboard)
+(color-theme-blackboard)
 
 ;; deal with tabs correctly
 (set-default 'indent-tabs-mode nil)

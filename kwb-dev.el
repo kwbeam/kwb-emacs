@@ -25,6 +25,10 @@
 ;; Ruby mode
 ;; ***********************************************
 
+;; Scoop me up some RVM!
+(require 'rvm)
+(rvm-use-default)
+
 ;; Ruby is a dev mode
 (add-hook 'ruby-mode-hook 'run-dev-hook)
 

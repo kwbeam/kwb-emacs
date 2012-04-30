@@ -30,11 +30,6 @@
       ((eq system-type 'darwin)
        (set-default-font "Inconsolata-14")))
 
-;; set the color theme
-(require 'color-theme)
-(require 'color-theme-blackboard)
-(color-theme-blackboard)
-
 ;; add expand-region
 (require 'expand-region)
 (global-set-key (kbd "C-!") 'er/expand-region)

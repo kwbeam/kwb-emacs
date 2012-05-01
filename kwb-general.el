@@ -28,7 +28,7 @@
 (cond ((eq system-type 'gnu/linux)
        (set-default-font "Inconsolata-10"))
       ((eq system-type 'darwin)
-       (set-default-font "Inconsolata-14")))
+       (set-default-font "Inconsolata-12")))
 
 ;; add expand-region
 (require 'expand-region)

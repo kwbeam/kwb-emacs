@@ -1,7 +1,5 @@
 (defvar kwb-packages
   '(clojure-mode
-    color-theme
-    color-theme-blackboard
     expand-region
     feature-mode
     flymake-ruby

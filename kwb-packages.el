@@ -1,7 +1,15 @@
 (defvar kwb-packages
-  '(clojure-mode color-theme color-theme-blackboard expand-region
-                 feature-mode flymake-ruby inf-ruby rvm
-                 markdown-mode scss-mode)
+  '(clojure-mode
+    color-theme
+    color-theme-blackboard
+    expand-region
+    feature-mode
+    flymake-ruby
+    inf-ruby
+    paredit
+    rvm
+    markdown-mode
+    scss-mode)
   "A list of packages to ensure are installed at launch.")
 
 (defun kwb-packages-installed-p ()

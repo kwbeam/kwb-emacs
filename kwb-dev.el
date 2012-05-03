@@ -48,6 +48,13 @@
 ;; activate flymake for ruby
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
+;; ***********************************************
+;; Feature mode
+;; ***********************************************
+
+;; Make sure we're in feature mode for the right files
+(add-to-list 'auto-mode-alist '("\\.feature$" . feature-mode))
+
 
 ;; ***********************************************
 ;; Scheme mode

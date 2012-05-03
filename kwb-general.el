@@ -26,7 +26,7 @@
 
 ;; set the default font
 (cond ((eq system-type 'gnu/linux)
-       (set-default-font "Inconsolata-10"))
+       (set-default-font "Inconsolata-12"))
       ((eq system-type 'darwin)
        (set-default-font "Inconsolata-12")))
 

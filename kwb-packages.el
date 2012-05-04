@@ -4,10 +4,11 @@
     feature-mode
     flymake-ruby
     inf-ruby
+    markdown-mode
     paredit
     rvm
-    markdown-mode
-    scss-mode)
+    scss-mode
+    yasnippet)
   "A list of packages to ensure are installed at launch.")
 
 (defun kwb-packages-installed-p ()

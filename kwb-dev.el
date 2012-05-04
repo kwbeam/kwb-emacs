@@ -20,6 +20,10 @@
   "Enable things that are convenient across all dev buffers."
   (run-hooks 'dev-hook))
 
+;; Setup yasnippets
+(require 'yasnippet)
+(yas/global-mode 1)
+
 
 ;; ***********************************************
 ;; Ruby mode

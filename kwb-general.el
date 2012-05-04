@@ -105,4 +105,7 @@
 ;; lexical binding is better
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 
+;; delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (provide 'kwb-general)

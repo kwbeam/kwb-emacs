@@ -6,6 +6,7 @@
     inf-ruby
     markdown-mode
     paredit
+    rinari
     rvm
     scss-mode
     yasnippet)

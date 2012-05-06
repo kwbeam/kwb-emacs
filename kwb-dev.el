@@ -21,7 +21,6 @@
   (run-hooks 'dev-hook))
 
 ;; Setup yasnippets
-(require 'yasnippet)
 (yas/global-mode 1)
 
 
@@ -30,7 +29,6 @@
 ;; ***********************************************
 
 ;; Scoop me up some RVM!
-(require 'rvm)
 (rvm-use-default)
 
 ;; Ruby is a dev mode
@@ -51,6 +49,7 @@
 
 ;; activate flymake for ruby
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
 
 ;; ***********************************************
 ;; Feature mode

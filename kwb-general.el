@@ -30,8 +30,7 @@
       ((eq system-type 'darwin)
        (set-default-font "Inconsolata-14")))
 
-;; add expand-region
-(require 'expand-region)
+;; add expand-region binding
 (global-set-key (kbd "C-!") 'er/expand-region)
 
 ;; deal with tabs correctly

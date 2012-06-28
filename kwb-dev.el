@@ -89,4 +89,11 @@
 (setq exec-path (cons (expand-file-name "/home/elrond/.rvm/gems/ruby-1.9.2-p290/bin/sass") exec-path))
 (setq scss-compile-at-save nil)
 
+
+;; ***********************************************
+;; SCSS
+;; ***********************************************
+(setq coffee-tab-width 2)
+
+
 (provide 'kwb-dev)

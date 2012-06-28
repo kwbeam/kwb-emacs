@@ -1,5 +1,6 @@
 (defvar kwb-packages
   '(clojure-mode
+    coffee-mode
     expand-region
     feature-mode
     flymake-ruby

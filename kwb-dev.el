@@ -21,7 +21,7 @@
   (run-hooks 'dev-hook))
 
 ;; Setup yasnippets
-(yas/global-mode 1)
+(yas-global-mode 1)
 
 
 ;; ***********************************************

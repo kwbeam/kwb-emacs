@@ -18,8 +18,8 @@
        (add-to-list 'default-frame-alist '(height . 70))
         (add-to-list 'default-frame-alist '(width . 240)))
       ((eq system-type 'darwin)
-       (add-to-list 'default-frame-alist '(height . 55))
-        (add-to-list 'default-frame-alist '(width . 200)))
+       (add-to-list 'default-frame-alist '(height . 42))
+        (add-to-list 'default-frame-alist '(width . 150)))
       (t
        (add-to-list 'default-frame-alist '(height . 40))
         (add-to-list 'default-frame-alist '(width . 120))))

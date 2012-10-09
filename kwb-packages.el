@@ -3,10 +3,12 @@
     coffee-mode
     expand-region
     feature-mode
+    flymake-python-pyflakes
     flymake-ruby
     inf-ruby
     markdown-mode
     paredit
+    python-mode
     rinari
     rvm
     scss-mode

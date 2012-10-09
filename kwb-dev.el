@@ -82,6 +82,11 @@
 
 (setq js-indent-level 2)
 
+(add-to-list 'load-path "~/tools/jshint-mode")
+(require 'flymake-jshint)
+(add-hook 'js-mode-hook
+     (lambda () (flymake-mode t)))
+
 
 ;; ***********************************************
 ;; SCSS

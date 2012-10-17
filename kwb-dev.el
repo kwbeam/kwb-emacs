@@ -85,7 +85,24 @@
 (add-to-list 'load-path "~/tools/jshint-mode")
 (require 'flymake-jshint)
 (add-hook 'js-mode-hook
-     (lambda () (flymake-mode t)))
+          (lambda () (flymake-mode t)))
+
+(defun mhs-search-project-for-jshintrc ()
+  (let* ((current-loc (buffer-file-name))
+         (jshintrc-name ".jshintrc.json")
+         (path-to-file (locate-dominating-file current-loc jshintrc-name)))
+    (when (< 0 (length path-to-file))
+      (print (concat path-to-file jshintrc-name))
+      (setq flymake-node-jshint-config  (expand-file-name (concat path-to-file jshintrc-name))))))
+
+(defun kwb-set-flymake-node-jshint-config ()
+  (let* ((jshint-name ".jshintrc.json")
+         (jshint-filename (concat (expand-file-name (locate-dominating-file (buffer-file-name) jshint-name))
+                                  jshint-name)))
+    (when jshint-filename
+      (setq flymake-node-jshint-config jshint-filename))))
+(add-hook 'js-mode-hook
+          (lambda () (kwb-set-flymake-node-jshint-config)))
 
 
 ;; ***********************************************

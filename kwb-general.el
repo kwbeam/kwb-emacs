@@ -4,13 +4,6 @@
 ;; startup the server so we can edit stuff with emacsclient
 (server-start)
 
-;; grab the $PATH from a shell and use it for running stuff
-(if (not (getenv "TERM_PROGRAM"))
-      (let ((path (shell-command-to-string
-              "$SHELL -cl \"printf %s \\\"\\\$PATH\\\"\"")))
-        (setenv "PATH" path)
-        (setq exec-path (split-string path ":"))))
-
 ;; take away distracting stuff
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)

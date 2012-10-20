@@ -1,6 +1,7 @@
 (defvar kwb-packages
   '(clojure-mode
     coffee-mode
+    exec-path-from-shell
     expand-region
     feature-mode
     flymake-python-pyflakes

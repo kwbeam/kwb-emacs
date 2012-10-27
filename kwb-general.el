@@ -18,8 +18,8 @@
        (add-to-list 'default-frame-alist '(height . 70))
         (add-to-list 'default-frame-alist '(width . 240)))
       ((eq system-type 'darwin)
-       (add-to-list 'default-frame-alist '(height . 42))
-        (add-to-list 'default-frame-alist '(width . 150)))
+       (add-to-list 'default-frame-alist '(height . 50))
+        (add-to-list 'default-frame-alist '(width . 160)))
       (t
        (add-to-list 'default-frame-alist '(height . 40))
         (add-to-list 'default-frame-alist '(width . 120))))
@@ -28,7 +28,7 @@
 (cond ((eq system-type 'gnu/linux)
        (set-default-font "Inconsolata-12"))
       ((eq system-type 'darwin)
-       (set-default-font "Inconsolata-14")))
+       (set-default-font "Inconsolata-16")))
 
 ;; add expand-region binding
 (global-set-key (kbd "C-!") 'er/expand-region)

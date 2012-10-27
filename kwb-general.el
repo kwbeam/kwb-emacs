@@ -4,6 +4,9 @@
 ;; startup the server so we can edit stuff with emacsclient
 (server-start)
 
+;; use the right exec-path
+(exec-path-from-shell-initialize)
+
 ;; take away distracting stuff
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)

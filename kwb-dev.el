@@ -28,7 +28,19 @@
 ;; Python
 ;; ***********************************************
 
-(require 'python-mode)
+;;; Electric Pairs
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map "\"" 'electric-pair)
+            (define-key python-mode-map "\'" 'electric-pair)
+            (define-key python-mode-map "(" 'electric-pair)
+            (define-key python-mode-map "[" 'electric-pair)
+            (define-key python-mode-map "{" 'electric-pair)))
+(defun electric-pair ()
+  "Insert character pair without surrounding spaces"
+  (interactive)
+  (let (parens-require-spaces)
+    (insert-pair)))
 
 
 ;; ***********************************************

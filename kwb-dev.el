@@ -84,8 +84,7 @@
 
 (add-to-list 'load-path "~/tools/jshint-mode")
 (require 'flymake-jshint)
-(add-hook 'js-mode-hook
-          (lambda () (flymake-mode t)))
+;; (add-hook 'js-mode-hook 'flymake-mode)
 
 (defun mhs-search-project-for-jshintrc ()
   (let* ((current-loc (buffer-file-name))

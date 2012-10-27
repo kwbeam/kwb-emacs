@@ -110,4 +110,20 @@
 ;; delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; new line above and below
+;; hat-tip: http://blog.peepcode.com/blog/2012/commanding-your-text-editor/
+(defun newline-previous ()
+  "Insert a blank line above the cursor and move the cursor up one line."
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (previous-line)
+  (indent-according-to-mode))
+
+(defun newline-next ()
+  "Inserts an indented newline after the current line and moves the point to it."
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+
 (provide 'kwb-general)

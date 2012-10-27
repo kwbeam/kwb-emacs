@@ -25,14 +25,14 @@
 
 
 ;; ***********************************************
-;; Python mode
+;; Python
 ;; ***********************************************
 
 (require 'python-mode)
 
 
 ;; ***********************************************
-;; Ruby mode
+;; Ruby
 ;; ***********************************************
 
 ;; Scoop me up some RVM!
@@ -60,7 +60,7 @@
 
 
 ;; ***********************************************
-;; Feature mode
+;; Feature
 ;; ***********************************************
 
 ;; Make sure we're in feature mode for the right files
@@ -68,7 +68,7 @@
 
 
 ;; ***********************************************
-;; Scheme mode
+;; Scheme
 ;; ***********************************************
 
 ;; set the scheme to use
@@ -89,36 +89,12 @@
 
 (setq js-indent-level 2)
 
-(add-to-list 'load-path "~/tools/jshint-mode")
 (require 'flymake-jshint)
 (add-hook 'js-mode-hook 'flymake-mode)
 
-(defun mhs-search-project-for-jshintrc ()
-  (let* ((current-loc (buffer-file-name))
-         (jshintrc-name ".jshintrc.json")
-         (path-to-file (locate-dominating-file current-loc jshintrc-name)))
-    (when (< 0 (length path-to-file))
-      (print (concat path-to-file jshintrc-name))
-      (setq flymake-node-jshint-config  (expand-file-name (concat path-to-file jshintrc-name))))))
-
-(defun kwb-set-flymake-node-jshint-config ()
-  (let* ((jshint-name ".jshintrc.json")
-         (jshint-filename (concat (expand-file-name (locate-dominating-file (buffer-file-name) jshint-name))
-                                  jshint-name)))
-    (when jshint-filename
-      (setq flymake-node-jshint-config jshint-filename))))
-;; (add-hook 'js-mode-hook 'kwb-set-flymake-node-jshint-config)
-
 
 ;; ***********************************************
-;; SCSS
-;; ***********************************************
-(setq exec-path (cons (expand-file-name "/home/elrond/.rvm/gems/ruby-1.9.2-p290/bin/sass") exec-path))
-(setq scss-compile-at-save nil)
-
-
-;; ***********************************************
-;; SCSS
+;; CoffeeScript
 ;; ***********************************************
 (setq coffee-tab-width 2)
 

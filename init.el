@@ -13,13 +13,13 @@
                     (or (buffer-file-name) load-file-name)))
 (add-to-list 'load-path dotfiles-dir)
 
-;; setup the ELPA Package manager
+;; setup the ELPA Package manager - now in Emacs 24
 (require 'package)
+(package-initialize)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(package-initialize)
 
 (require 'kwb-packages)
 

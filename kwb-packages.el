@@ -10,10 +10,10 @@
     inf-ruby
     markdown-mode
     paredit
-    python-mode
     rinari
     rvm
     scss-mode
+    virtualenv
     yasnippet)
   "A list of packages to ensure are installed at launch.")
 

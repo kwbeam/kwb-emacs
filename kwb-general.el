@@ -28,7 +28,8 @@
         (add-to-list 'default-frame-alist '(width . 120))))
 
 ;; set the default font
-(cond ((eq system-type 'gnu/linux)
+(cond ((and (eq system-type 'gnu/linux)
+	    (eq system-name "Rivendell"))
        (set-default-font "Inconsolata-12"))
       ((eq system-type 'darwin)
        (set-default-font "Inconsolata-16")))

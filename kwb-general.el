@@ -18,8 +18,8 @@
 
 ;; set geometry
 (cond ((eq system-type 'gnu/linux)
-       (add-to-list 'default-frame-alist '(height . 70))
-        (add-to-list 'default-frame-alist '(width . 240)))
+       (add-to-list 'default-frame-alist '(height . 60))
+        (add-to-list 'default-frame-alist '(width . 220)))
       ((eq system-type 'darwin)
        (add-to-list 'default-frame-alist '(height . 50))
         (add-to-list 'default-frame-alist '(width . 160)))
@@ -28,11 +28,13 @@
         (add-to-list 'default-frame-alist '(width . 120))))
 
 ;; set the default font
-(cond ((and (eq system-type 'gnu/linux)
-	    (eq system-name "Rivendell"))
-       (set-default-font "Inconsolata-12"))
+(cond ((string= system-name "kbeam.dev.int.nsidc.org")
+       (progn
+         (set-default-font "Courier 10 Pitch")
+         (set-face-attribute 'default nil :height 120)))
       ((eq system-type 'darwin)
        (set-default-font "Inconsolata-16")))
+
 
 ;; add expand-region binding
 (global-set-key (kbd "C-!") 'er/expand-region)

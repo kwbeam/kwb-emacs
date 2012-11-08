@@ -1,5 +1,6 @@
 (defvar kwb-packages
-  '(clojure-mode
+  '(autopair
+    clojure-mode
     coffee-mode
     exec-path-from-shell
     expand-region
@@ -10,10 +11,10 @@
     inf-ruby
     markdown-mode
     paredit
+    python-mode
     rinari
     rvm
     scss-mode
-    virtualenv
     yasnippet)
   "A list of packages to ensure are installed at launch.")
 

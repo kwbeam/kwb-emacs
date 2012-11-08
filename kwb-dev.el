@@ -23,27 +23,19 @@
 ;; Setup yasnippets
 (yas-global-mode 1)
 
+;; Always pair
+(autopair-global-mode)
+
 
 ;; ***********************************************
 ;; Python
 ;; ***********************************************
 
+;; We're gonna need us a Python mode
+(require 'python-mode)
+
 ;; Python is a dev mode
 (add-hook 'python-mode-hook 'run-dev-hook)
-
-;; Electric Pairs
-(add-hook 'python-mode-hook
-          (lambda ()
-            (define-key python-mode-map "\"" 'electric-pair)
-            (define-key python-mode-map "\'" 'electric-pair)
-            (define-key python-mode-map "(" 'electric-pair)
-            (define-key python-mode-map "[" 'electric-pair)
-            (define-key python-mode-map "{" 'electric-pair)))
-(defun electric-pair ()
-  "Insert character pair without surrounding spaces"
-  (interactive)
-  (let (parens-require-spaces)
-    (insert-pair)))
 
 
 ;; ***********************************************

@@ -28,7 +28,10 @@
 ;; Python
 ;; ***********************************************
 
-;;; Electric Pairs
+;; Python is a dev mode
+(add-hook 'python-mode-hook 'run-dev-hook)
+
+;; Electric Pairs
 (add-hook 'python-mode-hook
           (lambda ()
             (define-key python-mode-map "\"" 'electric-pair)

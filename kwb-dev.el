@@ -34,6 +34,8 @@
 ;; We're gonna need us a Python mode
 (require 'python-mode)
 
+(add-hook 'python-mode-hook 'flymake-mode)
+
 ;; Python is a dev mode
 (add-hook 'python-mode-hook 'run-dev-hook)
 

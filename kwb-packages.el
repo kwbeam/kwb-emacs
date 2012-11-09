@@ -5,6 +5,7 @@
     exec-path-from-shell
     expand-region
     feature-mode
+    flymake-cursor
     flymake-jshint
     flymake-python-pyflakes
     flymake-ruby

@@ -34,8 +34,6 @@
 ;; We're gonna need us a Python mode
 (require 'python-mode)
 
-(add-hook 'python-mode-hook 'flymake-mode)
-
 ;; Python is a dev mode
 (add-hook 'python-mode-hook 'run-dev-hook)
 
@@ -45,8 +43,9 @@
 ;; flymake & pyflakes
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 
-;; flymake & pep8
-(add-hook 'python-mode-hook 'flymake-python-pep8-load)
+(require 'flymake-cursor)
+
+(add-hook 'python-mode-hook 'flymake-mode)
 
 ;; ***********************************************
 ;; Ruby

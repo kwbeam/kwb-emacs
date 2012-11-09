@@ -45,6 +45,8 @@
 ;; flymake & pyflakes
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 
+;; flymake & pep8
+(add-hook 'python-mode-hook 'flymake-python-pep8-load)
 
 ;; ***********************************************
 ;; Ruby

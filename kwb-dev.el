@@ -39,6 +39,9 @@
 ;; Python is a dev mode
 (add-hook 'python-mode-hook 'run-dev-hook)
 
+;; Activate default virtualenv
+(virtualenv-activate "~/.virtual_envs/default")
+
 
 ;; ***********************************************
 ;; Ruby

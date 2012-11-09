@@ -42,6 +42,9 @@
 ;; Activate default virtualenv
 (virtualenv-activate "~/.virtual_envs/default")
 
+;; flymake & pyflakes
+(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+
 
 ;; ***********************************************
 ;; Ruby

@@ -41,7 +41,8 @@
 (virtualenv-activate "~/.virtual_envs/default")
 
 ;; flymake & flake8
-(add-hook 'python-mode-hook 'flymake-flake8-load)
+(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+(setq flymake-python-pyflakes-executable "flake8")
 
 (require 'flymake-cursor)
 

@@ -105,13 +105,13 @@
 (setq echo-keystrokes 0.1)
 
 ;; put a newline in
-(setq require-final-newline t)
+;; (setq require-final-newline t)
 
 ;; lexical binding is better
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 
 ;; delete trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; new line above and below
 ;; hat-tip: http://blog.peepcode.com/blog/2012/commanding-your-text-editor/

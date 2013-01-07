@@ -46,6 +46,9 @@
 ;; Activate default virtualenv
 (virtualenv-activate "~/.virtual_envs/default")
 
+;; Activate ropemacs
+(pymacs-load "ropemacs" "rope-")
+
 ;; Be able to run nose tests with various keybindings
 (require 'nose)
 (add-hook 'python-mode-hook

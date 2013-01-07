@@ -11,7 +11,9 @@
     flymake-ruby
     inf-ruby
     markdown-mode
+    nose
     paredit
+    pymacs
     python-mode
     rinari
     rvm

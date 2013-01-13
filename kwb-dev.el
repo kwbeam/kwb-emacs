@@ -37,6 +37,12 @@
 ;; Python is a dev mode
 (add-hook 'python-mode-hook 'run-dev-hook)
 
+;; Move around inside of names
+(eval-after-load 'python-mode
+  '(progn
+     (define-key python-mode-map (kbd "M-f") 'py-forward-into-nomenclature)
+     (define-key python-mode-map (kbd "M-b") 'py-backward-into-nomenclature)))
+
 ;; flymake & flake8
 (add-hook 'python-mode-hook 'flymake-mode)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)

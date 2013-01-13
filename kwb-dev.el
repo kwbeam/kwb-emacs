@@ -44,10 +44,15 @@
 (require 'flymake-cursor)
 
 ;; Activate default virtualenv
-(virtualenv-activate "~/.virtual_envs/default")
+(add-hook 'python-mode-hook
+          (lambda ()
+            (virtualenv-activate "~/.virtual_envs/default")))
 
 ;; Activate ropemacs
-(pymacs-load "ropemacs" "rope-")
+(add-hook 'python-mode-hook
+          (lambda ()
+            (pymacs-load "ropemacs" "rope-")))
+
 
 ;; Be able to run nose tests with various keybindings
 (require 'nose)

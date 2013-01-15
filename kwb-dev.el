@@ -49,11 +49,6 @@
 (setq flymake-python-pyflakes-executable "flake8")
 (require 'flymake-cursor)
 
-;; Activate default virtualenv
-(add-hook 'python-mode-hook
-          (lambda ()
-            (virtualenv-activate "~/.virtual_envs/default")))
-
 ;; Activate ropemacs
 (add-hook 'python-mode-hook
           (lambda ()

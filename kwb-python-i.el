@@ -41,4 +41,8 @@
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
 
+;; Use the Python force, my young padawan learner
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)
+
 (provide 'kwb-python-i)

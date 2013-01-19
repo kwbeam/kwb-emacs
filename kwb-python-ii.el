@@ -8,13 +8,16 @@
 ;; Python is a dev mode
 (add-hook 'python-mode-hook 'run-dev-hook)
 
+;; All the Python things live here
+(setq virtualenv-root "~/.virtual_envs/")
+
 ;; flymake & flake8
 (add-hook 'python-mode-hook 'flymake-mode)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 (setq flymake-python-pyflakes-executable "flake8")
 (require 'flymake-cursor)
 
-;; Activate ropemacs
+;; Be lazy about activating ropemacs
 (defun load-ropemacs ()
     "Load pymacs and ropemacs"
     (interactive)
@@ -34,5 +37,9 @@
             (local-set-key "\C-cpa" 'nosetests-pdb-all)
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
+
+;; Use the Python force, my young padawan learner
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)
 
 (provide 'kwb-python-ii)

@@ -10,14 +10,18 @@
     flymake-python-pyflakes
     flymake-ruby
     inf-ruby
+    jedi
     markdown-mode
     nose
     paredit
     pymacs
+    python
     python-mode
     rinari
     rvm
     scss-mode
+    solarized-theme
+    virtualenv
     yasnippet)
   "A list of packages to ensure are installed at launch.")
 

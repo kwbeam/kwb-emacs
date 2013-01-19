@@ -129,4 +129,7 @@
   (end-of-line)
   (newline-and-indent))
 
+;; don't use --dired option to ls
+(setq dired-use-ls-dired nil)
+
 (provide 'kwb-general)

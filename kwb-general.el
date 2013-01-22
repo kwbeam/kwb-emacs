@@ -35,6 +35,8 @@
       ((eq system-type 'darwin)
        (set-default-font "Inconsolata-16")))
 
+;; load the theme
+(require 'solarized-dark-theme)
 
 ;; add expand-region binding
 (global-set-key (kbd "C-!") 'er/expand-region)
@@ -128,5 +130,8 @@
   (interactive)
   (end-of-line)
   (newline-and-indent))
+
+;; don't use --dired option to ls
+(setq dired-use-ls-dired nil)
 
 (provide 'kwb-general)

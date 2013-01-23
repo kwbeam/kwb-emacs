@@ -24,3 +24,4 @@ history
 vendor/*
 swank/*
 elpa
+ac-comphist.dat

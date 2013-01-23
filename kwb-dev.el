@@ -15,6 +15,7 @@
   "Hook that gets run on activation of any programming mode.")
 (add-hook 'dev-hook 'add-line-numbers)
 (add-hook 'dev-hook 'local-comment-auto-fill)
+(add-hook 'dev-hook 'auto-complete-mode)
 
 (defun run-dev-hook ()
   "Enable things that are convenient across all dev buffers."

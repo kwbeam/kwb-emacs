@@ -27,6 +27,9 @@
 ;; Always pair
 (autopair-global-mode)
 
+;; Use svn mode
+(require 'vc-svn)
+(require 'dsvn)
 
 ;; ***********************************************
 ;; Python

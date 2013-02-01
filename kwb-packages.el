@@ -2,6 +2,7 @@
   '(autopair
     clojure-mode
     coffee-mode
+    dsvn
     exec-path-from-shell
     expand-region
     feature-mode
@@ -11,6 +12,7 @@
     flymake-ruby
     inf-ruby
     jedi
+    magit
     markdown-mode
     nose
     paredit

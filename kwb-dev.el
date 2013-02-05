@@ -1,6 +1,7 @@
 ;; ***********************************************
 ;; General settings for development
 ;; ***********************************************
+(require 'auto-complete)
 
 ;; show me the line numbers in source
 (defun add-line-numbers ()
@@ -11,11 +12,14 @@
   (set (make-local-variable 'comment-auto-fill-only-comments) t)
   (auto-fill-mode t))
 
+(defun add-auto-complete ()
+  (auto-complete-mode 1))
+
 (defvar dev-hook nil
   "Hook that gets run on activation of any programming mode.")
 (add-hook 'dev-hook 'add-line-numbers)
 (add-hook 'dev-hook 'local-comment-auto-fill)
-(add-hook 'dev-hook 'auto-complete-mode)
+(add-hook 'dev-hook 'add-auto-complete)
 
 (defun run-dev-hook ()
   "Enable things that are convenient across all dev buffers."

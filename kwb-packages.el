@@ -20,6 +20,7 @@
     python
     python-mode
     rinari
+    ruby-mode
     rvm
     scss-mode
     solarized-theme

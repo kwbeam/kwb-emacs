@@ -98,6 +98,9 @@
 ;; JavaScript
 ;; ***********************************************
 
+;; JS is a dev mode
+(add-hook 'js-mode-hook 'run-dev-hook)
+
 (setq js-indent-level 2)
 
 (require 'flymake-jshint)

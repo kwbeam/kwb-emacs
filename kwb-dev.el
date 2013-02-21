@@ -15,11 +15,16 @@
 (defun add-auto-complete ()
   (auto-complete-mode 1))
 
+;; delete trailing whitespace
+(defun dev-before-save-hook ()
+  (add-hook 'before-save-hook 'delete-trailing-whitespace))
+
 (defvar dev-hook nil
   "Hook that gets run on activation of any programming mode.")
 (add-hook 'dev-hook 'add-line-numbers)
 (add-hook 'dev-hook 'local-comment-auto-fill)
 (add-hook 'dev-hook 'add-auto-complete)
+(add-hook 'dev-hook 'dev-before-save-hook)
 
 (defun run-dev-hook ()
   "Enable things that are convenient across all dev buffers."
@@ -111,6 +116,13 @@
 ;; CoffeeScript
 ;; ***********************************************
 (setq coffee-tab-width 2)
+
+
+;; ***********************************************
+;; SCSS
+;; ***********************************************
+
+(setq scss-compile-at-save nil)
 
 
 ;; ***********************************************

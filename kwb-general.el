@@ -28,7 +28,10 @@
         (add-to-list 'default-frame-alist '(width . 120))))
 
 ;; set the default font
-(set-default-font "Inconsolata-16")
+(cond ((eq system-type 'gnu/linux)
+       (set-default-font "Inconsolata-14"))
+      ((eq system-type 'darwin)
+       (set-default-font "Inconsolata-16")))
 
 ;; load the theme
 (cond ((eq system-type 'gnu/linux)

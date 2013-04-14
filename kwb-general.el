@@ -28,10 +28,8 @@
         (add-to-list 'default-frame-alist '(width . 120))))
 
 ;; set the default font
-(cond ((string= system-name "kbeam.dev.int.nsidc.org")
-       (progn
-         (set-default-font "Courier 10 Pitch")
-         (set-face-attribute 'default nil :height 120)))
+(cond ((eq system-type 'gnu/linux)
+       (set-default-font "Inconsolata-14"))
       ((eq system-type 'darwin)
        (set-default-font "Inconsolata-16")))
 

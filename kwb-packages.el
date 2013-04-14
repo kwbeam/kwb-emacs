@@ -3,6 +3,7 @@
     clojure-mode
     coffee-mode
     dsvn
+    ein
     exec-path-from-shell
     expand-region
     feature-mode
@@ -14,6 +15,7 @@
     jedi
     magit
     markdown-mode
+    multiple-cursors
     nose
     paredit
     pymacs

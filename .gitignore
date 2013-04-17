@@ -25,3 +25,5 @@ vendor/*
 swank/*
 elpa
 ac-comphist.dat
+request/*
+url/*

@@ -33,9 +33,6 @@
 ;; Setup yasnippets
 (yas-global-mode 1)
 
-;; Always pair
-(autopair-global-mode)
-
 ;; Use svn mode
 (require 'vc-svn)
 (require 'dsvn)
@@ -44,7 +41,8 @@
 ;; Python
 ;; ***********************************************
 ;; (require 'kwb-python-i)
-(require 'kwb-python-ii)
+;; (require 'kwb-python-ii)
+(require 'kwb-python-iii)
 
 
 ;; ***********************************************
@@ -70,9 +68,6 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
-
-;; activate flymake for ruby
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
 
 ;; ***********************************************
@@ -107,9 +102,6 @@
 (add-hook 'js-mode-hook 'run-dev-hook)
 
 (setq js-indent-level 2)
-
-(require 'flymake-jshint)
-(add-hook 'js-mode-hook 'flymake-mode)
 
 
 ;; ***********************************************

@@ -129,4 +129,7 @@
 ;; don't use --dired option to ls
 (setq dired-use-ls-dired nil)
 
+;; Run flycheck whenever we can
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 (provide 'kwb-general)

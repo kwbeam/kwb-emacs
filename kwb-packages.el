@@ -1,16 +1,15 @@
 (defvar kwb-packages
-  '(autopair
+  '(auto-complete
+    autopair
     clojure-mode
+    clojure-test-mode
     coffee-mode
     dsvn
     ein
     exec-path-from-shell
     expand-region
     feature-mode
-    flymake-cursor
-    flymake-jshint
-    flymake-python-pyflakes
-    flymake-ruby
+    flycheck
     inf-ruby
     jedi
     magit
@@ -18,11 +17,11 @@
     multiple-cursors
     nose
     paredit
-    pymacs
     python
-    python-mode
     rinari
+    rspec-mode
     ruby-mode
+    ruby-electric
     rvm
     scss-mode
     solarized-theme

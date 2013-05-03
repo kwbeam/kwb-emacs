@@ -4,7 +4,6 @@ auto-save-list
 custom.el
 *elc
 places
-url/cookies
 elpa-to-submit/jabber/jabber.info
 elpa-to-submit/nxhtml/etc/schema/xhtml-loader.rnc
 thumbs/*
@@ -25,6 +24,6 @@ vendor/*
 swank/*
 elpa
 ac-comphist.dat
-request/
-url/
-eshell/
+request
+url
+eshell

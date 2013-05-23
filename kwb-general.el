@@ -34,10 +34,7 @@
        (set-default-font "Inconsolata-16")))
 
 ;; load the theme
-(cond ((eq system-type 'gnu/linux)
-       (require 'solarized-light-theme))
-      (t
-       (require 'solarized-dark-theme)))
+(require 'solarized-dark-theme)
 
 ;; add expand-region binding
 (global-set-key (kbd "C-!") 'er/expand-region)

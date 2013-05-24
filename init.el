@@ -10,11 +10,9 @@
 
 ;;; Code:
 
-(setq dotfiles-dir (file-name-directory (or (buffer-file-name)
-                                            load-file-name)))
-(add-to-list 'load-path dotfiles-dir)
-
-;;;; packages
+;; -------------------------------------
+;; load all the things
+;; -------------------------------------
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -59,17 +57,29 @@
            (package-install package)))
       kwb-packages)
 
+
+;; -------------------------------------
+;; i got your dotfiles right here
+;; -------------------------------------
+(setq dotfiles-dir (file-name-directory (or (buffer-file-name)
+                                            load-file-name)))
+(add-to-list 'load-path dotfiles-dir)
 (setq custom-file (concat dotfiles-dir "custom.el"))
 (load custom-file 'noerror)
 
-;;;; macros
+
+;; -------------------------------------
+;; macrobiotics
+;; -------------------------------------
 (defmacro after (mode &rest body)
   "`eval-after-load' MODE evaluate BODY."
   (declare (indent defun))
   `(eval-after-load ,mode
      '(progn ,@body)))
 
-;;;; general emacs stuff
+;; -------------------------------------
+;; blue-collar emacs stuff
+;; -------------------------------------
 ;; startup the server so we can edit stuff with emacsclient
 (server-start)
 
@@ -105,14 +115,11 @@
 ;; load the theme
 (require 'solarized-dark-theme)
 
-;; add expand-region binding
-(global-set-key (kbd "C-!") 'er/expand-region)
-
 ;; deal with tabs correctly
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)
 
-;; blink the cursor so I can see it
+;; das blinkenlights (so I can see the cursor)
 (blink-cursor-mode 1)
 
 ;; automatically sync up external changes to files
@@ -198,12 +205,13 @@
 ;; Run flycheck whenever we can
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-
-;;;; erc
+;; yep, that's me
 (setq erc-nick "kwbeam")
 
 
+;; -------------------------------------
 ;;;; key bindings
+;; -------------------------------------
 ;; Window switching with shift-arrow
 (windmove-default-keybindings)
 
@@ -221,8 +229,16 @@
 (define-key global-map (kbd "M-p") 'newline-previous)
 (define-key global-map (kbd "M-n") 'newline-next)
 
+;; add expand-region binding
+(global-set-key (kbd "C-!") 'er/expand-region)
 
-;;;; software development
+
+;; -------------------------------------
+;; software development
+;; -------------------------------------
+;; -----------------
+;; general stuff
+;; -----------------
 ;; show me the line numbers in source
 (defun add-line-numbers ()
   (linum-mode 1))
@@ -258,7 +274,9 @@
 (require 'vc-svn)
 (require 'dsvn)
 
+;; -----------------
 ;; Python
+;; -----------------
 ;; We're gonna need us a Python mode
 (require 'python)
 
@@ -286,7 +304,9 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)
 
+;; -----------------
 ;; Ruby
+;; -----------------
 ;; Scoop me up some RVM!
 (rvm-use-default)
 
@@ -307,62 +327,76 @@
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
 
+;; -----------------
 ;; Feature
+;; -----------------
 ;; Make sure we're in feature mode for the right files
 (add-to-list 'auto-mode-alist '("\\.feature$" . feature-mode))
 
+;; -----------------
 ;; Scheme
+;; -----------------
 ;; set the scheme to use
 (setq scheme-program-name "mit-scheme")
 
+;; -----------------
 ;; Markdown
+;; -----------------
 ;; stuff ending with .md is also markdown
 (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
 
+;; -----------------
 ;; JavaScript
+;; -----------------
 ;; JS is a dev mode
 (add-hook 'js-mode-hook 'run-dev-hook)
 
 (setq js-indent-level 2)
 
+;; -----------------
 ;; CoffeeScript
+;; -----------------
 (setq coffee-tab-width 2)
 
+;; -----------------
 ;; SCSS
+;; -----------------
 (setq scss-compile-at-save nil)
 
+;; -----------------
 ;; IDL
+;; -----------------
 (setq load-path (cons "~/tools/idlwave" load-path))
 (autoload 'idlwave-mode "idlwave" "IDLWAVE Mode" t)
 (autoload 'idlwave-shell "idlw-shell" "IDLWAVE Shell" t)
 (setq auto-mode-alist (cons '("\\.pro\\'" . idlwave-mode) auto-mode-alist))
 
-(custom-set-variables
- '(idlwave-block-indent 3)
- '(idlwave-completion-case (quote ((routine . preserve) (keyword . downcase) (class . preserve) (method . preserve))))
- '(idlwave-completion-force-default-case t)
- '(idlwave-completion-show-classes 10)
- '(idlwave-continuation-indent 3)
- '(idlwave-do-actions t)
- '(idlwave-end-offset -3)
- '(idlwave-expand-generic-end t)
- '(idlwave-indent-to-open-paren nil)
- '(idlwave-init-rinfo-when-idle-after 2)
- '(idlwave-main-block-indent 3)
- '(idlwave-max-extra-continuation-indent 60)
- '(idlwave-pad-keyword t)
- '(idlwave-query-class (quote ((method-default) (keyword-default) ("INIT" . t) ("CLEANUP" . t) ("SETPROPERTY" . t) ("GETPROPERTY" . t))))
- '(idlwave-reserved-word-upcase nil nil nil "Want pro rather than PRO")
- '(idlwave-shell-automatic-electric-debug t)
- '(idlwave-shell-automatic-start t)
- '(idlwave-shell-debug-modifiers (quote (super)))
- '(idlwave-shell-electric-stop-color "darkviolet")
- '(idlwave-shell-reset-no-prompt t)
- '(idlwave-shell-separate-examine-output nil)
- '(idlwave-shell-show-commands (quote (run breakpoint debug misc)))
- '(idlwave-shell-use-dedicated-frame nil)
- '(idlwave-shell-use-dedicated-window nil)
- '(idlwave-surround-by-blank t))
+;; (custom-set-variables
+;;  '(idlwave-block-indent 3)
+;;  '(idlwave-completion-case (quote ((routine . preserve) (keyword . downcase) (class . preserve) (method . preserve))))
+;;  '(idlwave-completion-force-default-case t)
+;;  '(idlwave-completion-show-classes 10)
+;;  '(idlwave-continuation-indent 3)
+;;  '(idlwave-do-actions t)
+;;  '(idlwave-end-offset -3)
+;;  '(idlwave-expand-generic-end t)
+;;  '(idlwave-indent-to-open-paren nil)
+;;  '(idlwave-init-rinfo-when-idle-after 2)
+;;  '(idlwave-main-block-indent 3)
+;;  '(idlwave-max-extra-continuation-indent 60)
+;;  '(idlwave-pad-keyword t)
+;;  '(idlwave-query-class (quote ((method-default) (keyword-default) ("INIT" . t) ("CLEANUP" . t) ("SETPROPERTY" . t) ("GETPROPERTY" . t))))
+;;  '(idlwave-reserved-word-upcase nil nil nil "Want pro rather than PRO")
+;;  '(idlwave-shell-automatic-electric-debug t)
+;;  '(idlwave-shell-automatic-start t)
+;;  '(idlwave-shell-debug-modifiers (quote (super)))
+;;  '(idlwave-shell-electric-stop-color "darkviolet")
+;;  '(idlwave-shell-reset-no-prompt t)
+;;  '(idlwave-shell-separate-examine-output nil)
+;;  '(idlwave-shell-show-commands (quote (run breakpoint debug misc)))
+;;  '(idlwave-shell-use-dedicated-frame nil)
+;;  '(idlwave-shell-use-dedicated-window nil)
+;;  '(idlwave-surround-by-blank t))
 
 (add-hook 'idlwave-mode-hook
 	  (lambda ()

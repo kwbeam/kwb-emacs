@@ -69,33 +69,19 @@
 
 
 ;; -------------------------------------
-;; macrobiotics
-;; -------------------------------------
-(defmacro after (mode &rest body)
-  "`eval-after-load' MODE evaluate BODY."
-  (declare (indent defun))
-  `(eval-after-load ,mode
-     '(progn ,@body)))
-
-;; -------------------------------------
 ;; blue-collar emacs stuff
 ;; -------------------------------------
-;; startup the server so we can edit stuff with emacsclient
 (server-start)
 
-;; use the right exec-path
 (exec-path-from-shell-initialize)
 
-;; take away distracting stuff
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; no bells!
 (setq visible-bell t)
 
-;; set geometry
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'default-frame-alist '(height . 60))
         (add-to-list 'default-frame-alist '(width . 220)))
@@ -106,23 +92,18 @@
        (add-to-list 'default-frame-alist '(height . 40))
         (add-to-list 'default-frame-alist '(width . 120))))
 
-;; set the default font
 (cond ((eq system-type 'gnu/linux)
        (set-default-font "Inconsolata-14"))
       ((eq system-type 'darwin)
        (set-default-font "Inconsolata-16")))
 
-;; load the theme
 (require 'solarized-dark-theme)
 
-;; deal with tabs correctly
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)
 
-;; das blinkenlights (so I can see the cursor)
 (blink-cursor-mode 1)
 
-;; automatically sync up external changes to files
 (global-auto-revert-mode t)
 (defalias 'auto-revert-tail-mode 'tail-mode)
 
@@ -133,54 +114,40 @@
   ;; Work around a bug on OS X where system-name is FQDN
   (setq system-name (car (split-string system-name "\\."))))
 
-;; better frame titles
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
 
-;; show me the column number
 (column-number-mode t)
 
-;; make emacs use the clipboard
 (setq x-select-enable-clipboard t)
 
-;; encodings
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;; highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
-;; turn on ido-mode
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
 (setq ido-create-new-buffer 'always)
 (setq ido-everywhere t)
 (ido-mode 1)
 
-;; show empty lines at the end of the file
 (set-default 'indicate-empty-lines t)
 
-;; auto fill in text
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
-;; automatically check spelling
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
-;; y or n is okay
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; seed the random-number generator
 (random t)
 
-;; don't clutter up directories with backup files
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat dotfiles-dir "backups")))))
 
-;; show multi-key commands quickly
 (setq echo-keystrokes 0.1)
 
-;; lexical binding is better
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 
 ;; new line above and below
@@ -192,44 +159,34 @@
   (newline)
   (previous-line)
   (indent-according-to-mode))
-
 (defun newline-next ()
   "Inserts an indented newline after the current line and moves the point to it."
   (interactive)
   (end-of-line)
   (newline-and-indent))
 
-;; don't use --dired option to ls
 (setq dired-use-ls-dired nil)
 
-;; Run flycheck whenever we can
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; yep, that's me
 (setq erc-nick "kwbeam")
 
 
 ;; -------------------------------------
 ;;;; key bindings
 ;; -------------------------------------
-;; Window switching with shift-arrow
 (windmove-default-keybindings)
 
-;; Font size
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
-;; use interactive buffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-;; Always indent stuff
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
-;; new line above and below
 (define-key global-map (kbd "M-p") 'newline-previous)
 (define-key global-map (kbd "M-n") 'newline-next)
 
-;; add expand-region binding
 (global-set-key (kbd "C-!") 'er/expand-region)
 
 
@@ -239,11 +196,9 @@
 ;; -----------------
 ;; general stuff
 ;; -----------------
-;; show me the line numbers in source
 (defun add-line-numbers ()
   (linum-mode 1))
 
-;; auto wrap, but only in comments
 (defun local-comment-auto-fill ()
   (set (make-local-variable 'comment-auto-fill-only-comments) t)
   (auto-fill-mode t))
@@ -252,7 +207,6 @@
 (defun add-auto-complete ()
   (auto-complete-mode 1))
 
-;; delete trailing whitespace
 (defun dev-before-save-hook ()
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
@@ -265,31 +219,22 @@
 
 (defun run-dev-hook ()
   "Enable things that are convenient across all dev buffers."
+  (interactive)
   (run-hooks 'dev-hook))
 
-;; Setup yasnippets
 (yas-global-mode 1)
 
-;; Use svn mode
 (require 'vc-svn)
 (require 'dsvn)
 
 ;; -----------------
 ;; Python
 ;; -----------------
-;; We're gonna need us a Python mode
 (require 'python)
-
-;; Python is a dev mode
 (add-hook 'python-mode-hook 'run-dev-hook)
-
-;; Run autopair when doing Python
 (add-hook 'python-mode-hook #'(lambda () (autopair-mode)))
-
-;; All the Python things live here
 (setq virtualenv-root "~/.virtual_envs/")
 
-;; Be able to run nose tests with various keybindings
 (require 'nose)
 (add-hook 'python-mode-hook
           (lambda ()
@@ -300,25 +245,18 @@
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
 
-;; Use the Python force, my young padawan learner
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)
 
 ;; -----------------
 ;; Ruby
 ;; -----------------
-;; Scoop me up some RVM!
-(rvm-use-default)
-
-;; Ruby is a dev mode
 (add-hook 'ruby-mode-hook 'run-dev-hook)
-
-;; nicely indent things as we go
+(rvm-use-default)
 (eval-after-load 'ruby-mode
   '(progn
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)))
 
-;; Make sure we're in ruby mode for various files
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
@@ -330,27 +268,22 @@
 ;; -----------------
 ;; Feature
 ;; -----------------
-;; Make sure we're in feature mode for the right files
 (add-to-list 'auto-mode-alist '("\\.feature$" . feature-mode))
 
 ;; -----------------
 ;; Scheme
 ;; -----------------
-;; set the scheme to use
 (setq scheme-program-name "mit-scheme")
 
 ;; -----------------
 ;; Markdown
 ;; -----------------
-;; stuff ending with .md is also markdown
 (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
 
 ;; -----------------
 ;; JavaScript
 ;; -----------------
-;; JS is a dev mode
 (add-hook 'js-mode-hook 'run-dev-hook)
-
 (setq js-indent-level 2)
 
 ;; -----------------

@@ -93,9 +93,9 @@
         (add-to-list 'default-frame-alist '(width . 120))))
 
 (cond ((eq system-type 'gnu/linux)
-       (set-default-font "Inconsolata-14"))
+       (set-frame-font "Inconsolata-14"))
       ((eq system-type 'darwin)
-       (set-default-font "Inconsolata-16")))
+       (set-frame-font "Inconsolata-16")))
 
 (require 'solarized-dark-theme)
 
@@ -160,7 +160,7 @@
   (previous-line)
   (indent-according-to-mode))
 (defun newline-next ()
-  "Inserts an indented newline after the current line and moves the point to it."
+  "Insert an indented newline after the current line and move the point to it."
   (interactive)
   (end-of-line)
   (newline-and-indent))
@@ -173,7 +173,7 @@
 
 
 ;; -------------------------------------
-;;;; key bindings
+;; key bindings
 ;; -------------------------------------
 (windmove-default-keybindings)
 

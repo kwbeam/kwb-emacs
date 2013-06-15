@@ -33,6 +33,7 @@
     expand-region
     feature-mode
     flycheck
+    flycheck-color-mode-line
     google-this
     inf-ruby
     jedi
@@ -40,6 +41,7 @@
     markdown-mode
     multiple-cursors
     nose
+    org
     paredit
     python
     rinari
@@ -131,6 +133,7 @@
 (setq ido-use-filename-at-point 'guess)
 (setq ido-create-new-buffer 'always)
 (setq ido-everywhere t)
+(setq ido-max-directory-size 100000)
 (ido-mode 1)
 
 (set-default 'indicate-empty-lines t)
@@ -168,6 +171,7 @@
 (setq dired-use-ls-dired nil)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
 
 (setq erc-nick "kwbeam")
 
@@ -226,6 +230,16 @@
 
 (require 'vc-svn)
 (require 'dsvn)
+
+;; -----------------
+;; org-mode's Babel
+;; -----------------
+;; active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (ruby . t)
+   ))
 
 ;; -----------------
 ;; Python

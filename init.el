@@ -37,6 +37,8 @@
     google-this
     inf-ruby
     jedi
+    js2-mode
+    js2-refactor
     magit
     markdown-mode
     multiple-cursors
@@ -52,6 +54,7 @@
     scss-mode
     solarized-theme
     virtualenv
+    web-mode
     yasnippet))
 
 (mapc #'(lambda (package)
@@ -242,6 +245,15 @@
    ))
 
 ;; -----------------
+;; Web Mode
+;; -----------------
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+;; -----------------
 ;; Python
 ;; -----------------
 (require 'python)
@@ -297,8 +309,9 @@
 ;; -----------------
 ;; JavaScript
 ;; -----------------
-(add-hook 'js-mode-hook 'run-dev-hook)
-(setq js-indent-level 2)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js2-mode-hook 'run-dev-hook)
+(require 'js2-refactor)
 
 ;; -----------------
 ;; CoffeeScript

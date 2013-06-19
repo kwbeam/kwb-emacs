@@ -19,7 +19,6 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
-(package-refresh-contents)
 
 (defvar kwb-packages
   '(auto-complete

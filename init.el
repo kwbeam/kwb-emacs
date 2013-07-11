@@ -44,10 +44,8 @@
     nose
     org
     paredit
-    python
     rinari
     rspec-mode
-    ruby-mode
     ruby-electric
     rvm
     scss-mode
@@ -87,8 +85,8 @@
 (setq visible-bell t)
 
 (cond ((eq system-type 'gnu/linux)
-       (add-to-list 'default-frame-alist '(height . 60))
-        (add-to-list 'default-frame-alist '(width . 220)))
+       (add-to-list 'default-frame-alist '(height . 45))
+        (add-to-list 'default-frame-alist '(width . 180)))
       ((eq system-type 'darwin)
        (add-to-list 'default-frame-alist '(height . 50))
         (add-to-list 'default-frame-alist '(width . 160)))
@@ -97,7 +95,7 @@
         (add-to-list 'default-frame-alist '(width . 120))))
 
 (cond ((eq system-type 'gnu/linux)
-       (set-frame-font "Inconsolata-14"))
+       (set-frame-font "Inconsolata-12"))
       ((eq system-type 'darwin)
        (set-frame-font "Inconsolata-16")))
 
@@ -277,6 +275,12 @@
 ;; Ruby
 ;; -----------------
 (add-hook 'ruby-mode-hook 'run-dev-hook)
+
+(autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
+(autoload 'inf-ruby-setup-keybindings "inf-ruby" "" t)
+(eval-after-load 'ruby-mode
+  '(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings))
+
 (rvm-use-default)
 (eval-after-load 'ruby-mode
   '(progn

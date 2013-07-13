@@ -99,8 +99,6 @@
       ((eq system-type 'darwin)
        (set-frame-font "Inconsolata-16")))
 
-(require 'solarized-dark-theme)
-
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)
 

@@ -254,7 +254,7 @@
 (require 'python)
 (add-hook 'python-mode-hook 'run-dev-hook)
 (add-hook 'python-mode-hook #'(lambda () (autopair-mode)))
-(setq virtualenv-root "~/.virtual_envs/")
+;; (setq virtualenv-root "~/.virtual_envs/")
 
 (require 'nose)
 (add-hook 'python-mode-hook

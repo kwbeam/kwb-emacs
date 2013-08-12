@@ -99,8 +99,6 @@
       ((eq system-type 'darwin)
        (set-frame-font "Inconsolata-16")))
 
-(require 'solarized-dark-theme)
-
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)
 
@@ -315,6 +313,8 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js2-mode-hook 'run-dev-hook)
 (require 'js2-refactor)
+;; TODO: Do I want 2 or 4 spaces for JS?
+(setq-default js2-basic-offset 2)
 
 ;; -----------------
 ;; CoffeeScript

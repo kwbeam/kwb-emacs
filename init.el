@@ -97,7 +97,7 @@
 (cond ((eq system-type 'gnu/linux)
        (set-frame-font "Inconsolata-12"))
       ((eq system-type 'darwin)
-       (set-frame-font "Inconsolata-16")))
+       (set-frame-font "Inconsolata-18")))
 
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)

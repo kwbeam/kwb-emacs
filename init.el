@@ -18,6 +18,7 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(package-refresh-contents)
 (package-initialize)
 
 (defvar kwb-packages
@@ -49,6 +50,7 @@
     ruby-electric
     rvm
     scss-mode
+    skewer-mode
     solarized-theme
     virtualenv
     web-mode
@@ -315,6 +317,12 @@
 (require 'js2-refactor)
 ;; TODO: Do I want 2 or 4 spaces for JS?
 (setq-default js2-basic-offset 2)
+
+;; Setup skewer hooks
+(add-hook 'js2-mode-hook 'skewer-mode)
+(add-hook 'css-mode-hook 'skewer-css-mode)
+(add-hook 'html-mode-hook 'skewer-html-mode)
+(add-hook 'web-mode-hook 'skewer-html-mode)
 
 ;; -----------------
 ;; CoffeeScript

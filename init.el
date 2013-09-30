@@ -37,6 +37,7 @@
     flycheck-color-mode-line
     google-this
     inf-ruby
+    jabber
     jedi
     js2-mode
     js2-refactor
@@ -194,6 +195,23 @@
 
 (global-set-key (kbd "C-!") 'er/expand-region)
 
+
+;; -------------------------------------
+;; Jabber
+;; -------------------------------------
+(require 'jabber)
+
+;; Use Google chat by default
+(setq jabber-account-list
+      '(("kwbeam@gmail.com"
+         (:network-server . "talk.google.com")
+         (:connection-type . ssl))))
+
+;; If I'm on a mac (work), add the NSIDC chat server
+(cond ((eq system-type 'darwin)
+       (add-to-list 'jabber-account-list
+                    '("kbeam@chat.nsidc.org"
+                      (:connection-type . ssl)))))
 
 ;; -------------------------------------
 ;; software development

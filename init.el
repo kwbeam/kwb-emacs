@@ -290,6 +290,7 @@
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
 
 (add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (setq jedi:setup-keys t)
 
 ;; -----------------

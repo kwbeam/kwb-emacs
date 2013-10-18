@@ -14,11 +14,15 @@
 ;; load all the things
 ;; -------------------------------------
 (require 'package)
+
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
 (package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 (defvar kwb-packages
   '(auto-complete
@@ -35,6 +39,7 @@
     flycheck-color-mode-line
     google-this
     inf-ruby
+    jabber
     jedi
     js-comint
     js2-mode
@@ -50,6 +55,7 @@
     ruby-electric
     rvm
     scss-mode
+    skewer-mode
     solarized-theme
     virtualenv
     web-mode
@@ -194,6 +200,23 @@
 
 
 ;; -------------------------------------
+;; Jabber
+;; -------------------------------------
+(require 'jabber)
+
+;; Use Google chat by default
+(setq jabber-account-list
+      '(("kwbeam@gmail.com"
+         (:network-server . "talk.google.com")
+         (:connection-type . ssl))))
+
+;; If I'm on a mac (work), add the NSIDC chat server
+(cond ((eq system-type 'darwin)
+       (add-to-list 'jabber-account-list
+                    '("kbeam@chat.nsidc.org"
+                      (:connection-type . ssl)))))
+
+;; -------------------------------------
 ;; software development
 ;; -------------------------------------
 ;; -----------------
@@ -268,6 +291,7 @@
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
 
 (add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (setq jedi:setup-keys t)
 
 ;; -----------------
@@ -328,6 +352,12 @@
 			    (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
 			    (local-set-key "\C-cl" 'js-load-file-and-go)
 			    ))
+
+;; Setup skewer hooks
+(add-hook 'js2-mode-hook 'skewer-mode)
+(add-hook 'css-mode-hook 'skewer-css-mode)
+(add-hook 'html-mode-hook 'skewer-html-mode)
+(add-hook 'web-mode-hook 'skewer-html-mode)
 
 ;; -----------------
 ;; CoffeeScript

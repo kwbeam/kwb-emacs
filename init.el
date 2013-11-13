@@ -300,9 +300,7 @@
 (add-hook 'ruby-mode-hook 'run-dev-hook)
 
 (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
-(autoload 'inf-ruby-setup-keybindings "inf-ruby" "" t)
-(eval-after-load 'ruby-mode
-  '(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings))
+(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
 
 (rvm-use-default)
 (eval-after-load 'ruby-mode

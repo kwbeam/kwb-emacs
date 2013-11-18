@@ -161,6 +161,9 @@
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
 ;; new line above and below
 ;; hat-tip: http://blog.peepcode.com/blog/2012/commanding-your-text-editor/
 (defun newline-previous ()

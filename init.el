@@ -45,19 +45,19 @@
     js-comint
     js2-mode
     js2-refactor
+    less-css-mode
     magit
     markdown-mode
     multiple-cursors
     nose
     org
     paredit
+    puppet-mode
     rinari
     rspec-mode
     ruby-electric
-    rvm
     scss-mode
     skewer-mode
-    solarized-theme
     virtualenv
     web-mode
     yasnippet))
@@ -116,6 +116,8 @@
 
 (global-auto-revert-mode t)
 (defalias 'auto-revert-tail-mode 'tail-mode)
+
+(setq multi-term-program "/bin/bash")
 
 ;; Mac Specific Stuff
 (setq mac-command-modifier 'meta)

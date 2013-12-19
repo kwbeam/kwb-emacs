@@ -91,7 +91,6 @@
 (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
 (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
 
-(rvm-use-default)
 (eval-after-load 'ruby-mode
   '(progn
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)))

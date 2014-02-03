@@ -38,6 +38,7 @@
     flatland-theme
     flycheck
     flycheck-color-mode-line
+    gist
     google-this
     inf-ruby
     jabber

@@ -76,6 +76,10 @@
                               (hack-local-variables)
                               (venv-workon project-venv-name)))
 
+(setq eshell-prompt-function
+    (lambda ()
+      (concat venv-current-name " $ ")))
+
 (require 'nose)
 (add-hook 'python-mode-hook
           (lambda ()

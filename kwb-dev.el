@@ -155,6 +155,11 @@
 (setq scss-compile-at-save nil)
 
 ;; -----------------
+;; Clojure
+;; -----------------
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+
+;; -----------------
 ;; IDL
 ;; -----------------
 (setq idlwave-shell-explicit-file-name "idl82")

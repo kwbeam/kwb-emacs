@@ -27,6 +27,7 @@
 (defvar kwb-packages
   '(auto-complete
     autopair
+    cider
     clojure-mode
     clojure-test-mode
     coffee-mode

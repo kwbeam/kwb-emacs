@@ -60,7 +60,7 @@
     ruby-electric
     scss-mode
     skewer-mode
-    virtualenv
+    virtualenvwrapper
     web-mode
     yasnippet))
 

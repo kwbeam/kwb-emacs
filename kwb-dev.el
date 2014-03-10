@@ -67,7 +67,14 @@
 (require 'python)
 (add-hook 'python-mode-hook 'run-dev-hook)
 (add-hook 'python-mode-hook #'(lambda () (autopair-mode)))
-(setq virtualenv-root "~/.virtual_envs/")
+
+(require 'virtualenvwrapper)
+(venv-initialize-interactive-shells) ;; if you want interactive shell support
+(venv-initialize-eshell) ;; if you want eshell support
+(setq venv-location "~/.virtual_envs/")
+(add-hook 'python-mode-hook (lambda ()
+                              (hack-local-variables)
+                              (venv-workon project-venv-name)))
 
 (require 'nose)
 (add-hook 'python-mode-hook

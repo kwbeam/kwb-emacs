@@ -55,6 +55,7 @@
     org
     paredit
     puppet-mode
+    rbenv
     rinari
     rspec-mode
     ruby-electric

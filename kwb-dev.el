@@ -42,6 +42,9 @@
 (require 'vc-svn)
 (require 'dsvn)
 
+;; Use projectile for everything
+(projectile-global-mode)
+
 ;; -----------------
 ;; org-mode's Babel
 ;; -----------------
@@ -149,6 +152,13 @@
 			    (local-set-key "\C-cl" 'js-load-file-and-go)
 			    ))
 
+;; Add tern
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(eval-after-load 'tern
+   '(progn
+      (require 'tern-auto-complete)
+      (tern-ac-setup)))
+
 ;; Setup skewer hooks
 (add-hook 'js2-mode-hook 'skewer-mode)
 (add-hook 'css-mode-hook 'skewer-css-mode)
@@ -169,6 +179,7 @@
 ;; Clojure
 ;; -----------------
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook 'enable-paredit-mode)
 
 ;; -----------------
 ;; IDL

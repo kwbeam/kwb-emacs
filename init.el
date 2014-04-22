@@ -53,7 +53,9 @@
     multiple-cursors
     nose
     org
+    org-pomodoro
     paredit
+    projectile
     puppet-mode
     rbenv
     rinari
@@ -61,8 +63,11 @@
     ruby-electric
     scss-mode
     skewer-mode
+    tern
+    tern-auto-complete
     virtualenvwrapper
     web-mode
+    yaml-mode
     yasnippet))
 
 (mapc #'(lambda (package)
@@ -110,7 +115,7 @@
 (cond ((eq system-type 'gnu/linux)
        (set-frame-font "Inconsolata-14"))
       ((eq system-type 'darwin)
-       (set-frame-font "Inconsolata-18")))
+       (set-frame-font "Inconsolata-14")))
 
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)

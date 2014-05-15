@@ -125,7 +125,7 @@
 ;; -----------------
 ;; Scheme
 ;; -----------------
-(setq scheme-program-name "mit-scheme")
+(setq scheme-program-name "racket")
 
 ;; -----------------
 ;; Markdown

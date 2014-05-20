@@ -51,8 +51,12 @@
 ;; active Babel languages
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((python . t)
+ '((clojure . t)
+   (js . t)
+   (lisp . t)
+   (python . t)
    (ruby . t)
+   (scheme . t)
    ))
 
 ;; -----------------
@@ -126,6 +130,11 @@
 ;; Scheme
 ;; -----------------
 (setq scheme-program-name "racket")
+
+;; -----------------
+;; Lisp
+;; -----------------
+(setq inferior-lisp-program "clisp")
 
 ;; -----------------
 ;; Markdown

@@ -193,6 +193,16 @@
 (add-hook 'cider-mode-hook 'enable-paredit-mode)
 (add-hook 'cider-mode-hook 'run-dev-hook)
 
+
+;; -----------------
+;; JSON
+;; -----------------
+(defun json-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)))
+
+
 ;; -----------------
 ;; IDL
 ;; -----------------

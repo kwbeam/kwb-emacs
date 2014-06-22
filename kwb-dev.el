@@ -189,6 +189,7 @@
 ;; -----------------
 ;; Clojure
 ;; -----------------
+(setq nrepl-hide-special-buffers t)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'cider-mode-hook 'enable-paredit-mode)
 (add-hook 'cider-mode-hook 'run-dev-hook)

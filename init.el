@@ -29,7 +29,6 @@
     autopair
     cider
     clojure-mode
-    clojure-test-mode
     coffee-mode
     dsvn
     ein

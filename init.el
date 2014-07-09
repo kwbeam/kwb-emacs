@@ -212,6 +212,7 @@
 (define-key global-map (kbd "M-n") 'newline-next)
 
 (global-set-key (kbd "C-!") 'er/expand-region)
+(global-set-key (kbd "C-c C-g") 'magit-status)
 
 
 ;; -------------------------------------

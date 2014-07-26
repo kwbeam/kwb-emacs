@@ -40,6 +40,7 @@
     flycheck
     flycheck-color-mode-line
     gist
+    git-timemachine
     google-this
     inf-ruby
     jabber

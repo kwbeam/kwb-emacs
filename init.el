@@ -32,6 +32,7 @@
     coffee-mode
     dsvn
     ein
+    elfeed
     exec-path-from-shell
     expand-region
     feature-mode
@@ -231,6 +232,21 @@
        (add-to-list 'jabber-account-list
                     '("kbeam@chat.nsidc.org"
                       (:connection-type . ssl)))))
+
+
+;; -------------------------------------
+;; News / RSS Feeds
+;; -------------------------------------
+(global-set-key (kbd "C-c f") 'elfeed)
+(setq elfeed-feeds
+      '("http://stallman.org/rss/rss.xml"
+        "http://apod.nasa.gov/apod.rss"
+        "http://nsidc.org/arcticseaicenews/feed/"
+        "http://thewoolenrunner.blogspot.com/feeds/posts/default"
+        "https://www.schneier.com/blog/atom.xml"
+        "http://planet.emacsen.org/atom.xml"
+        "http://feeds.sachachua.com/sachac"))
+
 
 (require 'kwb-dev)
 

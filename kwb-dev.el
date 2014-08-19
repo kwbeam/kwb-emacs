@@ -81,7 +81,8 @@
 (setq venv-location "~/.virtual_envs/")
 (add-hook 'python-mode-hook (lambda ()
                               (hack-local-variables)
-                              (venv-workon project-venv-name)))
+                              (when (boundp 'project-venv-name)
+                                (venv-workon project-venv-name))))
 
 (setq eshell-prompt-function
     (lambda ()

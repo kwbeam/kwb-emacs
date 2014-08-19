@@ -30,6 +30,7 @@
     cider
     clojure-mode
     coffee-mode
+    cyberpunk-theme
     dsvn
     ein
     elfeed
@@ -101,7 +102,7 @@
 
 (setq visible-bell t)
 
-(require 'flatland-theme)
+(load-theme 'cyberpunk t)
 
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'default-frame-alist '(height . 45))

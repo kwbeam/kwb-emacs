@@ -61,10 +61,13 @@
     puppet-mode
     rbenv
     rinari
+    robe
     rspec-mode
+    rubocop
     ruby-electric
     scss-mode
     skewer-mode
+    smartparens
     tern
     tern-auto-complete
     virtualenvwrapper
@@ -217,6 +220,18 @@
 (global-set-key (kbd "C-!") 'er/expand-region)
 (global-set-key (kbd "C-c g") 'magit-status)
 
+
+;; -------------------------------------
+;; Autocomplete
+;; -------------------------------------
+(ac-config-default)
+(setq ac-ignore-case nil)
+(add-to-list 'ac-modes 'web-mode)
+
+;; -------------------------------------
+;; Parens FTW
+;; -------------------------------------
+(require 'smartparens-config)
 
 ;; -------------------------------------
 ;; Jabber

@@ -99,10 +99,9 @@
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
 
 (add-hook 'python-mode-hook 'jedi:setup)
-(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (setq jedi:setup-keys t)
 ;; (setq ein:use-auto-complete f)
-(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+;; (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 
 ;; -----------------
 ;; Ruby

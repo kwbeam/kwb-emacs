@@ -201,6 +201,16 @@
 
 (setq erc-nick "kwbeam")
 
+;; Check to see if we're running darwin (osx)
+(defvar running-macos
+  (or (string-match "darwin" (prin1-to-string system-type))
+      (memq (window-system) '(mac ns)))
+  "Boolean to determine if we are running on a macintosh laptop" )
+
+;; Work around for bug in macosx
+(when running-macos
+(cd (getenv "HOME")))
+
 
 ;; -------------------------------------
 ;; key bindings

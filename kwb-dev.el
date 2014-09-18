@@ -73,20 +73,10 @@
 ;; -----------------
 (require 'python)
 (add-hook 'python-mode-hook 'run-dev-hook)
+
+(elpy-enable)
+
 (add-hook 'python-mode-hook #'(lambda () (autopair-mode)))
-
-(require 'virtualenvwrapper)
-(venv-initialize-interactive-shells) ;; if you want interactive shell support
-(venv-initialize-eshell) ;; if you want eshell support
-(setq venv-location "~/.virtual_envs/")
-(add-hook 'python-mode-hook (lambda ()
-                              (hack-local-variables)
-                              (when (boundp 'project-venv-name)
-                                (venv-workon project-venv-name))))
-
-(setq eshell-prompt-function
-    (lambda ()
-      (concat venv-current-name " $ ")))
 
 (require 'nose)
 (add-hook 'python-mode-hook
@@ -98,10 +88,7 @@
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
 
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:setup-keys t)
-;; (setq ein:use-auto-complete f)
-;; (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+(setq ein:use-auto-complete f)
 
 ;; -----------------
 ;; Ruby

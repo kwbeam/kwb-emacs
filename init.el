@@ -25,11 +25,11 @@
   (package-refresh-contents))
 
 (defvar kwb-packages
-  '(auto-complete
-    autopair
+  '(autopair
     cider
     clojure-mode
     coffee-mode
+    company
     cyberpunk-theme
     dsvn
     ;;ein
@@ -45,7 +45,6 @@
     google-this
     inf-ruby
     jabber
-    jedi
     js-comint
     js2-mode
     js2-refactor

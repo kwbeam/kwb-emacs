@@ -88,8 +88,6 @@
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
 
-(setq ein:use-auto-complete f)
-
 ;; -----------------
 ;; Ruby
 ;; -----------------

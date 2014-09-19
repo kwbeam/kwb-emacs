@@ -34,6 +34,7 @@
     dsvn
     ;;ein
     elfeed
+    elpy
     exec-path-from-shell
     expand-region
     feature-mode
@@ -81,7 +82,7 @@
 
 
 ;; temporarily add this fork of the *ein* package
-(add-to-list 'load-path "/Users/kbeam/tools/emacs-ipython-notebook/lisp")
+(add-to-list 'load-path "~/tools/emacs-ipython-notebook/lisp")
 (require 'ein)
 
 ;; -------------------------------------

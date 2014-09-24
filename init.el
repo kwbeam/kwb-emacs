@@ -33,19 +33,16 @@
     cyberpunk-theme
     dsvn
     ;;ein
-    elfeed
     elpy
     exec-path-from-shell
     expand-region
     feature-mode
-    flatland-theme
     flycheck
     flycheck-color-mode-line
     gist
     git-timemachine
     google-this
     inf-ruby
-    jabber
     js-comint
     js2-mode
     js2-refactor
@@ -246,37 +243,6 @@
 ;; Parens FTW
 ;; -------------------------------------
 (require 'smartparens-config)
-
-;; -------------------------------------
-;; Jabber
-;; -------------------------------------
-(require 'jabber)
-
-;; Use Google chat by default
-(setq jabber-account-list
-      '(("kwbeam@gmail.com"
-         (:network-server . "talk.google.com")
-         (:connection-type . ssl))))
-
-;; If I'm on a mac (work), add the NSIDC chat server
-(cond ((eq system-type 'darwin)
-       (add-to-list 'jabber-account-list
-                    '("kbeam@chat.nsidc.org"
-                      (:connection-type . ssl)))))
-
-
-;; -------------------------------------
-;; News / RSS Feeds
-;; -------------------------------------
-(global-set-key (kbd "C-c f") 'elfeed)
-(setq elfeed-feeds
-      '("http://stallman.org/rss/rss.xml"
-        "http://apod.nasa.gov/apod.rss"
-        "http://nsidc.org/arcticseaicenews/feed/"
-        "http://thewoolenrunner.blogspot.com/feeds/posts/default"
-        "https://www.schneier.com/blog/atom.xml"
-        "http://planet.emacsen.org/atom.xml"
-        "http://feeds.sachachua.com/sachac"))
 
 
 (require 'kwb-dev)

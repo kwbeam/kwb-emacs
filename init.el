@@ -245,6 +245,6 @@
 (require 'smartparens-config)
 
 
-(require 'kwb-dev)
+(require 'dev)
 
 ;;; init.el ends here

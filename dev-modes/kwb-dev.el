@@ -64,6 +64,6 @@
 (require 'dev-web)
 
 
-(provide 'dev)
+(provide 'kwb-dev)
 
-;;; dev.el ends here
+;;; kwb-dev.el ends here

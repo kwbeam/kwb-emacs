@@ -88,6 +88,7 @@
 (setq dotfiles-dir (file-name-directory (or (buffer-file-name)
                                             load-file-name)))
 (add-to-list 'load-path dotfiles-dir)
+(add-to-list 'load-path (concat dotfiles-dir "dev-modes"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
 (load custom-file 'noerror)
 
@@ -239,12 +240,16 @@
 (setq ac-ignore-case nil)
 (add-to-list 'ac-modes 'web-mode)
 
+
 ;; -------------------------------------
 ;; Parens FTW
 ;; -------------------------------------
 (require 'smartparens-config)
 
 
-(require 'dev)
+;; -------------------------------------
+;; Setup all the development modes
+;; -------------------------------------
+(require 'kwb-dev)
 
 ;;; init.el ends here

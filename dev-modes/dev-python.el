@@ -5,6 +5,11 @@
 (add-hook 'python-mode-hook 'run-dev-hook)
 
 (elpy-enable)
+;; don't use flymake (elpy default), use flycheck
+;; from: https://github.com/jorgenschaefer/elpy/issues/137
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 (add-hook 'python-mode-hook #'(lambda () (autopair-mode)))
 

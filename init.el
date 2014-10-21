@@ -58,6 +58,7 @@
     projectile
     puppet-mode
     rbenv
+    request
     rinari
     robe
     rspec-mode
@@ -70,6 +71,7 @@
     tern-auto-complete
     virtualenvwrapper
     web-mode
+    websocket
     yaml-mode
     yasnippet))
 

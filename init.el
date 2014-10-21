@@ -130,6 +130,7 @@
 (setq tab-width 2)
 
 (blink-cursor-mode 1)
+(setq blink-cursor-blinks 0)
 
 (global-auto-revert-mode t)
 (defalias 'auto-revert-tail-mode 'tail-mode)

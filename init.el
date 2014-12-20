@@ -32,7 +32,7 @@
     company
     cyberpunk-theme
     dsvn
-    ;;ein
+    ein
     elpy
     exec-path-from-shell
     expand-region
@@ -80,10 +80,6 @@
            (package-install package)))
       kwb-packages)
 
-
-;; temporarily add this fork of the *ein* package
-(add-to-list 'load-path "~/tools/emacs-ipython-notebook/lisp")
-(require 'ein)
 
 ;; -------------------------------------
 ;; i got your dotfiles right here

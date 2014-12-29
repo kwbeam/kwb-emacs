@@ -42,6 +42,7 @@
     gist
     git-timemachine
     google-this
+    haskell-mode
     inf-ruby
     js-comint
     js2-mode
@@ -68,7 +69,6 @@
     skewer-mode
     smartparens
     tern
-    tern-auto-complete
     virtualenvwrapper
     web-mode
     websocket
@@ -235,9 +235,10 @@
 ;; -------------------------------------
 ;; Autocomplete
 ;; -------------------------------------
-(ac-config-default)
-(setq ac-ignore-case nil)
-(add-to-list 'ac-modes 'web-mode)
+;; (ac-config-default)
+;; (setq ac-ignore-case nil)
+;; (add-to-list 'ac-modes 'web-mode)
+(global-company-mode)
 
 
 ;; -------------------------------------

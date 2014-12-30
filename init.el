@@ -58,6 +58,7 @@
     paredit
     projectile
     puppet-mode
+    rainbow-delimeters
     rbenv
     request
     rinari
@@ -233,11 +234,8 @@
 
 
 ;; -------------------------------------
-;; Autocomplete
+;; Autocompletion
 ;; -------------------------------------
-;; (ac-config-default)
-;; (setq ac-ignore-case nil)
-;; (add-to-list 'ac-modes 'web-mode)
 (global-company-mode)
 
 

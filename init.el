@@ -42,23 +42,18 @@
     gist
     git-timemachine
     google-this
-    haskell-mode
     inf-ruby
     js-comint
     js2-mode
     js2-refactor
-    julia-mode
     less-css-mode
     magit
     markdown-mode
     multiple-cursors
     nose
     org
-    org-pomodoro
-    paredit
     projectile
     puppet-mode
-    rainbow-delimeters
     rbenv
     request
     rinari
@@ -67,10 +62,8 @@
     rubocop
     ruby-electric
     scss-mode
-    skewer-mode
     smartparens
     tern
-    virtualenvwrapper
     web-mode
     websocket
     yaml-mode

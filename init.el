@@ -236,6 +236,7 @@
 ;; Parens FTW
 ;; -------------------------------------
 (require 'smartparens-config)
+(sp-use-smartparens-bindings)
 
 
 ;; -------------------------------------

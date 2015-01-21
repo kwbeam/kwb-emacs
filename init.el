@@ -112,7 +112,7 @@
         (add-to-list 'default-frame-alist '(width . 120))))
 
 (cond ((eq system-type 'gnu/linux)
-       (set-frame-font "Inconsolata-10"))
+       (set-frame-font "Inconsolata-12"))
       ((eq system-type 'darwin)
        (set-frame-font "Inconsolata-14")))
 

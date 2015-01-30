@@ -2,6 +2,8 @@
 ;; Clojure
 ;; -----------------
 ;; clojure-mode
+(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
+(require 'clojure-mode-extra-font-locking)
 (add-hook 'clojure-mode-hook 'subword-mode)
 (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
 (add-hook 'clojure-mode-hook 'run-dev-hook)

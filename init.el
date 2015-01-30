@@ -28,6 +28,7 @@
   '(autopair
     cider
     clojure-mode
+    clojure-mode-extra-font-locking
     coffee-mode
     company
     cyberpunk-theme

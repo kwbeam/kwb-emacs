@@ -5,6 +5,9 @@
 (add-hook 'python-mode-hook 'run-dev-hook)
 
 (elpy-enable)
+
+(setq pyvenv-tracking-mode 't)
+
 ;; don't use flymake (elpy default), use flycheck
 ;; from: https://github.com/jorgenschaefer/elpy/issues/137
 (when (require 'flycheck nil t)

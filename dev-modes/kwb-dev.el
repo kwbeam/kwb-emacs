@@ -53,6 +53,7 @@
 (require 'dev-lisp)
 (require 'dev-markdown)
 (require 'dev-org-babel)
+(require 'dev-puppet)
 (require 'dev-python)
 (require 'dev-ruby)
 (require 'dev-scheme)

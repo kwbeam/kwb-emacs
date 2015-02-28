@@ -100,7 +100,7 @@
 
 (setq visible-bell t)
 
-(load-theme 'cyberpunk t)
+(load-theme 'zenburn t)
 
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'default-frame-alist '(height . 45))

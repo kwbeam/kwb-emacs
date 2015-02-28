@@ -32,9 +32,11 @@
     coffee-mode
     company
     cyberpunk-theme
+    dockerfile-mode
     dsvn
     ein
     elpy
+    ess
     exec-path-from-shell
     expand-region
     feature-mode

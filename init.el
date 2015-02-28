@@ -53,6 +53,7 @@
     multiple-cursors
     nose
     org
+    powerline
     projectile
     puppet-mode
     rbenv
@@ -101,6 +102,7 @@
 (setq visible-bell t)
 
 (load-theme 'zenburn t)
+(powerline-default-theme)
 
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'default-frame-alist '(height . 45))

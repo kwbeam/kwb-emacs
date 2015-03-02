@@ -71,7 +71,8 @@
     web-mode
     websocket
     yaml-mode
-    yasnippet))
+    yasnippet
+    zenburn-theme))
 
 (mapc #'(lambda (package)
          (unless (package-installed-p package)

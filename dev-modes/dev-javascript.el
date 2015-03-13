@@ -3,8 +3,9 @@
 ;; -----------------
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js2-mode-hook 'run-dev-hook)
-(require 'js2-refactor)
 (setq-default js2-basic-offset 4)
+(require 'js2-refactor)
+(js2r-add-keybindings-with-prefix "C-c C-j")
 
 ;; use node.js as a repl
 (setq inferior-js-program-command "node")

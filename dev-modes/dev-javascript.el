@@ -3,7 +3,10 @@
 ;; -----------------
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js2-mode-hook 'run-dev-hook)
+(add-hook 'js2-mode-hook 'skewer-mode)
+
 (setq-default js2-basic-offset 4)
+
 (require 'js2-refactor)
 (js2r-add-keybindings-with-prefix "C-c C-j")
 

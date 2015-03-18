@@ -66,6 +66,7 @@
     rubocop
     ruby-electric
     scss-mode
+    skewer-mode
     smartparens
     tern
     web-mode

@@ -51,6 +51,7 @@
 (require 'dev-javascript)
 (require 'dev-json)
 (require 'dev-lisp)
+(require 'dev-magit)
 (require 'dev-markdown)
 (require 'dev-org-babel)
 (require 'dev-puppet)

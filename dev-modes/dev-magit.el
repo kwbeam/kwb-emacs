@@ -40,5 +40,8 @@
      #'endless/visit-pull-request-url))
 
 
+;; Yes, magit, I acknowledge. Roger, ten-four. Over-and-out.
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 (provide 'dev-magit)
 ;;; dev-magit.el ends here

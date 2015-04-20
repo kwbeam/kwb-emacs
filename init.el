@@ -53,6 +53,7 @@
     magit
     markdown-mode
     multiple-cursors
+    neotree
     nose
     org
     powerline
@@ -232,6 +233,8 @@
 (global-set-key (kbd "C-!") 'er/expand-region)
 (global-set-key (kbd "C-c g") 'magit-status)
 
+(global-set-key [f8] 'neotree-toggle)
+
 
 ;; -------------------------------------
 ;; Autocompletion
@@ -244,6 +247,15 @@
 ;; -------------------------------------
 (require 'smartparens-config)
 (sp-use-smartparens-bindings)
+
+
+;; -------------------------------------
+;; Multiple cursors FTW
+;; -------------------------------------
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 
 ;; -------------------------------------

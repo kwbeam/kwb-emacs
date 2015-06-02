@@ -31,12 +31,10 @@
     clojure-mode-extra-font-locking
     coffee-mode
     company
-    cyberpunk-theme
     dockerfile-mode
     dsvn
     ein
     elpy
-    ess
     exec-path-from-shell
     expand-region
     feature-mode
@@ -53,10 +51,8 @@
     magit
     markdown-mode
     multiple-cursors
-    neotree
     nose
     org
-    powerline
     projectile
     puppet-mode
     rbenv
@@ -107,7 +103,6 @@
 (setq visible-bell t)
 
 (load-theme 'zenburn t)
-(powerline-default-theme)
 
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'default-frame-alist '(height . 45))
@@ -232,8 +227,6 @@
 
 (global-set-key (kbd "C-!") 'er/expand-region)
 (global-set-key (kbd "C-c g") 'magit-status)
-
-(global-set-key [f8] 'neotree-toggle)
 
 
 ;; -------------------------------------

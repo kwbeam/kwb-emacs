@@ -29,7 +29,6 @@
     cider
     clojure-mode
     clojure-mode-extra-font-locking
-    coffee-mode
     company
     dockerfile-mode
     dsvn
@@ -37,7 +36,6 @@
     elpy
     exec-path-from-shell
     expand-region
-    feature-mode
     flycheck
     flycheck-color-mode-line
     gist

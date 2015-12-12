@@ -11,14 +11,21 @@
 ;;; Code:
 
 ;; -------------------------------------
+;; Basic security setup
+;; -------------------------------------
+(setq tls-checktrust t)
+(setq tls-program
+      '("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h"
+   	"gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h --protocols ssl3"
+   	"openssl s_client -connect %h:%p -CAfile /etc/ssl/certs/ca-certificates.crt -no_ssl2 -ign_eof"))
+
+;; -------------------------------------
 ;; load all the things
 ;; -------------------------------------
 (require 'package)
 
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize)
 (when (not package-archive-contents)

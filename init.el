@@ -140,6 +140,8 @@
 (blink-cursor-mode 1)
 (setq blink-cursor-blinks 0)
 
+(setq create-lockfiles nil)
+
 (global-auto-revert-mode t)
 (defalias 'auto-revert-tail-mode 'tail-mode)
 

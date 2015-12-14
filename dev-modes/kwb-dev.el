@@ -60,6 +60,7 @@
 (require 'dev-scheme)
 (require 'dev-web)
 
+(require 'kwb-gnus)
 
 (provide 'kwb-dev)
 

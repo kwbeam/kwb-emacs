@@ -13,19 +13,29 @@
 ;; -------------------------------------
 ;; Basic security setup
 ;; -------------------------------------
+;; From: https://glyph.twistedmatrix.com/2015/11/editor-malware.html
+;; Mac OSX requires: (pip|conda) install certifi
 (setq tls-checktrust t)
-(setq tls-program
-      '("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h"
-   	"gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h --protocols ssl3"
-   	"openssl s_client -connect %h:%p -CAfile /etc/ssl/certs/ca-certificates.crt -no_ssl2 -ign_eof"))
+(cond ((eq system-type 'gnu/linux)
+       (setq tls-program
+             '("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h"
+               "gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h --protocols ssl3"
+               "openssl s_client -connect %h:%p -CAfile /etc/ssl/certs/ca-certificates.crt -no_ssl2 -ign_eof")))
+      ((eq system-type 'darwin)
+       (let ((mac-cert-file "/Users/kbeam/miniconda/envs/default/lib/python2.7/site-packages/certifi/cacert.pem"))
+         (setq tls-program
+               (list (format "gnutls-cli --x509cafile %s -p %%p %%h" mac-cert-file))))))
 
+"/Users/kbeam/miniconda/envs/default/lib/python2.7/site-packages/certifi/cacert.pem"
 ;; -------------------------------------
 ;; load all the things
 ;; -------------------------------------
 (require 'package)
 
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+;; make sure we use https for everything
+(setq package-archives
+      `(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
 (when (not package-archive-contents)

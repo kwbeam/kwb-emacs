@@ -10,7 +10,7 @@
 
 (defvar gnus-select-method)
 (setq gnus-select-method '(nnimap "freedommail.ch"
-                                  (nnimap-address "imap.freedommail.ch")
+                                  (nnimap-address "imap.kolabnow.com")
                                   (nnimap-server-port "imaps")
                                   (nnimap-stream ssl)))
 
@@ -20,7 +20,7 @@
 (defvar smtpmail-smtp-service)
 (setq send-mail-function 'smtpmail-send-it
       message-send-mail-function 'smtpmail-send-it
-      smtpmail-smtp-server "smtp.freedommail.ch"
+      smtpmail-smtp-server "smtp.kolabnow.com"
       smtpmail-smtp-service 587)
 
 (defvar mml2015-signers)

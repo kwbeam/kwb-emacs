@@ -120,7 +120,7 @@
 
 (setq visible-bell t)
 
-(load-theme 'zenburn t)
+(load-theme 'solarized-dark t)
 
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'default-frame-alist '(height . 45))

@@ -83,6 +83,7 @@
     scss-mode
     skewer-mode
     smartparens
+    solarized-theme
     tern
     web-mode
     websocket

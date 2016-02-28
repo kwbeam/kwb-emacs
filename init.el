@@ -70,7 +70,6 @@
     request
     smartparens
     solarized-theme
-    tern
     web-mode
     websocket
     yaml-mode

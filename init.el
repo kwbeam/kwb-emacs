@@ -44,9 +44,6 @@
 
 (defvar kwb-packages
   '(autopair
-    cider
-    clojure-mode
-    clojure-mode-extra-font-locking
     company
     dockerfile-mode
     dsvn

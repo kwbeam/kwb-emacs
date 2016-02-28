@@ -43,7 +43,6 @@
 ;; -----------------------
 ;; language-specific setup
 ;; -----------------------
-(require 'dev-clojure)
 (require 'dev-css)
 (require 'dev-feature)
 (require 'dev-haskell)

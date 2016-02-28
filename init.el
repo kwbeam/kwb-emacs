@@ -27,6 +27,7 @@
                (list (format "gnutls-cli --x509cafile %s -p %%p %%h" mac-cert-file))))))
 
 "/Users/kbeam/miniconda/envs/default/lib/python2.7/site-packages/certifi/cacert.pem"
+
 ;; -------------------------------------
 ;; load all the things
 ;; -------------------------------------

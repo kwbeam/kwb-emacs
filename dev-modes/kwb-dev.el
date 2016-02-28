@@ -46,7 +46,7 @@
 (require 'dev-clojure)
 (require 'dev-css)
 (require 'dev-feature)
-(require 'dev-idl)
+(require 'dev-haskell)
 (require 'dev-javascript)
 (require 'dev-json)
 (require 'dev-lisp)
@@ -59,8 +59,6 @@
 (require 'dev-ruby)
 (require 'dev-scheme)
 (require 'dev-web)
-
-(require 'kwb-gnus)
 
 (provide 'kwb-dev)
 

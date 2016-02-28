@@ -53,7 +53,6 @@
 (require 'dev-puppet)
 (require 'dev-purescript)
 (require 'dev-python)
-(require 'dev-ruby)
 (require 'dev-scheme)
 (require 'dev-web)
 

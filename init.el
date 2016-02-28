@@ -55,7 +55,6 @@
     flycheck-color-mode-line
     git-timemachine
     haskell-mode
-    inf-ruby
     js2-mode
     less-css-mode
     magit
@@ -68,13 +67,7 @@
     psci
     puppet-mode
     purescript-mode
-    rbenv
     request
-    rinari
-    robe
-    rspec-mode
-    rubocop
-    ruby-electric
     smartparens
     solarized-theme
     tern

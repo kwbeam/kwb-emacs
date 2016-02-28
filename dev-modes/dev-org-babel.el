@@ -4,11 +4,9 @@
 ;; active Babel languages
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((clojure . t)
-   (js . t)
+ '((js . t)
    (lisp . t)
    (python . t)
-   (ruby . t)
    (scheme . t)
    ))
 

@@ -61,13 +61,12 @@
     google-this
     haskell-mode
     inf-ruby
-    js-comint
     js2-mode
-    js2-refactor
     less-css-mode
     magit
     markdown-mode
     multiple-cursors
+    nodejs-repl
     nose
     org
     projectile

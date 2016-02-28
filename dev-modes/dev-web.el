@@ -8,8 +8,6 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
-(add-hook 'html-mode-hook 'skewer-html-mode)
-
 (add-to-list 'load-path "~/tools/HTML5-YASnippet-bundle")
 ;; some time after yasnippet has been loaded execute this
 (require 'html5-snippets)

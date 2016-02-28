@@ -43,8 +43,6 @@
 ;; -----------------------
 ;; language-specific setup
 ;; -----------------------
-(require 'dev-css)
-(require 'dev-feature)
 (require 'dev-haskell)
 (require 'dev-javascript)
 (require 'dev-json)

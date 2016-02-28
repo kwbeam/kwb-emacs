@@ -53,9 +53,7 @@
     expand-region
     flycheck
     flycheck-color-mode-line
-    gist
     git-timemachine
-    google-this
     haskell-mode
     inf-ruby
     js2-mode
@@ -77,16 +75,13 @@
     rspec-mode
     rubocop
     ruby-electric
-    scss-mode
-    skewer-mode
     smartparens
     solarized-theme
     tern
     web-mode
     websocket
     yaml-mode
-    yasnippet
-    zenburn-theme))
+    yasnippet))
 
 (mapc #'(lambda (package)
          (unless (package-installed-p package)

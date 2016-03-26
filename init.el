@@ -70,6 +70,7 @@
     request
     smartparens
     solarized-theme
+    tide
     web-mode
     websocket
     yaml-mode

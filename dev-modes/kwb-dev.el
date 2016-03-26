@@ -54,6 +54,7 @@
 (require 'dev-purescript)
 (require 'dev-python)
 (require 'dev-scheme)
+(require 'dev-typescript)
 (require 'dev-web)
 
 (provide 'kwb-dev)

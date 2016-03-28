@@ -18,7 +18,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js2-mode-hook 'run-dev-hook)
-(setq-default js2-basic-offset 4)
+(setq-default js2-basic-offset 2)
 (add-hook 'js2-mode-hook '(lambda ()
                             (local-set-key "\C-x\C-e" 'nodejs-repl-send-last-sexp)
                             (local-set-key "\C-cr" 'nodejs-repl-send-region)

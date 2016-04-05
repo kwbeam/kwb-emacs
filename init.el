@@ -44,6 +44,7 @@
 
 (defvar kwb-packages
   '(autopair
+    babel-repl
     company
     dockerfile-mode
     dsvn

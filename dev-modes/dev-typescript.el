@@ -5,6 +5,8 @@
 
 ;;; Code:
 
+(add-hook 'typescript-mode-hook 'run-dev-hook)
+
 (add-hook 'typescript-mode-hook
           (lambda ()
             (tide-setup)

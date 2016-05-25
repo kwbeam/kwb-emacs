@@ -9,6 +9,13 @@
 ;;(add-hook 'purescript-mode-hook 'turn-on-purescript-indent)
 (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)
 
+(require 'psc-ide)
+
+(add-hook 'purescript-mode-hook
+  (lambda ()
+    (psc-ide-mode)
+    (company-mode)))
+
 (provide 'dev-purescript)
 
 ;;; dev-purescript.el ends here

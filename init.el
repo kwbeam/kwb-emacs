@@ -63,6 +63,7 @@
     nose
     org
     projectile
+    psc-ide
     psci
     puppet-mode
     purescript-mode

@@ -14,17 +14,11 @@
 ;; Basic security setup
 ;; -------------------------------------
 ;; From: https://glyph.twistedmatrix.com/2015/11/editor-malware.html
-;; Mac OSX requires: (pip|conda) install certifi
 (setq tls-checktrust t)
-(cond ((eq system-type 'gnu/linux)
-       (setq tls-program
-             '("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h"
-               "gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h --protocols ssl3"
-               "openssl s_client -connect %h:%p -CAfile /etc/ssl/certs/ca-certificates.crt -no_ssl2 -ign_eof")))
-      ((eq system-type 'darwin)
-       (let ((mac-cert-file "/Users/kbeam/miniconda/envs/default/lib/python2.7/site-packages/certifi/cacert.pem"))
-         (setq tls-program
-               (list (format "gnutls-cli --x509cafile %s -p %%p %%h" mac-cert-file))))))
+(setq tls-program
+      '("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h"
+        "gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h --protocols ssl3"
+        "openssl s_client -connect %h:%p -CAfile /etc/ssl/certs/ca-certificates.crt -no_ssl2 -ign_eof"))
 
 ;; -------------------------------------
 ;; load all the things
@@ -45,7 +39,6 @@
     babel-repl
     company
     dockerfile-mode
-    dsvn
     ein
     elpy
     exec-path-from-shell
@@ -65,7 +58,6 @@
     projectile
     psc-ide
     psci
-    puppet-mode
     purescript-mode
     request
     smartparens
@@ -107,21 +99,9 @@
 (setq visible-bell t)
 
 (load-theme 'solarized-dark t)
-
-(cond ((eq system-type 'gnu/linux)
-       (add-to-list 'default-frame-alist '(height . 45))
-        (add-to-list 'default-frame-alist '(width . 180)))
-      ((eq system-type 'darwin)
-       (add-to-list 'default-frame-alist '(height . 70))
-        (add-to-list 'default-frame-alist '(width . 240)))
-      (t
-       (add-to-list 'default-frame-alist '(height . 40))
-        (add-to-list 'default-frame-alist '(width . 120))))
-
-(cond ((eq system-type 'gnu/linux)
-       (set-frame-font "Inconsolata-10"))
-      ((eq system-type 'darwin)
-       (set-frame-font "Inconsolata-14")))
+(add-to-list 'default-frame-alist '(height . 45))
+(add-to-list 'default-frame-alist '(width . 180))
+(set-frame-font "Inconsolata-10")
 
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)
@@ -135,13 +115,6 @@
 (defalias 'auto-revert-tail-mode 'tail-mode)
 
 (setq multi-term-program "/bin/bash")
-
-;; Mac Specific Stuff
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
-(when (eq system-type 'darwin)
-  ;; Work around a bug on OS X where system-name is FQDN
-  (setq system-name (car (split-string system-name "\\."))))
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
@@ -202,19 +175,6 @@
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
-
-(setq erc-nick "kwbeam")
-
-;; Check to see if we're running darwin (osx)
-(defvar running-macos
-  (or (string-match "darwin" (prin1-to-string system-type))
-      (memq (window-system) '(mac ns)))
-  "Boolean to determine if we are running on a macintosh laptop" )
-
-;; Work around for bug in macosx
-(when running-macos
-(cd (getenv "HOME")))
-
 
 ;; -------------------------------------
 ;; key bindings

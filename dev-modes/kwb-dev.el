@@ -50,7 +50,6 @@
 (require 'dev-magit)
 (require 'dev-markdown)
 (require 'dev-org-babel)
-(require 'dev-puppet)
 (require 'dev-purescript)
 (require 'dev-python)
 (require 'dev-scheme)

@@ -46,7 +46,7 @@
     flycheck
     flycheck-color-mode-line
     git-timemachine
-    haskell-mode
+    intero
     js2-mode
     less-css-mode
     magit

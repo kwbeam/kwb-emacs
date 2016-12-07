@@ -101,7 +101,7 @@
 (load-theme 'solarized-dark t)
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 180))
-(set-frame-font "Inconsolata-10")
+(set-frame-font "Inconsolata-8")
 
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)

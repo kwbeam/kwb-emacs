@@ -35,9 +35,11 @@
   (package-refresh-contents))
 
 (defvar kwb-packages
-  '(autopair
+  '(auctex
+    autopair
     babel-repl
     company
+    docker
     dockerfile-mode
     ein
     elpy
@@ -57,7 +59,6 @@
     org
     projectile
     psc-ide
-    psci
     purescript-mode
     request
     smartparens
@@ -98,7 +99,7 @@
 
 (setq visible-bell t)
 
-(load-theme 'solarized-dark t)
+(load-theme 'cyberpunk t)
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 180))
 (set-frame-font "Inconsolata-8")
@@ -134,7 +135,7 @@
 (setq ido-create-new-buffer 'always)
 (setq ido-everywhere t)
 (setq ido-max-directory-size 100000)
-(ido-mode 1)
+(ido-mode t)
 
 (set-default 'indicate-empty-lines t)
 

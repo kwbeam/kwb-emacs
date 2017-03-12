@@ -5,16 +5,26 @@
 
 ;;; Code:
 
-;;(add-hook 'purescript-mode-hook 'turn-on-purescript-simple-indent)
-;;(add-hook 'purescript-mode-hook 'turn-on-purescript-indent)
-(add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)
+(setq psc-ide-use-npm-bin t)
 
-(require 'psc-ide)
+(defun kwb/use-local-psci ()
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (psci (and root
+                    (expand-file-name "node_modules/.bin/psci"
+                                      root))))
+    (when (and psci
+               (file-executable-p psci))
+      (setq psci/file-path psci))))
+(add-hook 'purescript-mode-hook #'kwb/use-local-psci)
 
 (add-hook 'purescript-mode-hook
-  (lambda ()
-    (psc-ide-mode)
-    (company-mode)))
+          (lambda ()
+            (psc-ide-mode)
+            (turn-on-purescript-indentation)
+            (company-mode)
+            (company-complete)))
 
 (provide 'dev-purescript)
 

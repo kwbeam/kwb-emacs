@@ -6,7 +6,7 @@
 
 (elpy-enable)
 
-(setq pyvenv-activate (expand-file-name "~/miniconda/envs/default"))
+(setq pyvenv-activate (expand-file-name "~/miniconda2/envs/default"))
 (setq pyvenv-tracking-mode 't)
 
 ;; don't use flymake (elpy default), use flycheck

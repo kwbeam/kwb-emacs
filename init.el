@@ -39,8 +39,10 @@
     autopair
     babel-repl
     company
+    cyberpunk-theme
     docker
     dockerfile-mode
+    docker-tramp
     ein
     elpy
     exec-path-from-shell
@@ -51,6 +53,7 @@
     intero
     js2-mode
     less-css-mode
+    lsp-mode
     magit
     markdown-mode
     multiple-cursors
@@ -59,6 +62,7 @@
     org
     projectile
     psc-ide
+    psci
     purescript-mode
     request
     smartparens

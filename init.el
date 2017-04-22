@@ -38,6 +38,8 @@
   '(auctex
     autopair
     babel-repl
+    cider
+    clojure-mode
     company
     cyberpunk-theme
     docker
@@ -49,7 +51,9 @@
     expand-region
     flycheck
     flycheck-color-mode-line
+    flycheck-purescript
     git-timemachine
+    haskell-mode
     intero
     js2-mode
     less-css-mode
@@ -64,6 +68,7 @@
     psc-ide
     psci
     purescript-mode
+    repl-toggle
     request
     smartparens
     solarized-theme

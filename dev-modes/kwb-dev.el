@@ -43,6 +43,7 @@
 ;; -----------------------
 ;; language-specific setup
 ;; -----------------------
+(require 'dev-clojure)
 (require 'dev-haskell)
 (require 'dev-javascript)
 (require 'dev-json)

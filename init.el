@@ -47,6 +47,7 @@
     docker-tramp
     ein
     elpy
+    ess
     exec-path-from-shell
     expand-region
     flycheck
@@ -109,7 +110,8 @@
 (setq visible-bell t)
 
 ;; (load-theme 'cyberpunk t)
-(load-theme 'solarized-dark t)
+;; (load-theme 'solarized-dark t)
+(load-theme 'atom-one-dark t)
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 180))
 (set-frame-font "Inconsolata-12")

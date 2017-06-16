@@ -7,7 +7,7 @@
 (elpy-enable)
 
 (setenv "WORKON_HOME" "/home/kwbeam/miniconda3/envs")
-(setq pyvenv-activate (expand-file-name "/home/kwbeam/miniconda3/envs/default"))
+(setq pyvenv-workon "default")
 (setq pyvenv-tracking-mode 't)
 ;; project setup:
 ;; * install jedi and flake8

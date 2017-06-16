@@ -10,9 +10,6 @@
 ;; -----------------
 (yas-global-mode 1)
 
-(require 'vc-svn)
-(require 'dsvn)
-
 ;; Use projectile for everything
 (projectile-global-mode)
 
@@ -43,17 +40,12 @@
 ;; -----------------------
 ;; language-specific setup
 ;; -----------------------
-(require 'dev-clojure)
-(require 'dev-haskell)
 (require 'dev-javascript)
 (require 'dev-json)
-(require 'dev-lisp)
 (require 'dev-magit)
 (require 'dev-markdown)
 (require 'dev-org-babel)
-(require 'dev-purescript)
 (require 'dev-python)
-(require 'dev-scheme)
 (require 'dev-typescript)
 (require 'dev-web)
 

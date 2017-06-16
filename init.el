@@ -35,27 +35,20 @@
   (package-refresh-contents))
 
 (defvar kwb-packages
-  '(auctex
+  '(atom-one-dark-theme
+    auctex
     autopair
     babel-repl
-    cider
-    clojure-mode
     company
-    cyberpunk-theme
     docker
     dockerfile-mode
     docker-tramp
     ein
     elpy
     ess
-    exec-path-from-shell
-    expand-region
     flycheck
     flycheck-color-mode-line
-    flycheck-purescript
     git-timemachine
-    haskell-mode
-    intero
     js2-mode
     less-css-mode
     lsp-mode
@@ -66,16 +59,10 @@
     nose
     org
     projectile
-    psc-ide
-    psci
-    purescript-mode
     repl-toggle
-    request
     smartparens
-    solarized-theme
     tide
     web-mode
-    websocket
     yaml-mode
     yasnippet))
 
@@ -100,8 +87,6 @@
 ;; -------------------------------------
 (server-start)
 
-(exec-path-from-shell-initialize)
-
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -109,8 +94,6 @@
 
 (setq visible-bell t)
 
-;; (load-theme 'cyberpunk t)
-;; (load-theme 'solarized-dark t)
 (load-theme 'atom-one-dark t)
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 180))
@@ -134,7 +117,7 @@
 
 (column-number-mode t)
 
-(setq x-select-enable-clipboard t)
+(setq select-enable-clipboard t)
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -188,7 +171,7 @@
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
-
+(exec-path-from-shell-initialize)
 ;; -------------------------------------
 ;; key bindings
 ;; -------------------------------------
@@ -204,7 +187,6 @@
 (define-key global-map (kbd "M-p") 'newline-previous)
 (define-key global-map (kbd "M-n") 'newline-next)
 
-(global-set-key (kbd "C-!") 'er/expand-region)
 (global-set-key (kbd "C-c g") 'magit-status)
 
 

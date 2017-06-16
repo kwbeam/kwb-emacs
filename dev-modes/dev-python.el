@@ -20,8 +20,7 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 (add-hook 'python-mode-hook #'(lambda ()
-                                (autopair-mode)
-                                (elpy-use-ipython)))
+                                (autopair-mode)))
 
 (require 'nose)
 (add-hook 'python-mode-hook
@@ -35,6 +34,6 @@
 
 ;; Emacs IPython Notebook mode config
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-(add-hook 'company-backends 'ein:company-backend)
+(add-to-list 'company-backends 'ein:company-backend)
 
 (provide 'dev-python)

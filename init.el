@@ -171,7 +171,7 @@
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
-(exec-path-from-shell-initialize)
+
 ;; -------------------------------------
 ;; key bindings
 ;; -------------------------------------
@@ -194,6 +194,7 @@
 ;; Autocompletion
 ;; -------------------------------------
 (global-company-mode)
+(setq company-tooltip-idle-delay 0)
 (setq company-idle-delay 0)
 (global-set-key (kbd "<C-tab>") 'company-complete)
 

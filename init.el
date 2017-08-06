@@ -62,6 +62,7 @@
     repl-toggle
     smartparens
     tide
+    undo-tree
     web-mode
     yaml-mode
     yasnippet))
@@ -171,6 +172,8 @@
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
+
+(global-undo-tree-mode 1)
 
 ;; -------------------------------------
 ;; key bindings

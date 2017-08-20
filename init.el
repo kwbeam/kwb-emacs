@@ -46,6 +46,7 @@
     ein
     elpy
     ess
+    exec-path-from-shell
     flycheck
     flycheck-color-mode-line
     git-timemachine
@@ -88,6 +89,8 @@
 ;; -------------------------------------
 (server-start)
 
+(exec-path-from-shell-initialize)
+
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -98,7 +101,7 @@
 (load-theme 'atom-one-dark t)
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 180))
-(set-frame-font "Inconsolata-12")
+(set-frame-font "Inconsolata-10")
 
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)

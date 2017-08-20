@@ -20,7 +20,7 @@
        (not (or (get-text-property (point) 'part-side)
                 (get-text-property (point) 'block-side)))))
 
-(sp-local-pair 'web-mode "<" nil :when '(sp-web-mode-is-code-context))
+;; (sp-local-pair 'web-mode "<" nil :when '(sp-web-mode-is-code-context))
 
 (add-to-list 'load-path "~/tools/HTML5-YASnippet-bundle")
 ;; some time after yasnippet has been loaded execute this

@@ -40,18 +40,18 @@
 ;; -----------------------
 ;; language-specific setup
 ;; -----------------------
-;;(require 'dev-haskell)
-;;(require 'dev-javascript)
-;;(require 'dev-json)
-;;(require 'dev-lisp)
+(require 'dev-haskell)
+(require 'dev-javascript)
+(require 'dev-json)
+(require 'dev-lisp)
 (require 'dev-magit)
-;;(require 'dev-markdown)
-;;(require 'dev-org-babel)
-;;(require 'dev-purescript)
-;;(require 'dev-python)
-;;(require 'dev-scheme)
+(require 'dev-markdown)
+(require 'dev-org-babel)
+(require 'dev-purescript)
+(require 'dev-python)
+(require 'dev-scheme)
 (require 'dev-typescript)
-;;(require 'dev-web)
+(require 'dev-web)
 
 (provide 'kwb-dev)
 

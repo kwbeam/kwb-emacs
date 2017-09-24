@@ -28,3 +28,9 @@ request
 url
 eshell
 projectile-bookmarks.eld
+custom*
+doc
+eww-bookmarks
+elfeed.org
+.mc-lists.el
+abbrev_defs

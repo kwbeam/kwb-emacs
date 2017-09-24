@@ -35,15 +35,19 @@
   (package-refresh-contents))
 
 (defvar kwb-packages
-  '(atom-one-dark-theme
+  '(ample-theme
     auctex
     autopair
     babel-repl
+    chess
     company
     docker
     dockerfile-mode
     docker-tramp
     ein
+    elfeed
+    elfeed-goodies
+    elfeed-org
     elpy
     ess
     exec-path-from-shell
@@ -51,6 +55,8 @@
     flycheck-color-mode-line
     git-timemachine
     js2-mode
+    json-mode
+    julia-mode
     less-css-mode
     lsp-mode
     magit
@@ -61,8 +67,11 @@
     org
     projectile
     repl-toggle
+    slime
     smartparens
+    tern
     tide
+    ts-comint
     undo-tree
     web-mode
     yaml-mode
@@ -72,6 +81,9 @@
          (unless (package-installed-p package)
            (package-install package)))
       kwb-packages)
+
+
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 
 
 ;; -------------------------------------
@@ -98,7 +110,7 @@
 
 (setq visible-bell t)
 
-(load-theme 'atom-one-dark t)
+(load-theme 'ample t)
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 180))
 (set-frame-font "Inconsolata-10")
@@ -178,6 +190,7 @@
 
 (global-undo-tree-mode 1)
 
+
 ;; -------------------------------------
 ;; key bindings
 ;; -------------------------------------
@@ -188,13 +201,26 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(define-key global-map (kbd "RET") 'newline-and-indent)
+;;(define-key global-map (kbd "RET") 'newline-and-indent)
 
 (define-key global-map (kbd "M-p") 'newline-previous)
 (define-key global-map (kbd "M-n") 'newline-next)
 
 (global-set-key (kbd "C-c g") 'magit-status)
 
+(global-set-key (kbd "C-x w") 'elfeed)
+
+
+;; -------------------------------------
+;; elfeed reader
+;; -------------------------------------
+(require 'org)
+(setq-default elfeed-search-filter "@1-week-ago +unread ")
+(require 'elfeed-goodies)
+(elfeed-goodies/setup)
+(require 'elfeed-org)
+(elfeed-org)
+(setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
 
 ;; -------------------------------------
 ;; Autocompletion
@@ -220,3 +246,4 @@
 (require 'kwb-dev)
 
 ;;; init.el ends here
+(put 'narrow-to-region 'disabled nil)

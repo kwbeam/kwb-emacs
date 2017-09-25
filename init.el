@@ -212,6 +212,12 @@
 
 
 ;; -------------------------------------
+;; eww - browse in emacs by default
+;; -------------------------------------
+(setq browse-url-browser-function 'eww-browse-url)
+
+
+;; -------------------------------------
 ;; elfeed reader
 ;; -------------------------------------
 (require 'org)

@@ -53,6 +53,7 @@
     exec-path-from-shell
     flycheck
     flycheck-color-mode-line
+    geiser
     git-timemachine
     js2-mode
     json-mode

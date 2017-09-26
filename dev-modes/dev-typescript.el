@@ -5,9 +5,11 @@
 
 ;;; Code:
 
+(require 'tide)
 
-
+;; Basic setup for TS files
 (defun setup-tide-mode ()
+  "Setup tide mode for TS files."
   (interactive)
   (tide-setup)
   (flycheck-mode +1)
@@ -17,33 +19,37 @@
   (company-mode +1))
 
 (setq company-tooltip-align-annotations t)
-
-
+(setq tide-tsserver-executable "node_modules/.bin/tsserver")
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 (add-hook 'typescript-mode-hook 'run-dev-hook)
 
-;; Tide can be used along with web-mode to edit tsx files
-;; (require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-;; (add-hook 'web-mode-hook 'run-dev-hook)
-;; (add-hook 'web-mode-hook
-;;           (lambda ()
-;;             (when (string-equal "tsx" (file-name-extension buffer-file-name))
-;;               (setup-tide-mode))))
+;; TSX: Tide & web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook 'run-dev-hook)
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+(flycheck-add-mode 'typescript-tslint 'web-mode)
 
-;; Use Tide for JS
-;; (add-hook 'js2-mode-hook #'setup-tide-mode)
+(defun kwb-use-tide-for-js ()
+  "Setup things so that tide is used for JS and JSX files."
+  (interactive)
 
-;; Use Tide for JSX
-;; (require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-;; (add-hook 'web-mode-hook
-;;           (lambda ()
-;;             (when (string-equal "jsx" (file-name-extension buffer-file-name))
-;;               (setup-tide-mode))))
+  ;; JS
+  (add-hook 'js2-mode-hook #'setup-tide-mode)
+  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
 
-;; Finally, let's use the local tsserver
-(setq tide-tsserver-executable "node_modules/typescript/bin/tsserver")
+  ;; JSX
+  (require 'web-mode)
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (when (string-equal "jsx" (file-name-extension buffer-file-name))
+                (setup-tide-mode))))
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append))
 
 (provide 'dev-typescript)
 

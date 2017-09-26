@@ -39,7 +39,8 @@
 (require 'comint)
 (add-to-list 'comint-preoutput-filter-functions
              (lambda (output)
-               (replace-regexp-in-string "\033\\[[0-9]+[A-Z]" "" output)))
+               (let ((case-fold-search nil))
+                 (replace-regexp-in-string "\033\\[[0-9]+[A-Z]" "" output))))
 
 (provide 'dev-javascript)
 ;;; dev-javascript.el ends here

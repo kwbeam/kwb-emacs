@@ -7,6 +7,7 @@
 ;;   * add-node-modules-path
 ;;   * company
 ;;   * company-tern
+;;   * exec-path-from-shell
 ;;   * flycheck
 ;;   * js2-mode
 ;;   * nodejs-repl

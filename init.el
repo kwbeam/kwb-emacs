@@ -35,12 +35,14 @@
   (package-refresh-contents))
 
 (defvar kwb-packages
-  '(ample-theme
+  '(add-node-modules-path
+    ample-theme
     auctex
     autopair
     babel-repl
     chess
     company
+    company-tern
     docker
     dockerfile-mode
     docker-tramp

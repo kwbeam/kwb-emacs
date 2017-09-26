@@ -84,7 +84,9 @@
            (package-install package)))
       kwb-packages)
 
-
+;; Need to load mu4e from the installed version (installed by
+;; the 'mu4e' apt package installer, which means you should
+;; have run `apt-get install mu4e`.
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 
 

@@ -39,7 +39,6 @@
     ample-theme
     auctex
     autopair
-    babel-repl
     chess
     company
     company-tern

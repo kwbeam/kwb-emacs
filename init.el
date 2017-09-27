@@ -56,6 +56,7 @@
     flycheck-color-mode-line
     geiser
     git-timemachine
+    intero
     js2-mode
     json-mode
     julia-mode

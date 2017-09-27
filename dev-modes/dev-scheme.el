@@ -10,8 +10,6 @@
 ;;   * Racket 6.0 or better
 ;;   * Guile 2.0.9 or better
 ;;   * MIT/GNU Scheme 9.1.1 or better
-;; (setq scheme-program-name "guile")
-;; (setq scheme-program-name "mit-scheme")
 ;;; Code:
 
 (require 'geiser-impl)

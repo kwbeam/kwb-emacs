@@ -45,6 +45,7 @@
 
 ;; Use tern for completions, etc.
 (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(add-hook 'nodejs-repl-mode-hook (lambda () (tern-mode t)))
 (add-to-list 'company-backends 'company-tern)
 
 ;; Setup key mappings for nodejs-repl.

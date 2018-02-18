@@ -10,10 +10,15 @@
 ;;   * tide
 ;;   * ts-comint
 ;;   * web-mode
-;; Prerequisite NPM packages:
-;;   * @types/node (workaround for ts-node -- check again)
-;;   * ts-node
-;;   * typescript
+;; Prerequisite JS stuff:
+;;   * nvm
+;;   * nvm install --lts
+;;   * mkdir foo && cd foo
+;;   * npm init -y
+;;   * npm install -D @types/node  # workaround for ts-node -- check again
+;;   * npm install -D ts-node
+;;   * npm install -D typescript
+;;   * npx tsc --init
 ;; Notes:
 ;;   When using a repl via ts-comint's M-x run-ts, set a dir local
 ;;   variable to point to the correct ts-node executable.  The project's

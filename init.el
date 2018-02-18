@@ -36,19 +36,15 @@
 
 (defvar kwb-packages
   '(add-node-modules-path
-    ample-theme
     auctex
     autopair
-    chess
     company
+    company-jedi
     company-tern
-    docker
     dockerfile-mode
-    docker-tramp
     ein
     elfeed
     elfeed-goodies
-    elfeed-org
     elpy
     ess
     exec-path-from-shell
@@ -56,26 +52,21 @@
     flycheck-color-mode-line
     geiser
     git-timemachine
-    intero
     js2-mode
     json-mode
-    julia-mode
     less-css-mode
-    lsp-mode
     magit
     markdown-mode
     multiple-cursors
     nodejs-repl
+    nord-theme
     nose
     org
     projectile
-    repl-toggle
-    slime
     smartparens
     tern
     tide
     ts-comint
-    undo-tree
     web-mode
     yaml-mode
     yasnippet))
@@ -84,11 +75,6 @@
          (unless (package-installed-p package)
            (package-install package)))
       kwb-packages)
-
-;; Need to load mu4e from the installed version (installed by
-;; the 'mu4e' apt package installer, which means you should
-;; have run `apt-get install mu4e`.
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 
 
 ;; -------------------------------------
@@ -115,10 +101,12 @@
 
 (setq visible-bell t)
 
-(load-theme 'ample t)
+(load-theme 'nord t)
+(setq nord-comment-brightness 15)
+
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 180))
-(set-frame-font "Inconsolata-12")
+(set-frame-font "Inconsolata-10")
 
 (set-default 'indent-tabs-mode nil)
 (setq tab-width 2)
@@ -193,8 +181,6 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
 
-(global-undo-tree-mode 1)
-
 
 ;; -------------------------------------
 ;; key bindings
@@ -220,18 +206,24 @@
 ;; eww - browse in emacs by default
 ;; -------------------------------------
 (setq browse-url-browser-function 'eww-browse-url)
+(defun eww-more-readable ()
+  "Makes eww more pleasant to use. Run it after eww buffer is loaded."
+  (interactive)
+  (setq eww-header-line-format nil)               ;; removes page title
+  (setq mode-line-format nil)                     ;; removes mode-line
+  (set-window-margins (get-buffer-window) 20 20)  ;; increases size of margins
+  (redraw-display)                                ;; apply mode-line changes
+  (eww-reload 'local))                            ;; apply eww-header changes
 
 
 ;; -------------------------------------
 ;; elfeed reader
 ;; -------------------------------------
-(require 'org)
 (setq-default elfeed-search-filter "@1-week-ago +unread ")
 (require 'elfeed-goodies)
 (elfeed-goodies/setup)
-(require 'elfeed-org)
-(elfeed-org)
-(setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
+(add-to-list 'load-path (concat dotfiles-dir "config"))
+(require 'kwb-feeds)
 
 ;; -------------------------------------
 ;; Autocompletion

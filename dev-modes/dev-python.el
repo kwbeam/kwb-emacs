@@ -13,6 +13,7 @@
 ;;   * nose
 ;; Prerequisite language installs:
 ;;   * miniconda3
+;;   * pip or conda install: jedi flake8
 ;; Notes:
 ;;   Project setup:
 ;;     * With no project, create a 'default' conda env and install jedi and flake8

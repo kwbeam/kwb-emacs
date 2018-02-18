@@ -12,14 +12,17 @@
 ;;   * js2-mode
 ;;   * nodejs-repl
 ;;   * tern
-;; Prerequisite NPM packages:
+;; Prerequisite JS stuff:
 ;;   * ES5:
 ;;     * nvm
-;;     * NodeJS
-;;     * npm install eslint tern --save-dev
+;;     * nvm install --lts
+;;     * mkdir foo && cd foo
+;;     * npm init -y
+;;     * npm install --save-dev eslint tern
 ;;   * ES6:
 ;;     * ES5, and
-;;     * npm install babel-cli babel-preset-es2015 --save-dev
+;;     * npm install --save-dev babel-cli babel-preset-env
+;;     * npm install --save babel-polyfill
 ;;   * React:
 ;;     * ES5 or ES6, and
 ;;     * npm install eslint-plugin-react --save-dev

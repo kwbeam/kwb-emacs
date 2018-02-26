@@ -5,8 +5,10 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((js . t)
-   (lisp . t)
+   (matlab . t)
+   (octave . t)
    (python . t)
+   (R . t)
    (scheme . t)
    ))
 

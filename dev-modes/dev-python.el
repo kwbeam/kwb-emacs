@@ -32,13 +32,16 @@
 
 (elpy-enable)
 
+(add-to-list 'projectile-project-root-files "Pipfile")
+
 (defun kwb/python-mode-hook ()
   "Setup all my Python stuff when we enter python mode."
   (autopair-mode)
-  (setenv "WORKON_HOME" "/home/kwbeam/miniconda3/envs")
-  (setq pyvenv-workon "default")
-  (setq pyvenv-tracking-mode 't)
+  (pipenv-mode)
+  (setq pipenv-projectile-after-switch-function #'pipenv-projectile-after-switch-extended)
+  (pyvenv-mode -1)
   (add-to-list 'company-backends 'company-jedi)
+  (setq python-indent-guess-indent-offset-verbose nil)
   (local-set-key "\C-ca" 'nosetests-all)
   (local-set-key "\C-cm" 'nosetests-module)
   (local-set-key "\C-c." 'nosetests-one)

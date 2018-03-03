@@ -37,7 +37,6 @@
 (defvar kwb-packages
   '(add-node-modules-path
     auctex
-    autopair
     company
     company-jedi
     company-tern
@@ -62,6 +61,7 @@
     nord-theme
     nose
     org
+    pipenv
     projectile
     smartparens
     tern
@@ -133,6 +133,7 @@
 (prefer-coding-system 'utf-8)
 
 (show-paren-mode 1)
+(require 'smartparens-config)
 
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)

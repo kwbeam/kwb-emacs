@@ -4,7 +4,6 @@
 ;; Python
 ;; -----------------
 ;; Prerequisite Emacs packages:
-;;   * autopair
 ;;   * company
 ;;   * company-jedi (not jedi!)
 ;;   * ein
@@ -24,7 +23,6 @@
 ;;         ((nil . ((pyvenv-workon . "environmentname"))))
 ;;; Code:
 
-(require 'autopair)
 (require 'company)
 (require 'nose)
 (require 'python)
@@ -36,10 +34,10 @@
 
 (defun kwb/python-mode-hook ()
   "Setup all my Python stuff when we enter python mode."
-  (autopair-mode)
   (pipenv-mode)
   (setq pipenv-projectile-after-switch-function #'pipenv-projectile-after-switch-extended)
   (pyvenv-mode -1)
+  (smartparens-mode)
   (add-to-list 'company-backends 'company-jedi)
   (setq python-indent-guess-indent-offset-verbose nil)
   (local-set-key "\C-ca" 'nosetests-all)

@@ -7,26 +7,24 @@
 ;;   * company
 ;;   * company-jedi (not jedi!)
 ;;   * ein
-;;   * elpy (installs pyvenv)
+;;   * elpy
 ;;   * flycheck
 ;;   * nose
+;;   * pipenv.el
 ;; Prerequisite language installs:
-;;   * miniconda3
-;;   * pip or conda install: jedi flake8
+;;   * pyenv
+;;   * pyenv install <python version>
 ;; Notes:
 ;;   Project setup:
-;;     * With no project, create a 'default' conda env and install jedi and flake8
-;;     * With any specific project, create a conda env for it and make sure
-;;       jedi and flake8 are installed in it.  Then M-x pyvenv-workon <envname>
-;;       to make sure Emacs is using its environment.
-;;     * To automate this, create a .dir-locals.el for the project:
-;;         ((nil . ((pyvenv-workon . "environmentname"))))
+;;     * With no project:
+;;         $ pipsi install jedi flake8
+;;     * With a project:
+;;         $ pipenv install jedi flake8
 ;;; Code:
 
 (require 'company)
 (require 'nose)
 (require 'python)
-(require 'pyvenv)
 
 (elpy-enable)
 

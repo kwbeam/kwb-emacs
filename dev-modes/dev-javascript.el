@@ -42,6 +42,8 @@
 
 (require 'company)
 
+(add-to-list 'projectile-project-root-files "package.json")
+
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (add-hook 'js2-mode-hook 'run-dev-hook)

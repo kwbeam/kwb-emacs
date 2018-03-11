@@ -14,17 +14,16 @@
 ;; Prerequisite language installs:
 ;;   * pyenv
 ;;   * pyenv install <python version>
-;; Notes:
-;;   Project setup:
-;;     * With no project:
-;;         $ pipsi install jedi flake8
-;;     * With a project:
-;;         $ pipenv install jedi flake8
+;;   * pyenv (global|local) <python version>
+;;   * pip install pipenv
+;; Project setup:
+;;   $ pipenv install jedi flake8
 ;;; Code:
 
 (require 'company)
 (require 'nose)
 (require 'python)
+(require 'pyvenv)
 
 (elpy-enable)
 

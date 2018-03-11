@@ -12,6 +12,11 @@
 
 ;; Use projectile for everything
 (projectile-global-mode)
+(setq projectile-switch-project-action 'projectile-dired)
+
+;; Setup perspective and hook into projectile
+(persp-mode)
+(require 'persp-projectile)
 
 ;; -----------------
 ;; dev hook

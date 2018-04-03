@@ -45,6 +45,7 @@
 ;; -----------------------
 ;; language-specific setup
 ;; -----------------------
+(require 'dev-haskell)
 (require 'dev-javascript)
 (require 'dev-json)
 (require 'dev-magit)

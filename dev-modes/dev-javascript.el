@@ -19,9 +19,11 @@
 ;;     * mkdir foo && cd foo
 ;;     * npm init -y
 ;;     * npm install --save-dev eslint tern
-;;   * ES6:
+;;     * npx eslint --init
+;;   * ESnext:
 ;;     * ES5, and
 ;;     * npm install --save-dev babel-cli babel-preset-env
+;;     * echo "{'presets': ['env']}" > .babelrc
 ;;     * npm install --save babel-polyfill
 ;;   * React:
 ;;     * ES5 or ES6, and

@@ -42,8 +42,6 @@
     company-tern
     dockerfile-mode
     ein
-    elfeed
-    elfeed-goodies
     elpy
     ess
     exec-path-from-shell
@@ -51,6 +49,7 @@
     flycheck-color-mode-line
     geiser
     git-timemachine
+    intero
     js2-mode
     json-mode
     less-css-mode
@@ -63,6 +62,7 @@
     org
     pipenv
     projectile
+    reason-mode
     smartparens
     tern
     tide
@@ -200,8 +200,6 @@
 
 (global-set-key (kbd "C-c g") 'magit-status)
 
-(global-set-key (kbd "C-x w") 'elfeed)
-
 
 ;; -------------------------------------
 ;; eww - browse in emacs by default
@@ -216,15 +214,6 @@
   (redraw-display)                                ;; apply mode-line changes
   (eww-reload 'local))                            ;; apply eww-header changes
 
-
-;; -------------------------------------
-;; elfeed reader
-;; -------------------------------------
-(setq-default elfeed-search-filter "@1-week-ago +unread ")
-(require 'elfeed-goodies)
-(elfeed-goodies/setup)
-(add-to-list 'load-path (concat dotfiles-dir "config"))
-(require 'kwb-feeds)
 
 ;; -------------------------------------
 ;; Autocompletion

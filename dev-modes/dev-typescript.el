@@ -17,7 +17,7 @@
 ;;   * npm init -y
 ;;   * npm install -D @types/node  # workaround for ts-node -- check again
 ;;   * npm install -D ts-node
-;;   * npm install -D typescript
+;;   * npm install -D ts-lint typescript
 ;;   * npx tsc --init
 ;; Notes:
 ;;   When using a repl via ts-comint's M-x run-ts, set a dir local

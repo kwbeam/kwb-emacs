@@ -52,6 +52,7 @@
 (require 'dev-markdown)
 (require 'dev-octave)
 (require 'dev-org-babel)
+(require 'dev-purescript)
 (require 'dev-python)
 (require 'dev-scheme)
 (require 'dev-typescript)

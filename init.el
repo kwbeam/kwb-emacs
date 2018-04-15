@@ -62,7 +62,11 @@
     org
     pipenv
     projectile
+    psc-ide
+    psci
+    purescript-mode
     reason-mode
+    repl-toggle
     smartparens
     tern
     tide

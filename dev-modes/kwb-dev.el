@@ -45,9 +45,11 @@
 ;; -----------------------
 ;; language-specific setup
 ;; -----------------------
+(require 'dev-clojure)
 (require 'dev-haskell)
 (require 'dev-javascript)
 (require 'dev-json)
+(require 'dev-lisp)
 (require 'dev-magit)
 (require 'dev-markdown)
 (require 'dev-octave)

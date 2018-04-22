@@ -47,7 +47,6 @@
     dockerfile-mode
     ein
     elpy
-    ess
     exec-path-from-shell
     flycheck
     flycheck-color-mode-line

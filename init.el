@@ -35,8 +35,7 @@
   (package-refresh-contents))
 
 (defvar kwb-packages
-  '(ac-geiser
-    add-node-modules-path
+  '(add-node-modules-path
     auctex
     cider
     clojure-mode
@@ -68,7 +67,6 @@
     psc-ide
     psci
     purescript-mode
-    reason-mode
     repl-toggle
     slime
     slime-company

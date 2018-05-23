@@ -13,7 +13,9 @@
 (require 'slime)
 (require 'slime-company)
 
-(setq inferior-lisp-program "sbcl")
+(setq slime-lisp-implementations
+      '((sbcl ("sbcl"))
+        (clisp ("clisp"))))
 
 (setq slime-contribs '(slime-fancy))
 

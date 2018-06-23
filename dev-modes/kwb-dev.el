@@ -14,15 +14,11 @@
 (projectile-global-mode)
 (setq projectile-switch-project-action 'projectile-dired)
 
-;; Setup perspective and hook into projectile
-(persp-mode)
-(require 'persp-projectile)
-
 ;; -----------------
 ;; dev hook
 ;; -----------------
 (defun add-line-numbers ()
-  (linum-mode 1))
+  (display-line-numbers-mode))
 
 (defun local-comment-auto-fill ()
   (set (make-local-variable 'comment-auto-fill-only-comments) t)
@@ -45,7 +41,6 @@
 ;; -----------------------
 ;; language-specific setup
 ;; -----------------------
-(require 'dev-clojure)
 (require 'dev-haskell)
 (require 'dev-javascript)
 (require 'dev-json)
@@ -53,7 +48,6 @@
 (require 'dev-magit)
 (require 'dev-markdown)
 (require 'dev-org-babel)
-(require 'dev-purescript)
 (require 'dev-python)
 (require 'dev-scheme)
 (require 'dev-typescript)

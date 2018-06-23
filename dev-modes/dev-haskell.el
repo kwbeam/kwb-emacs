@@ -10,6 +10,7 @@
 ;;; Code:
 
 (add-hook 'haskell-mode-hook 'intero-mode)
+(add-hook 'haskell-mode-hook 'run-dev-hook)
 
 (provide 'dev-haskell)
 

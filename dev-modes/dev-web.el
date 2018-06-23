@@ -14,6 +14,7 @@
   (setq web-mode-enable-auto-pairing nil)
   )
 (add-hook 'web-mode-hook  'my-web-mode-hook)
+(add-hook 'web-mode-hook 'run-dev-hook)
 
 (defun sp-web-mode-is-code-context (id action context)
   (and (eq action 'insert)

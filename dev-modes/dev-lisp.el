@@ -18,6 +18,7 @@
         (clisp ("clisp"))))
 
 (setq slime-contribs '(slime-fancy))
+(add-hook 'lisp-mode-hook 'run-dev-hook)
 
 (provide 'dev-lisp)
 

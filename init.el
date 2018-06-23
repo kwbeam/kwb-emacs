@@ -37,9 +37,6 @@
 (defvar kwb-packages
   '(add-node-modules-path
     auctex
-    cider
-    clojure-mode
-    clojure-mode-extra-font-locking
     company
     company-jedi
     company-tern
@@ -64,10 +61,6 @@
     org
     pipenv
     projectile
-    psc-ide
-    psci
-    purescript-mode
-    repl-toggle
     slime
     slime-company
     smartparens

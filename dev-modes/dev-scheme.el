@@ -13,6 +13,7 @@
 (require 'geiser-impl)
 
 (setq geiser-active-implementations '(mit racket))
+(add-hook 'scheme-mode-hook 'run-dev-hook)
 
 (provide 'dev-scheme)
 

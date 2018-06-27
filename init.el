@@ -20,6 +20,7 @@
         "gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h --protocols ssl3"
         "openssl s_client -connect %h:%p -CAfile /etc/ssl/certs/ca-certificates.crt -no_ssl2 -ign_eof"))
 
+
 ;; -------------------------------------
 ;; load all the things
 ;; -------------------------------------
@@ -42,6 +43,9 @@
     company-tern
     dockerfile-mode
     ein
+    elfeed
+    elfeed-goodies
+    elfeed-org
     elpy
     exec-path-from-shell
     flycheck
@@ -58,7 +62,6 @@
     nodejs-repl
     nord-theme
     nose
-    org
     pipenv
     projectile
     slime
@@ -118,8 +121,6 @@
 
 (global-auto-revert-mode t)
 (defalias 'auto-revert-tail-mode 'tail-mode)
-
-(setq multi-term-program "/bin/bash")
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
@@ -232,6 +233,21 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
+;; -------------------------------------
+;; Use elfeed for RSS
+;; -------------------------------------
+(require 'elfeed)
+(global-set-key (kbd "C-x w") 'elfeed)
+(require 'elfeed-goodies)
+(elfeed-goodies/setup)
+
+;; Load elfeed-org
+(require 'elfeed-org)
+
+;; Initialize elfeed-org
+;; This hooks up elfeed-org to read the configuration when elfeed
+;; is started with =M-x elfeed=
+(elfeed-org)
 
 ;; -------------------------------------
 ;; Setup all the development modes

@@ -47,6 +47,7 @@
 (require 'dev-lisp)
 (require 'dev-magit)
 (require 'dev-markdown)
+(require 'dev-octave)
 (require 'dev-org-babel)
 (require 'dev-python)
 (require 'dev-scheme)

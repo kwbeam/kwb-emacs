@@ -86,36 +86,38 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-
 (setq visible-bell t)
+(blink-cursor-mode 1)
+(setq blink-cursor-blinks 0)
+(set-default 'indent-tabs-mode nil)
+(setq tab-width 2)
+(setq create-lockfiles nil)
+(global-auto-revert-mode t)
+(defalias 'auto-revert-tail-mode 'tail-mode)
+(column-number-mode t)
+(setq select-enable-clipboard t)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+(when window-system
+  (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
+(set-default 'indicate-empty-lines t)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-on-flyspell)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(random t)
+(setq backup-directory-alist `(("." . ,(expand-file-name
+                                        (concat dotfiles-dir "backups")))))
+(setq echo-keystrokes 0.1)
+(add-to-list 'safe-local-variable-values '(lexical-binding . t))
 
 (load-theme 'sanityinc-tomorrow-blue t)
 
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 180))
 (set-frame-font "Inconsolata-10")
-
-(set-default 'indent-tabs-mode nil)
-(setq tab-width 2)
-
-(blink-cursor-mode 1)
-(setq blink-cursor-blinks 0)
-
-(setq create-lockfiles nil)
-
-(global-auto-revert-mode t)
-(defalias 'auto-revert-tail-mode 'tail-mode)
-
-(when window-system
-  (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
-
-(column-number-mode t)
-
-(setq select-enable-clipboard t)
-
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
 
 (show-paren-mode 1)
 (require 'smartparens-config)
@@ -126,26 +128,6 @@
 (setq ido-everywhere t)
 (setq ido-max-directory-size 100000)
 (ido-mode t)
-
-(set-default 'indicate-empty-lines t)
-
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-
-(add-hook 'text-mode-hook 'turn-on-flyspell)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-(random t)
-
-(setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat dotfiles-dir "backups")))))
-
-(setq echo-keystrokes 0.1)
-
-(add-to-list 'safe-local-variable-values '(lexical-binding . t))
-
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
 
 ;; new line above and below
 ;; hat-tip: http://blog.peepcode.com/blog/2012/commanding-your-text-editor/
@@ -238,4 +220,3 @@
 (require 'kwb-dev)
 
 ;;; init.el ends here
-(put 'narrow-to-region 'disabled nil)

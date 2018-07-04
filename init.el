@@ -10,16 +10,6 @@
 
 ;;; Code:
 
-;; -------------------------------------
-;; Basic security setup
-;; -------------------------------------
-;; From: https://glyph.twistedmatrix.com/2015/11/editor-malware.html
-(setq tls-checktrust t)
-(setq tls-program
-      '("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h"
-        "gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h --protocols ssl3"
-        "openssl s_client -connect %h:%p -CAfile /etc/ssl/certs/ca-certificates.crt -no_ssl2 -ign_eof"))
-
 
 ;; -------------------------------------
 ;; load all the things
@@ -38,10 +28,10 @@
 (defvar kwb-packages
   '(add-node-modules-path
     auctex
+    color-theme-sanityinc-tomorrow
     company
     company-jedi
     company-tern
-    dockerfile-mode
     ein
     elfeed
     elfeed-goodies
@@ -49,18 +39,15 @@
     elpy
     exec-path-from-shell
     flycheck
-    flycheck-color-mode-line
     geiser
     git-timemachine
     intero
     js2-mode
     json-mode
-    less-css-mode
     magit
     markdown-mode
     multiple-cursors
     nodejs-repl
-    nord-theme
     nose
     pipenv
     projectile
@@ -70,9 +57,7 @@
     tern
     tide
     ts-comint
-    web-mode
-    yaml-mode
-    yasnippet))
+    web-mode))
 
 (mapc #'(lambda (package)
          (unless (package-installed-p package)
@@ -104,8 +89,7 @@
 
 (setq visible-bell t)
 
-(load-theme 'nord t)
-(setq nord-comment-brightness 15)
+(load-theme 'sanityinc-tomorrow-blue t)
 
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 180))
@@ -181,7 +165,6 @@
 (setq dired-use-ls-dired nil)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
 
 
 ;; -------------------------------------

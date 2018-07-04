@@ -8,8 +8,6 @@
 ;; -----------------
 ;; general stuff
 ;; -----------------
-(yas-global-mode 1)
-
 ;; Use projectile for everything
 (projectile-global-mode)
 (setq projectile-switch-project-action 'projectile-dired)

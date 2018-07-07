@@ -99,7 +99,7 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-(require 'uniquify)
+;;(require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
@@ -205,13 +205,7 @@
 (global-set-key (kbd "C-x w") 'elfeed)
 (require 'elfeed-goodies)
 (elfeed-goodies/setup)
-
-;; Load elfeed-org
 (require 'elfeed-org)
-
-;; Initialize elfeed-org
-;; This hooks up elfeed-org to read the configuration when elfeed
-;; is started with =M-x elfeed=
 (elfeed-org)
 
 ;; -------------------------------------

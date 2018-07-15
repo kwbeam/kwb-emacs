@@ -14,8 +14,8 @@
 (require 'slime-company)
 
 (setq slime-lisp-implementations
-      '((sbcl ("sbcl"))
-        (clisp ("clisp"))))
+      '((sbcl ("clisp"))
+        (clisp ("sbcl"))))
 
 (setq slime-contribs '(slime-fancy))
 (add-hook 'lisp-mode-hook 'run-dev-hook)

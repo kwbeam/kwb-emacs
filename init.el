@@ -124,6 +124,19 @@
   :defer t
   :after (company slime))
 
+
+;; Scheme
+;; Prerequisite Scheme installs:
+;;   * MIT/GNU Scheme 9.1.1 or better
+;;   * Racket 6.0 or better
+(use-package geiser
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :after (scheme)
+  :init
+  (setq geiser-active-implementations '(mit racket)))
+
 ;; (defvar kwb-packages
 ;;   '(add-node-modules-path
 ;;     auctex
@@ -134,7 +147,6 @@
 ;;     elpy
 ;;     exec-path-from-shell
 ;;     flycheck
-;;     geiser
 ;;     js2-mode
 ;;     markdown-mode
 ;;     multiple-cursors

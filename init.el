@@ -10,6 +10,29 @@
 
 ;;; Code:
 
+;; -------------------------------------
+;; Setup package loading
+;; -------------------------------------
+;; Bootstrap everything with package
+(require 'package)
+(setq package-enable-at-startup nil)
+(setq package-archives
+      `(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
+(package-initialize)
+
+;; Use use-package for all other packages
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+
+;; time your emacs init
+;;   M-x benchmark-init/show-durations-tree
+;;   M-x benchmark-init/show-durations-tabulated
+(use-package benchmark-init :ensure t)
 
 ;; -------------------------------------
 ;; Minimal Emacs Customization
@@ -41,38 +64,12 @@
 (random t)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-
-;; -------------------------------------
-;; Setup package loading
-;; -------------------------------------
-;; Bootstrap everything with package
-(require 'package)
-(setq package-enable-at-startup nil)
-(setq package-archives
-      `(("gnu" . "https://elpa.gnu.org/packages/")
-        ("melpa-stable" . "https://stable.melpa.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")))
-(package-initialize)
-
-;; Use use-package for all other packages
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-when-compile
-  (require 'use-package))
-
-;; time your emacs init
-;;   M-x benchmark-init/show-durations-tree
-;;   M-x benchmark-init/show-durations-tabulated
-(use-package benchmark-init :ensure t)
-
 ;; -------------------------------------
 ;; Define packages
 ;; -------------------------------------
-
 (use-package git-timemachine
   :ensure t
-    :pin melpa-stable)
+  :pin melpa-stable)
 (use-package magit
   :ensure t
   :pin melpa-stable
@@ -82,6 +79,16 @@
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setq magit-push-always-verify nil))
 
+(use-package haskell-mode
+  :ensure t
+  :pin melpa-stable
+  :mode ("\\.hs\\'" . haskell-mode))
+(use-package intero
+  :ensure t
+  :pin melpa-stable
+  :after (haskell-mode)
+  :hook haskell-mode)
+  
 
 ;; (defvar kwb-packages
 ;;   '(add-node-modules-path
@@ -95,7 +102,6 @@
 ;;     exec-path-from-shell
 ;;     flycheck
 ;;     geiser
-;;     intero
 ;;     js2-mode
 ;;     markdown-mode
 ;;     multiple-cursors

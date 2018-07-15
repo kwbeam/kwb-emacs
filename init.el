@@ -79,6 +79,21 @@
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setq magit-push-always-verify nil))
 
+(use-package company
+  :ensure t
+  :pin melpa-stable
+  :defer t)
+
+;; TODO: Use this in all the dev mode
+(defun kwb-dev-hook ()
+  (display-line-numbers-mode)
+  (set (make-local-variable 'comment-auto-fill-only-comments) t)
+  (auto-fill-mode t)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace))
+
+;; Haskell
+;; Prerequisite Language installs:
+;;   * Stack / GHC
 (use-package haskell-mode
   :ensure t
   :pin melpa-stable
@@ -88,13 +103,31 @@
   :pin melpa-stable
   :after (haskell-mode)
   :hook haskell-mode)
-  
+
+;; Lisp
+;; Prerequisite Language installs:
+;;   * CLisp
+;;   * SBCL
+(use-package slime
+  :ensure t
+  :pin melpa-stable
+  :after lisp-mode
+  :defer t
+  :init
+  (setq slime-lisp-implementations
+      '((sbcl ("clisp"))
+        (clisp ("sbcl"))))
+  (setq slime-contribs '(slime-fancy)))
+(use-package slime-company
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :after (company slime))
 
 ;; (defvar kwb-packages
 ;;   '(add-node-modules-path
 ;;     auctex
 ;;     color-theme-sanityinc-tomorrow
-;;     company
 ;;     company-jedi
 ;;     company-tern
 ;;     ein
@@ -109,8 +142,6 @@
 ;;     nose
 ;;     pipenv
 ;;     projectile
-;;     slime
-;;     slime-company
 ;;     smartparens
 ;;     tern
 ;;     tide

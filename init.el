@@ -81,6 +81,13 @@
          ("C-<" . 'mc/mark-previous-like-this)
          ("C-c C-<" . 'mc/mark-all-like-this)))
 
+(use-package smartparens
+  :ensure t
+  :pin melpa-stable
+  :config
+  (require 'smartparens-config)
+  (show-paren-mode t))
+  
 (use-package git-timemachine
   :ensure t
   :pin melpa-stable)
@@ -157,10 +164,6 @@
   (setq geiser-active-implementations '(mit racket)))
 
 
-;;     projectile
-
-;;     smartparens
-
 ;; JS, TS, Web
 ;;     add-node-modules-path
 ;;     exec-path-from-shell
@@ -206,9 +209,6 @@
 ;;                                         (concat dotfiles-dir "backups")))))
 
 ;; (set-frame-font "Inconsolata-10")
-
-;; (show-paren-mode 1)
-;; (require 'smartparens-config)
 
 ;; (setq ido-enable-flex-matching t)
 ;; (setq ido-use-filename-at-point 'guess)
@@ -272,11 +272,6 @@
 ;; (setq company-tooltip-idle-delay 0)
 ;; (setq company-idle-delay 0)
 ;; (global-set-key (kbd "<C-tab>") 'company-complete)
-
-
-;; -------------------------------------
-;; Multiple cursors FTW
-;; -------------------------------------
 
 ;; -----------------
 ;; org-mode's Babel

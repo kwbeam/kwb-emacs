@@ -150,6 +150,18 @@
   :pin melpa-stable
   :mode "\\.md\\'")
 
+(use-package org
+  :defer t
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((C . t)
+     (haskell . t)
+     (js . t)
+     (lisp . t)
+     (python . t)
+     (scheme . t))))
+
 ;; TODO: Use this in all the dev mode
 (defun kwb-dev-hook ()
   (display-line-numbers-mode)
@@ -225,17 +237,5 @@
 ;;     nose
 ;;     pipenv
 
-;; org-mode's Babel: active Babel languages
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((C . t)
-   (haskell . t)
-   (js . t)
-   (lisp . t)
-   (python . t)
-   (scheme . t)))
-
 ;; HERE BE DRAGONS
 ;; (add-to-list 'safe-local-variable-values '(lexical-binding . t))
-
-;(require 'kwb-dev)

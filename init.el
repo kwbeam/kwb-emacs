@@ -63,6 +63,42 @@
 (defalias 'auto-revert-tail-mode 'tail-mode)
 (random t)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-on-flyspell)
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups")))))
+(setq browse-url-browser-function 'eww-browse-url)
+
+;; Use ido mode
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-create-new-buffer 'always)
+(setq ido-everywhere t)
+(setq ido-max-directory-size 100000)
+(ido-mode t)
+
+;; keybindings
+(windmove-default-keybindings)
+(define-key global-map (kbd "C-+") 'text-scale-increase)
+(define-key global-map (kbd "C--") 'text-scale-decrease)
+
+;; new line above and below
+;; hat-tip: http://blog.peepcode.com/blog/2012/commanding-your-text-editor/
+(defun newline-previous ()
+  "Insert a blank line above the cursor and move the cursor up one line."
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (previous-line)
+  (indent-according-to-mode))
+(defun newline-next ()
+  "Insert an indented newline after the current line and move the point to it."
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+(define-key global-map (kbd "M-p") 'newline-previous)
+(define-key global-map (kbd "M-n") 'newline-next)
 
 ;; -------------------------------------
 ;; Define packages
@@ -103,7 +139,11 @@
 (use-package company
   :ensure t
   :pin melpa-stable
-  :defer t)
+  :config
+  (global-company-mode)
+  (setq company-tooltip-idle-delay 0)
+  (setq company-idle-delay 0)
+  (global-set-key (kbd "<C-tab>") 'company-complete))
 
 (use-package markdown-mode
   :ensure t
@@ -164,7 +204,9 @@
   (setq geiser-active-implementations '(mit racket)))
 
 
-;; JS, TS, Web
+;; JS
+;; TypeScript
+;; Web
 ;;     add-node-modules-path
 ;;     exec-path-from-shell
 ;;     tern
@@ -174,6 +216,7 @@
 ;;     tide
 ;;     ts-comint
 ;;     web-mode
+;;(exec-path-from-shell-initialize)
 
 ;; Python
 ;;     company-jedi
@@ -182,126 +225,17 @@
 ;;     nose
 ;;     pipenv
 
-;; -------------------------------------
-;; HERE BE LIZARDS
-;; -------------------------------------
-;; (add-to-list 'safe-local-variable-values '(lexical-binding . t))
-;; (add-hook 'text-mode-hook 'turn-on-auto-fill)
-;; (add-hook 'text-mode-hook 'turn-on-flyspell)
+;; org-mode's Babel: active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((C . t)
+   (haskell . t)
+   (js . t)
+   (lisp . t)
+   (python . t)
+   (scheme . t)))
 
-;; -------------------------------------
 ;; HERE BE DRAGONS
-;; -------------------------------------
+;; (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 
-;; -------------------------------------
-;; i got your dotfiles right here
-;; -------------------------------------
-;; (setq dotfiles-dir (file-name-directory (or (buffer-file-name)
-;;                                             load-file-name)))
-;; (add-to-list 'load-path (concat dotfiles-dir "dev-modes"))
-;; (setq custom-file (concat dotfiles-dir "custom.el"))
-;; (load custom-file 'noerror)
-
-
-;;(exec-path-from-shell-initialize)
-
-;; (setq backup-directory-alist `(("." . ,(expand-file-name
-;;                                         (concat dotfiles-dir "backups")))))
-
-;; (set-frame-font "Inconsolata-10")
-
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-use-filename-at-point 'guess)
-;; (setq ido-create-new-buffer 'always)
-;; (setq ido-everywhere t)
-;; (setq ido-max-directory-size 100000)
-;; (ido-mode t)
-
-;; new line above and below
-;; hat-tip: http://blog.peepcode.com/blog/2012/commanding-your-text-editor/
-;; (defun newline-previous ()
-;;   "Insert a blank line above the cursor and move the cursor up one line."
-;;   (interactive)
-;;   (beginning-of-line)
-;;   (newline)
-;;   (previous-line)
-;;   (indent-according-to-mode))
-;; (defun newline-next ()
-;;   "Insert an indented newline after the current line and move the point to it."
-;;   (interactive)
-;;   (end-of-line)
-;;   (newline-and-indent))
-
-;; (setq dired-use-ls-dired nil)
-
-;; -------------------------------------
-;; key bindings
-;; -------------------------------------
-;; (windmove-default-keybindings)
-
-;; (define-key global-map (kbd "C-+") 'text-scale-increase)
-;; (define-key global-map (kbd "C--") 'text-scale-decrease)
-
-
-
-;;(define-key global-map (kbd "RET") 'newline-and-indent)
-
-;; (define-key global-map (kbd "M-p") 'newline-previous)
-;; (define-key global-map (kbd "M-n") 'newline-next)
-
-
-
-;; -------------------------------------
-;; eww - browse in emacs by default
-;; -------------------------------------
-;; (setq browse-url-browser-function 'eww-browse-url)
-;; (defun eww-more-readable ()
-;;   "Makes eww more pleasant to use. Run it after eww buffer is loaded."
-;;   (interactive)
-;;   (setq eww-header-line-format nil)               ;; removes page title
-;;   (setq mode-line-format nil)                     ;; removes mode-line
-;;   (set-window-margins (get-buffer-window) 20 20)  ;; increases size of margins
-;;   (redraw-display)                                ;; apply mode-line changes
-;;   (eww-reload 'local))                            ;; apply eww-header changes
-
-
-;; -------------------------------------
-;; Autocompletion
-;; -------------------------------------
-;; (global-company-mode)
-;; (setq company-tooltip-idle-delay 0)
-;; (setq company-idle-delay 0)
-;; (global-set-key (kbd "<C-tab>") 'company-complete)
-
-;; -----------------
-;; org-mode's Babel
-;; -----------------
-;; active Babel languages
-;; (org-babel-do-load-languages
-;;  'org-babel-load-languages
-;;  '((js . t)
-;;    (matlab . t)
-;;    (octave . t)
-;;    (python . t)
-;;    (R . t)
-;;    (scheme . t)
-;;    ))
-
-;; -------------------------------------
-;; Setup all the development modes
-;; -------------------------------------
 ;(require 'kwb-dev)
-
-;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (magit git-timemachine use-package benchmark-init))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

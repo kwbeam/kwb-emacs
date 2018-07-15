@@ -65,7 +65,6 @@
 ;; Minimal Emacs Customization
 ;; -------------------------------------
 (server-start)
-
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -73,11 +72,6 @@
 (setq visible-bell t)
 (blink-cursor-mode 1)
 (setq blink-cursor-blinks 0)
-(set-default 'indent-tabs-mode nil)
-(setq tab-width 2)
-(setq create-lockfiles nil)
-(global-auto-revert-mode t)
-(defalias 'auto-revert-tail-mode 'tail-mode)
 (column-number-mode t)
 (setq select-enable-clipboard t)
 (set-terminal-coding-system 'utf-8)
@@ -87,14 +81,23 @@
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
 (set-default 'indicate-empty-lines t)
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
+(set-default 'indent-tabs-mode nil)
+(setq tab-width 2)
 (defalias 'yes-or-no-p 'y-or-n-p)
-(random t)
 (setq echo-keystrokes 0.1)
-(add-to-list 'safe-local-variable-values '(lexical-binding . t))
+(setq create-lockfiles nil)
+(global-auto-revert-mode t)
+(defalias 'auto-revert-tail-mode 'tail-mode)
+(random t)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+
+;; -------------------------------------
+;; HERE BE LIZARDS
+;; -------------------------------------
+;; (add-to-list 'safe-local-variable-values '(lexical-binding . t))
+;; (add-hook 'text-mode-hook 'turn-on-auto-fill)
+;; (add-hook 'text-mode-hook 'turn-on-flyspell)
 
 ;; -------------------------------------
 ;; HERE BE DRAGONS

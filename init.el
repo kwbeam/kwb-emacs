@@ -12,56 +12,6 @@
 
 
 ;; -------------------------------------
-;; load all the things
-;; -------------------------------------
-;; (require 'package)
-
-;; make sure we use https for everything
-;; (setq package-archives
-;;       `(("gnu" . "https://elpa.gnu.org/packages/")
-;;         ("melpa" . "https://melpa.org/packages/")))
-
-;; (package-initialize)
-;; (when (not package-archive-contents)
-;;   (package-refresh-contents))
-
-;; (defvar kwb-packages
-;;   '(add-node-modules-path
-;;     auctex
-;;     color-theme-sanityinc-tomorrow
-;;     company
-;;     company-jedi
-;;     company-tern
-;;     ein
-;;     elpy
-;;     exec-path-from-shell
-;;     flycheck
-;;     geiser
-;;     git-timemachine
-;;     intero
-;;     js2-mode
-;;     magit
-;;     markdown-mode
-;;     multiple-cursors
-;;     nodejs-repl
-;;     nose
-;;     pipenv
-;;     projectile
-;;     slime
-;;     slime-company
-;;     smartparens
-;;     tern
-;;     tide
-;;     ts-comint
-;;     web-mode))
-
-;; (mapc #'(lambda (package)
-;;          (unless (package-installed-p package)
-;;            (package-install package)))
-;;       kwb-packages)
-
-
-;; -------------------------------------
 ;; Minimal Emacs Customization
 ;; -------------------------------------
 (server-start)
@@ -91,6 +41,75 @@
 (random t)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+
+;; -------------------------------------
+;; Setup package loading
+;; -------------------------------------
+;; Bootstrap everything with package
+(require 'package)
+(setq package-enable-at-startup nil)
+(setq package-archives
+      `(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
+(package-initialize)
+
+;; Use use-package for all other packages
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+
+;; time your emacs init
+;;   M-x benchmark-init/show-durations-tree
+;;   M-x benchmark-init/show-durations-tabulated
+(use-package benchmark-init :ensure t)
+
+;; -------------------------------------
+;; Define packages
+;; -------------------------------------
+
+(use-package git-timemachine
+  :ensure t
+    :pin melpa-stable)
+(use-package magit
+  :ensure t
+  :pin melpa-stable
+  :bind
+  ("C-c g" . magit-status)
+  :config
+  (setq magit-last-seen-setup-instructions "1.4.0")
+  (setq magit-push-always-verify nil))
+
+
+;; (defvar kwb-packages
+;;   '(add-node-modules-path
+;;     auctex
+;;     color-theme-sanityinc-tomorrow
+;;     company
+;;     company-jedi
+;;     company-tern
+;;     ein
+;;     elpy
+;;     exec-path-from-shell
+;;     flycheck
+;;     geiser
+;;     intero
+;;     js2-mode
+;;     markdown-mode
+;;     multiple-cursors
+;;     nodejs-repl
+;;     nose
+;;     pipenv
+;;     projectile
+;;     slime
+;;     slime-company
+;;     smartparens
+;;     tern
+;;     tide
+;;     ts-comint
+;;     web-mode))
 
 ;; -------------------------------------
 ;; HERE BE LIZARDS
@@ -170,7 +189,6 @@
 ;; (define-key global-map (kbd "M-p") 'newline-previous)
 ;; (define-key global-map (kbd "M-n") 'newline-next)
 
-;; (global-set-key (kbd "C-c g") 'magit-status)
 
 
 ;; -------------------------------------
@@ -218,13 +236,21 @@
 ;;    (scheme . t)
 ;;    ))
 
-;; Yes, magit, I acknowledge. Roger, ten-four. Over-and-out.
-;; (setq magit-last-seen-setup-instructions "1.4.0")
-;; (setq magit-push-always-verify nil)
-
 ;; -------------------------------------
 ;; Setup all the development modes
 ;; -------------------------------------
 ;(require 'kwb-dev)
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (magit git-timemachine use-package benchmark-init))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

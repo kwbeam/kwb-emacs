@@ -67,6 +67,12 @@
 ;; -------------------------------------
 ;; Define packages
 ;; -------------------------------------
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :pin melpa-stable
+  :config
+  (load-theme 'sanityinc-tomorrow-blue t))
+
 (use-package git-timemachine
   :ensure t
   :pin melpa-stable)
@@ -83,6 +89,11 @@
   :ensure t
   :pin melpa-stable
   :defer t)
+
+(use-package markdown-mode
+  :ensure t
+  :pin melpa-stable
+  :mode "\\.md\\'")
 
 ;; TODO: Use this in all the dev mode
 (defun kwb-dev-hook ()
@@ -137,28 +148,29 @@
   :init
   (setq geiser-active-implementations '(mit racket)))
 
-;; (defvar kwb-packages
-;;   '(add-node-modules-path
-;;     auctex
-;;     color-theme-sanityinc-tomorrow
-;;     company-jedi
-;;     company-tern
-;;     ein
-;;     elpy
-;;     exec-path-from-shell
-;;     flycheck
-;;     js2-mode
-;;     markdown-mode
 ;;     multiple-cursors
-;;     nodejs-repl
-;;     nose
-;;     pipenv
+
 ;;     projectile
+
 ;;     smartparens
+
+;; JS, TS, Web
+;;     add-node-modules-path
+;;     exec-path-from-shell
 ;;     tern
+;;     company-tern
+;;     js2-mode
+;;     nodejs-repl
 ;;     tide
 ;;     ts-comint
-;;     web-mode))
+;;     web-mode
+
+;; Python
+;;     company-jedi
+;;     ein
+;;     elpy
+;;     nose
+;;     pipenv
 
 ;; -------------------------------------
 ;; HERE BE LIZARDS
@@ -186,10 +198,6 @@
 ;; (setq backup-directory-alist `(("." . ,(expand-file-name
 ;;                                         (concat dotfiles-dir "backups")))))
 
-;; (load-theme 'sanityinc-tomorrow-blue t)
-
-;; (add-to-list 'default-frame-alist '(height . 45))
-;; (add-to-list 'default-frame-alist '(width . 180))
 ;; (set-frame-font "Inconsolata-10")
 
 ;; (show-paren-mode 1)
@@ -218,10 +226,6 @@
 ;;   (newline-and-indent))
 
 ;; (setq dired-use-ls-dired nil)
-
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
-
-;; (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
 
 ;; -------------------------------------
 ;; key bindings

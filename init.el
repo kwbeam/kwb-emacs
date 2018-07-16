@@ -103,6 +103,12 @@
 ;; -------------------------------------
 ;; Define packages
 ;; -------------------------------------
+(use-package exec-path-from-shell
+  :ensure t
+  :pin melpa-stable
+  :config
+  (exec-path-from-shell-initialize))
+
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
   :pin melpa-stable
@@ -215,8 +221,75 @@
   :init
   (setq geiser-active-implementations '(mit racket)))
 
+;; JavaScript
+;; Prerequisite JS stuff:
+;;   * ES5:
+;;     * nvm
+;;     * nvm install --lts
+;;     * mkdir foo && cd foo
+;;     * npm init -y
+;;     * npm install --save-dev eslint tern
+;;     * npx eslint --init
+;;   * ESnext:
+;;     * ES5, and
+;;     * npm install --save-dev babel-cli babel-preset-env
+;;     * echo "{'presets': ['env']}" > .babelrc
+;;     * npm install --save babel-polyfill
+;;   * React:
+;;     * ES5 or ES6, and
+;;     * npm install eslint-plugin-react --save-dev
+;;     * npm install babel-preset-react --save-dev
+;; Notes:
+;;   When using babeljs for ES6, set a dir local variable so you
+;;   can use the nodejs-repl via C-c C-z or M-x nodejs-repl.  The
+;;   project's .dir-locals.el file should be at the top of the
+;;   project and contain something like this:
+;;     ((js2-mode (nodejs-repl-command
+;;                 .
+;;                 "/home/kwbeam/labs/js-lab/node_modules/.bin/babel-node")))
+;;   Where (obviously) you need to change the absolute path.
+;;   TODO:
+;;     * set nodejs-repl-command by finding it in the project's directory tree!
+(use-package js2-mode
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :mode ("\\.js\\'" . js2-mode)
+  :config
+  (setq-default js2-basic-offset 2))
 
-;; JS
+(use-package add-node-modules-path
+  :ensure
+  :pin melpa-stable
+  :after (js2-mode)
+  :hook js2-mode)
+                  
+;; (use-package nosejs-repl
+;;   :ensure t
+;;   :pin melpa-stable
+;;   :after (js2-mode))
+;;   :hook (js2-mode)
+;;   :bind (("C-x C-e" . 'nodejs-repl-send-last-sexp)
+;;          ("C-cr" . 'nodejs-repl-send-region)
+;;          ("C-cb" . 'nodejs-repl-send-buffer)
+;;          ("C-c l" . 'nodejs-repl-load-file)
+;;          ("C-c C-z" . 'nodejs-repl-switch-to-repl)))
+
+;; (use-package tern
+;;   :ensure t
+;;   :pin melpa-stable
+;;   :after (company js2-mode)
+;;   :hook ((js2-mode . tern-mode)
+;;          (nodejs-repl . tern-mode)))
+
+;; (use-package company-tern
+;;   :ensure t
+;;   :pin melpa-stable
+;;   :defer t
+;;   :after (company)
+;;   :config
+;;   (add-to-list 'company-backends 'company-tern))
+
 ;; TypeScript
 ;; Web
 ;;     add-node-modules-path
@@ -228,7 +301,6 @@
 ;;     tide
 ;;     ts-comint
 ;;     web-mode
-;;(exec-path-from-shell-initialize)
 
 ;; Python
 ;;     company-jedi

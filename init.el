@@ -68,7 +68,7 @@
 (setq backup-directory-alist
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
-(setq custom-file (locate-user-emacs-file ".gnu-emacs-custom"))
+(setq custom-file (locate-user-emacs-file ".custom.el"))
 (load custom-file t t)
 (setq browse-url-browser-function 'eww-browse-url)
 

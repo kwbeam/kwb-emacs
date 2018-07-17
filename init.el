@@ -230,16 +230,3 @@
   :ensure t
   :pin melpa-stable
   :mode "\\.tsx?\\$")
-
-;; Python
-;; Prerequisite language installs:
-;;   * pyenv
-;;   * pyenv install <python version>
-;;   * pyenv (global|local) <python version>
-;;   * pip install pipenv
-;; Project setup:
-;;   $ pipenv install jedi flake8
-(use-package elpy
-  :ensure t
-  :pin melpa-stable
-  :hook (python-mode . elpy-mode))

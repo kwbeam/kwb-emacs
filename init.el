@@ -109,7 +109,7 @@
   :ensure t
   :pin melpa-stable
   :config
-  (load-theme 'sanityinc-tomorrow-blue t))
+  (load-theme 'sanityinc-tomorrow-night t))
 
 (use-package multiple-cursors
   :ensure t

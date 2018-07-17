@@ -111,12 +111,6 @@
   :config
   (load-theme 'sanityinc-tomorrow-blue t))
 
-;; (use-package exec-path-from-shell
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :config
-;;   (exec-path-from-shell-initialize))
-
 (use-package multiple-cursors
   :ensure t
   :pin melpa-stable
@@ -135,6 +129,7 @@
 (use-package git-timemachine
   :ensure t
   :pin melpa-stable)
+
 (use-package magit
   :ensure t
   :pin melpa-stable
@@ -170,7 +165,7 @@
      (python . t)
      (scheme . t))))
 
-;; TODO: Use this in all the dev mode
+;; TODO: Use this in all the dev modes
 (defun kwb-dev-hook ()
   (display-line-numbers-mode)
   (set (make-local-variable 'comment-auto-fill-only-comments) t)
@@ -192,8 +187,7 @@
 
 ;; Lisp
 ;; Prerequisite Language installs:
-;;   * CLisp
-;;   * SBCL
+;;   * CLISP, SBCL
 (use-package slime
   :ensure t
   :pin melpa-stable
@@ -210,7 +204,6 @@
   :defer t
   :after (company slime))
 
-
 ;; Scheme
 ;; Prerequisite Scheme installs:
 ;;   * MIT/GNU Scheme 9.1.1 or better
@@ -224,23 +217,6 @@
   (setq geiser-active-implementations '(mit racket)))
 
 ;; JavaScript
-;; Prerequisite JS stuff:
-;;   * ES5:
-;;     * nvm
-;;     * nvm install --lts
-;;     * mkdir foo && cd foo
-;;     * npm init -y
-;;     * npm install --save-dev eslint tern
-;;     * npx eslint --init
-;;   * ESnext:
-;;     * ES5, and
-;;     * npm install --save-dev babel-cli babel-preset-env
-;;     * echo "{'presets': ['env']}" > .babelrc
-;;     * npm install --save babel-polyfill
-;;   * React:
-;;     * ES5 or ES6, and
-;;     * npm install eslint-plugin-react --save-dev
-;;     * npm install babel-preset-react --save-dev
 (use-package js2-mode
   :ensure t
   :pin melpa-stable
@@ -250,13 +226,6 @@
   (setq-default js2-basic-offset 2))
 
 ;; TypeScript
-;; Prerequisite JS stuff:
-;;   * nvm
-;;   * nvm install --lts
-;;   * mkdir foo && cd foo
-;;   * npm init -y
-;;   * npm install -D ts-lint typescript
-;;   * npx tsc --init
 (use-package typescript-mode
   :ensure t
   :pin melpa-stable
@@ -274,6 +243,3 @@
   :ensure t
   :pin melpa-stable
   :hook (python-mode . elpy-mode))
-  
-;; HERE BE DRAGONS
-;; (add-to-list 'safe-local-variable-values '(lexical-binding . t))

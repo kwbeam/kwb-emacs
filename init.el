@@ -1,6 +1,3 @@
-;;; init --- kwbeam emacs configuration
-;;; Commentary:
-
 ;; In the beginning...
 ;;
 ;; "Emacs outshines all other editing software in approximately the
@@ -8,10 +5,6 @@
 ;; and brighter; it simply makes everything else vanish."
 ;; -Neal Stephenson, "In the Beginning was the Command Line"
 
-;;; Code:
-
-;; -------------------------------------
-;; Setup package loading
 ;; -------------------------------------
 ;; Bootstrap everything with package
 (require 'package)
@@ -35,8 +28,7 @@
 (use-package benchmark-init :ensure t)
 
 ;; -------------------------------------
-;; Minimal Emacs Customization
-;; -------------------------------------
+;; Minimalist Emacs Configuration
 (server-start)
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)
@@ -65,9 +57,8 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
-(setq backup-directory-alist
-      `(("." . ,(expand-file-name
-                 (concat user-emacs-directory "backups")))))
+(setq make-backup-files nil)
+(setq auto-save-default nil)
 (setq custom-file (locate-user-emacs-file ".custom.el"))
 (load custom-file t t)
 (setq browse-url-browser-function 'eww-browse-url)
@@ -102,9 +93,16 @@
 (define-key global-map (kbd "M-p") 'newline-previous)
 (define-key global-map (kbd "M-n") 'newline-next)
 
+;; Setup the exec-path based on the shell PATH
+(let ((path (shell-command-to-string ". ~/.bashrc; echo -n $PATH")))
+  (setenv "PATH" path)
+  (setq exec-path
+        (append
+         (split-string-and-unquote path ":")
+         exec-path)))
+
 ;; -------------------------------------
 ;; Define packages
-;; -------------------------------------
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
   :pin melpa-stable
@@ -125,7 +123,7 @@
   :config
   (require 'smartparens-config)
   (show-paren-mode t))
-  
+
 (use-package git-timemachine
   :ensure t
   :pin melpa-stable)
@@ -165,20 +163,12 @@
      (python . t)
      (scheme . t))))
 
-;; TODO: Use this in all the dev modes
-(defun kwb-dev-hook ()
-  (display-line-numbers-mode)
-  (set (make-local-variable 'comment-auto-fill-only-comments) t)
-  (auto-fill-mode t)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace))
-
 ;; Haskell
-;; Prerequisite Language installs:
-;;   * Stack / GHC
 (use-package haskell-mode
   :ensure t
   :pin melpa-stable
   :mode ("\\.hs\\'" . haskell-mode))
+
 (use-package intero
   :ensure t
   :pin melpa-stable
@@ -186,8 +176,6 @@
   :hook haskell-mode)
 
 ;; Lisp
-;; Prerequisite Language installs:
-;;   * CLISP, SBCL
 (use-package slime
   :ensure t
   :pin melpa-stable
@@ -198,6 +186,7 @@
       '((sbcl ("clisp"))
         (clisp ("sbcl"))))
   (setq slime-contribs '(slime-fancy)))
+
 (use-package slime-company
   :ensure t
   :pin melpa-stable
@@ -205,9 +194,6 @@
   :after (company slime))
 
 ;; Scheme
-;; Prerequisite Scheme installs:
-;;   * MIT/GNU Scheme 9.1.1 or better
-;;   * Racket 6.0 or better
 (use-package geiser
   :ensure t
   :pin melpa-stable
@@ -220,7 +206,6 @@
 (use-package js2-mode
   :ensure t
   :pin melpa-stable
-  :defer t
   :mode ("\\.js\\'" . js2-mode)
   :config
   (setq-default js2-basic-offset 2))
@@ -230,3 +215,19 @@
   :ensure t
   :pin melpa-stable
   :mode "\\.tsx?\\$")
+
+;; Setup all dev modes the same
+(defun kwb-dev-hook ()
+  (display-line-numbers-mode)
+  (set (make-local-variable 'comment-auto-fill-only-comments) t)
+  (auto-fill-mode t)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace))
+(mapc
+ (lambda (hook) (add-hook hook 'kwb-dev-hook))
+ '(emacs-lisp-mode-hook
+   haskell-mode-hook
+   lisp-mode-hook
+   js2-mode-hook
+   python-mode-hook
+   scheme-mode-hook
+   typescript-mode-hook))

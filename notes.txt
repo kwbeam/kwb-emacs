@@ -40,7 +40,7 @@
   :pin melpa-stable
   :after (js2-mode)
   :hook js2-mode)
-                  
+
 ;; (use-package nosejs-repl
 ;;   :ensure t
 ;;   :pin melpa-stable
@@ -51,6 +51,8 @@
 ;;          ("C-cb" . 'nodejs-repl-send-buffer)
 ;;          ("C-c l" . 'nodejs-repl-load-file)
 ;;          ("C-c C-z" . 'nodejs-repl-switch-to-repl)))
+
+;; *** WARN: tern is not being actively maintained
 
 ;; (use-package tern
 ;;   :ensure t

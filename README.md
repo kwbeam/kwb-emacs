@@ -19,6 +19,7 @@ Packages used:
 
 * [js2-mode](https://github.com/mooz/js2-mode/)
 * [add-node-modules-path](https://github.com/codesuki/add-node-modules-path)
+* [indium](https://indium.readthedocs.io/en/latest/index.html)
 
 1. Install [nvm](https://github.com/creationix/nvm) to install and manage NodeJS versions.
 
@@ -38,6 +39,8 @@ Packages used:
     $ npx eslint --init
     ```
 
+3a. To open a REPL, `M-x indium-run-node`.
+
 4. (Optional) Create and setup an ES.next project:
 
     ```
@@ -46,6 +49,18 @@ Packages used:
     $ echo "{'presets': ['env']}" > .babelrc
     $ npm install -S babel-polyfill
     ```
+
+4a. To open a REPL:
+
+Start a Babel NodeJS process:
+
+    ```
+    $ npx babel-node --inspect
+    ```
+
+Connect to it in Emacs with `M-x indium-connect-to-nodejs` and specify
+the IP address, port, and URL path on which the babel-node process is
+listening.
 
 ## Lisp
 

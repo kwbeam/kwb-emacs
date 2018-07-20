@@ -182,10 +182,15 @@
   (setq-default js2-basic-offset 2))
 
 (use-package add-node-modules-path
-  :ensure
+  :ensure t
   :pin melpa-stable
   :after (js2-mode)
   :hook js2-mode)
+
+(use-package indium
+  :ensure t
+  :pin melpa-stable
+  :hook (add-node-modules-path . indium-interaction-mode))
 
 ;; Lisp
 (use-package slime

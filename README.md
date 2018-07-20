@@ -1,3 +1,20 @@
+# My Emacs Configuration
+
+In the beginning...
+
+"Emacs outshines all other editing software in approximately the
+same way that the noonday sun does the stars.  It is not just bigger
+and brighter; it simply makes everything else vanish."
+-Neal Stephenson, "In the Beginning was the Command Line"
+
+# Development Notes
+
+## Haskell
+
+TODO
+
+## JavaScript
+
 ;; JavaScript
 ;; Prerequisite JS stuff:
 ;;   * ES5:
@@ -69,8 +86,59 @@
 ;;   :config
 ;;   (add-to-list 'company-backends 'company-tern))
 
+## Lisp
 
+TODO
 
+## Python
+
+;; Python
+;; Prerequisite language installs:
+;;   * pyenv
+;;   * pyenv install <python version>
+;;   * pyenv (global|local) <python version>
+;;   * pip install pipenv
+;; Project setup:
+;;   $ pipenv install jedi flake8
+(use-package elpy
+  :ensure t
+  :pin melpa-stable
+  :hook (python-mode . elpy-mode))
+
+;; (defun kwb/python-mode-hook ()
+;;   "Setup all my Python stuff when we enter python mode."
+;;   (pipenv-mode)
+;;   (setq pipenv-projectile-after-switch-function #'pipenv-projectile-after-switch-extended)
+;;   (pyvenv-mode -1)
+;;   (smartparens-mode)
+;;   (add-to-list 'company-backends 'company-jedi)
+;;   (setq python-indent-guess-indent-offset-verbose nil)
+;;   (local-set-key "\C-ca" 'nosetests-all)
+;;   (local-set-key "\C-cm" 'nosetests-module)
+;;   (local-set-key "\C-c." 'nosetests-one)
+;;   (local-set-key "\C-cpa" 'nosetests-pdb-all)
+;;   (local-set-key "\C-cpm" 'nosetests-pdb-module)
+;;   (local-set-key "\C-cp." 'nosetests-pdb-one))
+
+;; (add-hook 'python-mode-hook 'kwb/python-mode-hook)
+
+;; (add-hook 'python-mode-hook 'run-dev-hook)
+
+;; ;; don't use flymake (elpy default), use flycheck
+;; ;; from: https://github.com/jorgenschaefer/elpy/issues/137
+;; (when (require 'flycheck nil t)
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; ;; ein - emacs ipython notebook
+;; (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+;; (add-to-list 'company-backends 'ein:company-backend)
+
+## Scheme
+
+TODO
+
+## TypeScript
 
 ;; TypeScript
 ;; Prerequisite JS stuff:
@@ -135,6 +203,8 @@
 ;;               (setup-tide-mode))))
 ;; (flycheck-add-mode 'typescript-tslint 'web-mode)
 
+## Web (HTML, CSS)
+
 ;; Web
 ;; (require 'web-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -158,48 +228,3 @@
 ;; (sp-local-pair 'web-mode "<" nil :when '(sp-web-mode-is-code-context))
 ;; Use eslint
 ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
-
-
-
-
-;; Python
-;; Prerequisite language installs:
-;;   * pyenv
-;;   * pyenv install <python version>
-;;   * pyenv (global|local) <python version>
-;;   * pip install pipenv
-;; Project setup:
-;;   $ pipenv install jedi flake8
-(use-package elpy
-  :ensure t
-  :pin melpa-stable
-  :hook (python-mode . elpy-mode))
-
-;; (defun kwb/python-mode-hook ()
-;;   "Setup all my Python stuff when we enter python mode."
-;;   (pipenv-mode)
-;;   (setq pipenv-projectile-after-switch-function #'pipenv-projectile-after-switch-extended)
-;;   (pyvenv-mode -1)
-;;   (smartparens-mode)
-;;   (add-to-list 'company-backends 'company-jedi)
-;;   (setq python-indent-guess-indent-offset-verbose nil)
-;;   (local-set-key "\C-ca" 'nosetests-all)
-;;   (local-set-key "\C-cm" 'nosetests-module)
-;;   (local-set-key "\C-c." 'nosetests-one)
-;;   (local-set-key "\C-cpa" 'nosetests-pdb-all)
-;;   (local-set-key "\C-cpm" 'nosetests-pdb-module)
-;;   (local-set-key "\C-cp." 'nosetests-pdb-one))
-
-;; (add-hook 'python-mode-hook 'kwb/python-mode-hook)
-
-;; (add-hook 'python-mode-hook 'run-dev-hook)
-
-;; ;; don't use flymake (elpy default), use flycheck
-;; ;; from: https://github.com/jorgenschaefer/elpy/issues/137
-;; (when (require 'flycheck nil t)
-;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-;; ;; ein - emacs ipython notebook
-;; (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-;; (add-to-list 'company-backends 'ein:company-backend)

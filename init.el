@@ -146,6 +146,11 @@
   (setq company-idle-delay 0)
   (global-set-key (kbd "<C-tab>") 'company-complete))
 
+(use-package flycheck
+  :ensure t
+  :pin melpa-stable
+  :init (global-flycheck-mode))
+
 (use-package markdown-mode
   :ensure t
   :pin melpa-stable

@@ -181,6 +181,12 @@
   :config
   (setq-default js2-basic-offset 2))
 
+(use-package add-node-modules-path
+  :ensure
+  :pin melpa-stable
+  :after (js2-mode)
+  :hook js2-mode)
+
 ;; Lisp
 (use-package slime
   :ensure t

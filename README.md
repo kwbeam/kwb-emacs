@@ -15,76 +15,37 @@ TODO
 
 ## JavaScript
 
-;; JavaScript
-;; Prerequisite JS stuff:
-;;   * ES5:
-;;     * nvm
-;;     * nvm install --lts
-;;     * mkdir foo && cd foo
-;;     * npm init -y
-;;     * npm install --save-dev eslint tern
-;;     * npx eslint --init
-;;   * ESnext:
-;;     * ES5, and
-;;     * npm install --save-dev babel-cli babel-preset-env
-;;     * echo "{'presets': ['env']}" > .babelrc
-;;     * npm install --save babel-polyfill
-;;   * React:
-;;     * ES5 or ES6, and
-;;     * npm install eslint-plugin-react --save-dev
-;;     * npm install babel-preset-react --save-dev
-;; Notes:
-;;   When using babeljs for ES6, set a dir local variable so you
-;;   can use the nodejs-repl via C-c C-z or M-x nodejs-repl.  The
-;;   project's .dir-locals.el file should be at the top of the
-;;   project and contain something like this:
-;;     ((js2-mode (nodejs-repl-command
-;;                 .
-;;                 "/home/kwbeam/labs/js-lab/node_modules/.bin/babel-node")))
-;;   Where (obviously) you need to change the absolute path.
-;;   TODO:
-;;     * set nodejs-repl-command by finding it in the project's directory tree!
-(use-package js2-mode
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :mode ("\\.js\\'" . js2-mode)
-  :config
-  (setq-default js2-basic-offset 2))
+Packages used:
 
-(use-package add-node-modules-path
-  :ensure
-  :pin melpa-stable
-  :after (js2-mode)
-  :hook js2-mode)
+* [js2-mode](https://github.com/mooz/js2-mode/)
+* [add-node-modules-path](https://github.com/codesuki/add-node-modules-path)
 
-;; (use-package nosejs-repl
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :after (js2-mode))
-;;   :hook (js2-mode)
-;;   :bind (("C-x C-e" . 'nodejs-repl-send-last-sexp)
-;;          ("C-cr" . 'nodejs-repl-send-region)
-;;          ("C-cb" . 'nodejs-repl-send-buffer)
-;;          ("C-c l" . 'nodejs-repl-load-file)
-;;          ("C-c C-z" . 'nodejs-repl-switch-to-repl)))
+1. Install [nvm](https://github.com/creationix/nvm) to install and manage NodeJS versions.
 
-;; *** WARN: tern is not being actively maintained
+2. Install and use a version of Node:
 
-;; (use-package tern
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :after (company js2-mode)
-;;   :hook ((js2-mode . tern-mode)
-;;          (nodejs-repl . tern-mode)))
+    ```
+    $ nvm install <version>
+    $ nvm alias default <version>
+    $ nvm use default
 
-;; (use-package company-tern
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :defer t
-;;   :after (company)
-;;   :config
-;;   (add-to-list 'company-backends 'company-tern))
+3. Create and setup an ES5 project:
+
+    ```
+    $ mkdir foo && cd foo
+    $ npm init -y
+    $ npm install -D eslint
+    $ npx eslint --init
+    ```
+
+4. (Optional) Create and setup an ES.next project:
+
+    ```
+    $ # ES5 steps above, and:
+    $ npm install -D babel-cli babel-preset-env
+    $ echo "{'presets': ['env']}" > .babelrc
+    $ npm install -S babel-polyfill
+    ```
 
 ## Lisp
 
@@ -102,15 +63,19 @@ Packages used:
 
 1. Install [pyenv](https://github.com/pyenv/pyenv) to manage Python installs.
 
-2. Install and select a Python
+2. Install a Python:
 
+    ```
     $ pyenv install <python version>
+    ```
 
 3. Create & setup the project:
 
+    ```
     $ mkdir foo && cd foo
     $ pyenv local <python version>
     $ pipenv install jedi flake8
+    ```
 
 ## Scheme
 

@@ -92,6 +92,14 @@ TODO
 
 ## Python
 
+Packages used:
+
+* python (*built-in*)
+* [elpy](https://elpy.readthedocs.io/en/latest/index.html)
+* [pipenv](https://github.com/pwalsh/pipenv.el)
+* [company-jedi](https://github.com/syohex/emacs-company-jedi)
+* [ein](http://millejoh.github.io/emacs-ipython-notebook/)
+
 1. Install [pyenv](https://github.com/pyenv/pyenv) to manage Python installs.
 
 2. Install and select a Python

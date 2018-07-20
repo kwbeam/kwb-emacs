@@ -137,6 +137,7 @@
   (global-company-mode)
   (setq company-tooltip-idle-delay 0)
   (setq company-idle-delay 0)
+  (setq company-tooltip-align-annotations t)
   (global-set-key (kbd "<C-tab>") 'company-complete))
 
 (use-package flycheck
@@ -239,6 +240,7 @@
 (use-package ein
   :ensure t
   :pin melpa-stable
+  :defer t
   :config
   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
   (add-to-list 'company-backends 'ein:company-backend))
@@ -256,7 +258,40 @@
 (use-package typescript-mode
   :ensure t
   :pin melpa-stable
-  :mode "\\.tsx?\\$")
+  :mode "\\.ts\\'")
+
+(defun kwb-tide-setup ()
+  (interactive)
+  (tide-setup)
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (setq tide-tsserver-executable "node_modules/.bin/tsserver"))
+
+(use-package tide
+  :ensure t
+  :pin melpa-stable
+  :after (company flycheck typescript-mode)
+  :hook (typescript-mode . kwb-tide-setup))
+
+(use-package web-mode
+  :ensure t
+  :pin melpa-stable
+  :mode "\\.tsx\\'"
+  :init
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
+  :config
+  (add-hook 'web-mode-hook 'kwb-tide-setup))
+
+(use-package ts-comint
+  :ensure t
+  :after (tide)
+  :defer t
+  :bind (("C-x C-e" . 'ts-send-last-sexp)
+         ("C-c r" . 'ts-send-region-and-go)
+         ("C-c b" . 'ts-send-buffer)
+         ("C-M-x" . 'ts-send-last-sexp-and-go)
+         ("C-c C-b" . 'ts-send-buffer-and-go)
+         ("C-c l" . 'ts-load-file-and-go)))
 
 ;; Setup all dev modes the same
 (defun kwb-dev-hook ()
@@ -273,4 +308,5 @@
    js2-mode-hook
    python-mode-hook
    scheme-mode-hook
-   typescript-mode-hook))
+   typescript-mode-hook
+   web-mode-hook))

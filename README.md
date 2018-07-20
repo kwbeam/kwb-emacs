@@ -98,68 +98,48 @@ TODO
 
 ## TypeScript
 
-;; TypeScript
-;; Prerequisite JS stuff:
-;;   * nvm
-;;   * nvm install --lts
-;;   * mkdir foo && cd foo
-;;   * npm init -y
-;;   * npm install -D @types/node  # workaround for ts-node -- check again
-;;   * npm install -D ts-node
-;;   * npm install -D ts-lint typescript
-;;   * npx tsc --init
+Packages used:
+
+* [typescript-mode](https://github.com/ananthakumaran/typescript.el)
+* [tide](https://github.com/ananthakumaran/tide)
+* [web-mode](http://web-mode.org/)
+* [ts-comint](https://github.com/josteink/ts-comint)
+
+1. Install [nvm](https://github.com/creationix/nvm) to install and manage NodeJS versions.
+
+2. Install and use a version of Node:
+
+    ```
+    $ nvm install <version>
+    $ nvm alias default <version>
+    $ nvm use default
+
+3. Create and setup a TypeScript project:
+
+    ```
+    $ mkdir foo && cd foo
+    $ npm init -y
+    $ npm install -D typescript ts-lint ts-node @types/node
+    $ npx tsc --init
+    ```
+
 ;; Notes:
 ;;   When using a repl via ts-comint's M-x run-ts, set a dir local
 ;;   variable to point to the correct ts-node executable.  The project's
 ;;   .dir-locals.el file should be at the top of the project and
 ;;   contain something like this:
-;;     ((typescript-mode (ts-comint-program-command
-;;                        .
-;;                        "/home/kwbeam/labs/ts-lab/node_modules/.bin/ts-node")))
+((typescript-mode (ts-comint-program-command
+                   .
+                   "/home/kwbeam/projects/mvpreact/node_modules/.bin/ts-node"))
+ (web-mode (ts-comint-program-command
+            .
+            "/home/kwbeam/projects/mvpreact/node_modules/.bin/ts-node")))
 ;;   Where (obviously) you need to change the absolute path.
 ;;   TODO:
 ;;     * Set the ts-comint-program-command by finding it in the
 ;;       project's directory tree!
-(use-package typescript-mode
-  :ensure t
-  :pin melpa-stable
-  :mode "\\.tsx?\\$")
 
-;; (use-package tide
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :after (company flycheck)
-;;   :mode ("\\.tsx\\'" . web-mode)
-;;   :config
-;;   (tide-setup)
-;;   (flycheck-mode +1)
-;;   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-;;   (eldoc-mode +1)
-;;   (tide-hl-identifier-mode +1)
-;;   (company-mode +1)
-;;   (setq company-tooltip-align-annotations t)
-;;   (setq tide-tsserver-executable "node_modules/.bin/tsserver"))
 
-;; (use-package ts-comint
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :after (tide)
-;;   :defer t
-;;   :bind (("C-x C-e" . 'ts-send-last-sexp)
-;;          ("C-c r" . 'ts-send-region-and-go)
-;;          ("C-c b" . 'ts-send-buffer)
-;;          ("C-M-x" . 'ts-send-last-sexp-and-go)
-;;          ("C-c C-b" . 'ts-send-buffer-and-go)
-;;          ("C-c l" . 'ts-load-file-and-go)))
-
-;; TSX: Use tide & web-mode
-;; (require 'web-mode)
-;; (add-hook 'web-mode-hook 'run-dev-hook)
-;; (add-hook 'web-mode-hook
-;;           (lambda ()
-;;             (when (string-equal "tsx" (file-name-extension buffer-file-name))
-;;               (setup-tide-mode))))
-;; (flycheck-add-mode 'typescript-tslint 'web-mode)
 
 ## Web (HTML, CSS)
 

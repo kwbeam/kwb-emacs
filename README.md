@@ -92,47 +92,17 @@ TODO
 
 ## Python
 
-;; Python
-;; Prerequisite language installs:
-;;   * pyenv
-;;   * pyenv install <python version>
-;;   * pyenv (global|local) <python version>
-;;   * pip install pipenv
-;; Project setup:
-;;   $ pipenv install jedi flake8
-(use-package elpy
-  :ensure t
-  :pin melpa-stable
-  :hook (python-mode . elpy-mode))
+1. Install [pyenv](https://github.com/pyenv/pyenv) to manage Python installs.
 
-;; (defun kwb/python-mode-hook ()
-;;   "Setup all my Python stuff when we enter python mode."
-;;   (pipenv-mode)
-;;   (setq pipenv-projectile-after-switch-function #'pipenv-projectile-after-switch-extended)
-;;   (pyvenv-mode -1)
-;;   (smartparens-mode)
-;;   (add-to-list 'company-backends 'company-jedi)
-;;   (setq python-indent-guess-indent-offset-verbose nil)
-;;   (local-set-key "\C-ca" 'nosetests-all)
-;;   (local-set-key "\C-cm" 'nosetests-module)
-;;   (local-set-key "\C-c." 'nosetests-one)
-;;   (local-set-key "\C-cpa" 'nosetests-pdb-all)
-;;   (local-set-key "\C-cpm" 'nosetests-pdb-module)
-;;   (local-set-key "\C-cp." 'nosetests-pdb-one))
+2. Install and select a Python
 
-;; (add-hook 'python-mode-hook 'kwb/python-mode-hook)
+    $ pyenv install <python version>
 
-;; (add-hook 'python-mode-hook 'run-dev-hook)
+3. Create & setup the project:
 
-;; ;; don't use flymake (elpy default), use flycheck
-;; ;; from: https://github.com/jorgenschaefer/elpy/issues/137
-;; (when (require 'flycheck nil t)
-;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-;; ;; ein - emacs ipython notebook
-;; (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-;; (add-to-list 'company-backends 'ein:company-backend)
+    $ mkdir foo && cd foo
+    $ pyenv local <python version>
+    $ pipenv install jedi flake8
 
 ## Scheme
 

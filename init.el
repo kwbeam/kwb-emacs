@@ -173,6 +173,14 @@
   :after (haskell-mode)
   :hook haskell-mode)
 
+;; JavaScript
+(use-package js2-mode
+  :ensure t
+  :pin melpa-stable
+  :mode ("\\.js\\'" . js2-mode)
+  :config
+  (setq-default js2-basic-offset 2))
+
 ;; Lisp
 (use-package slime
   :ensure t
@@ -191,6 +199,39 @@
   :defer t
   :after (company slime))
 
+;; Python
+(use-package elpy
+  :ensure t
+  :pin melpa-stable
+  :hook (python-mode . elpy-mode)
+  :config
+  (setq python-indent-guess-indent-offset-verbose nil)
+  ;; Don't use flymake (elpy default), use flycheck:
+  ;; https://github.com/jorgenschaefer/elpy/issues/137
+  (when (require 'flycheck nil t)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode)))
+
+(use-package pipenv
+  :ensure t
+  :hook (python-mode . pipenv-mode)
+  :init
+  (pyvenv-mode -1))
+
+(use-package company-jedi
+  :ensure t
+  :pin melpa-stable
+  :hook python-mod
+  :config
+  (add-to-list 'company-backends 'company-jedi))
+
+(use-package ein
+  :ensure t
+  :pin melpa-stable
+  :config
+  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+  (add-to-list 'company-backends 'ein:company-backend))
+
 ;; Scheme
 (use-package geiser
   :ensure t
@@ -199,14 +240,6 @@
   :after (scheme)
   :init
   (setq geiser-active-implementations '(mit racket)))
-
-;; JavaScript
-(use-package js2-mode
-  :ensure t
-  :pin melpa-stable
-  :mode ("\\.js\\'" . js2-mode)
-  :config
-  (setq-default js2-basic-offset 2))
 
 ;; TypeScript
 (use-package typescript-mode
@@ -219,7 +252,8 @@
   (display-line-numbers-mode)
   (set (make-local-variable 'comment-auto-fill-only-comments) t)
   (auto-fill-mode t)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace))
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (smartparens-mode))
 (mapc
  (lambda (hook) (add-hook hook 'kwb-dev-hook))
  '(emacs-lisp-mode-hook

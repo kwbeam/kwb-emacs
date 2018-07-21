@@ -11,7 +11,10 @@ and brighter; it simply makes everything else vanish."
 
 ## Haskell
 
-TODO
+Packages used:
+
+* [haskell-mode](https://github.com/haskell/haskell-mode)
+* [intero](https://commercialhaskell.github.io/intero/)
 
 ## JavaScript
 
@@ -64,7 +67,11 @@ listening.
 
 ## Lisp
 
-TODO
+Packages used:
+
+* [lisp](*built-in*)
+* [slime](https://common-lisp.net/project/slime/)
+* [slime-company](https://github.com/anwyn/slime-company)
 
 ## Python
 
@@ -94,7 +101,10 @@ Packages used:
 
 ## Scheme
 
-TODO
+Packages used:
+
+* [scheme](*built-in*)
+* [geiser](http://www.nongnu.org/geiser/)
 
 ## TypeScript
 
@@ -123,46 +133,14 @@ Packages used:
     $ npx tsc --init
     ```
 
-;; Notes:
-;;   When using a repl via ts-comint's M-x run-ts, set a dir local
-;;   variable to point to the correct ts-node executable.  The project's
-;;   .dir-locals.el file should be at the top of the project and
-;;   contain something like this:
-((typescript-mode (ts-comint-program-command
-                   .
-                   "/home/kwbeam/projects/mvpreact/node_modules/.bin/ts-node"))
- (web-mode (ts-comint-program-command
-            .
-            "/home/kwbeam/projects/mvpreact/node_modules/.bin/ts-node")))
-;;   Where (obviously) you need to change the absolute path.
-;;   TODO:
-;;     * Set the ts-comint-program-command by finding it in the
-;;       project's directory tree!
+4. To open a REPL, first add a `.dir-locals.el` file at the root of
+the project with:
 
+    ```
+    ((typescript-mode (ts-comint-program-command .
+                       "<project_dir>/node_modules/.bin/ts-node"))
+     (web-mode (ts-comint-program-command .
+                "<project_dir>/node_modules/.bin/ts-node")))
+    ```
 
-
-## Web (HTML, CSS)
-
-;; Web
-;; (require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-;; (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
-
-;; (defun my-web-mode-hook ()
-;;   "Hooks for Web mode."
-;;   (setq web-mode-markup-indent-offset 2)
-;;   (setq web-mode-code-indent-offset 2)
-;;   (setq web-mode-enable-auto-pairing t)
-;;   (setq web-mode-enable-auto-pairing nil)
-;;   )
-;; (add-hook 'web-mode-hook  'my-web-mode-hook)
-;; (add-hook 'web-mode-hook 'run-dev-hook)
-
-;; (defun sp-web-mode-is-code-context (id action context)
-;;   (and (eq action 'insert)
-;;        (not (or (get-text-property (point) 'part-side)
-;;                 (get-text-property (point) 'block-side)))))
-;; (sp-local-pair 'web-mode "<" nil :when '(sp-web-mode-is-code-context))
-;; Use eslint
-;; (flycheck-add-mode 'javascript-eslint 'web-mode)
+Then start the TypeScript REPL with `M-x run-ts`.

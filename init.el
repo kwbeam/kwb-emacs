@@ -96,6 +96,8 @@
 
 ;; -------------------------------------
 ;; Define packages
+(use-package eshell :defer t)
+
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
   :pin melpa-stable
@@ -105,6 +107,7 @@
 (use-package multiple-cursors
   :ensure t
   :pin melpa-stable
+  :defer t
   :bind (("C-S-c C-S-c" . 'mc/edit-lines)
          ("C->" . 'mc/mark-next-like-this)
          ("C-<" . 'mc/mark-previous-like-this)
@@ -119,11 +122,13 @@
 
 (use-package git-timemachine
   :ensure t
-  :pin melpa-stable)
+  :pin melpa-stable
+  :defer t)
 
 (use-package magit
   :ensure t
   :pin melpa-stable
+  :defer t
   :bind
   ("C-c g" . magit-status)
   :config

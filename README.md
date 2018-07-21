@@ -33,6 +33,7 @@ Packages used:
     $ nvm install <version>
     $ nvm alias default <version>
     $ nvm use default
+    ```
 
 3. Create and setup an ES5 project:
 
@@ -43,9 +44,9 @@ Packages used:
     $ npx eslint --init
     ```
 
-3a. To open a REPL, `M-x indium-run-node`.
+4. To open a REPL, `M-x indium-run-node`.
 
-4. (Optional) Create and setup an ES.next project:
+5. (Optional) Create and setup an ES.next project:
 
     ```
     $ # ES5 steps above, and:
@@ -54,9 +55,7 @@ Packages used:
     $ npm install -S babel-polyfill
     ```
 
-4a. To open a REPL:
-
-Start a Babel NodeJS process:
+6. To open a REPL:
 
     ```
     $ npx babel-node --inspect
@@ -124,6 +123,7 @@ Packages used:
     $ nvm install <version>
     $ nvm alias default <version>
     $ nvm use default
+    ```
 
 3. Create and setup a TypeScript project:
 

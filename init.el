@@ -22,7 +22,9 @@
 
 ;; -------------------------------------
 ;; Minimalist Emacs Configuration
-(server-start)
+(require 'server)
+(if (not (server-running-p))
+    (server-start))
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -35,6 +37,7 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+(set-frame-font "Inconsolata-12")
 (setq uniquify-buffer-name-style 'forward)
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
@@ -96,8 +99,6 @@
 
 ;; -------------------------------------
 ;; Define packages
-(use-package eshell :defer t)
-
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
   :pin melpa-stable
@@ -138,8 +139,9 @@
 (use-package company
   :ensure t
   :pin melpa-stable
+  :defer t
+  :init (add-hook 'after-init-hook 'global-company-mode)
   :config
-  (global-company-mode)
   (setq company-tooltip-idle-delay 0)
   (setq company-idle-delay 0)
   (setq company-tooltip-align-annotations t)
@@ -166,6 +168,16 @@
      (lisp . t)
      (python . t)
      (scheme . t))))
+
+;; Elm
+(use-package elm-mode
+  :ensure t
+  :pin melpa-stable
+  :mode ("\\.elm\\'" . elm-mode)
+  :after (company)
+  :config
+  (setq elm-format-on-save t)
+  (add-to-list 'company-backends 'company-elm))
 
 ;; Haskell
 (use-package haskell-mode
@@ -308,6 +320,7 @@
 (mapc
  (lambda (hook) (add-hook hook 'kwb-dev-hook))
  '(emacs-lisp-mode-hook
+   elm-mode-hook
    haskell-mode-hook
    lisp-mode-hook
    js2-mode-hook

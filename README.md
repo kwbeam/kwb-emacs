@@ -10,6 +10,12 @@
 
 # Development Notes
 
+## Elm
+
+Packages used:
+
+* [elm-mode](https://github.com/jcollard/elm-mode)
+
 ## Haskell
 
 Packages used:

@@ -219,8 +219,8 @@
   :defer t
   :init
   (setq slime-lisp-implementations
-      '((sbcl ("clisp"))
-        (clisp ("sbcl"))))
+      '((sbcl ("sbcl"))
+        (clisp ("clisp"))))
   (setq slime-contribs '(slime-fancy)))
 
 (use-package slime-company

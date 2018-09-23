@@ -211,6 +211,17 @@
   :pin melpa-stable
   :hook (add-node-modules-path . indium-interaction-mode))
 
+;; Julia
+(use-package julia-mode
+  :ensure t
+  :defer t)
+
+(use-package julia-repl
+  :ensure t
+  :defer t
+  :after (julia-mode)
+  :hook (julia-mode . julia-repl-mode))
+
 ;; Lisp
 (use-package slime
   :ensure t

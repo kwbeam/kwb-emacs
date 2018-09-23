@@ -8,7 +8,19 @@
 >
 > -Neal Stephenson, "In the Beginning was the Command Line"
 
-# Development Notes
+# Base Packages
+
+* [Theme](https://github.com/purcell/color-theme-sanityinc-tomorrow)
+* [Multiple Cursors](https://github.com/magnars/multiple-cursors.el)
+* [Smartparens](https://github.com/Fuco1/smartparens)
+* [Git Timemachine](https://gitlab.com/pidu/git-timemachine)
+* [Magit](https://magit.vc/)
+* [Company](https://company-mode.github.io/)
+* [Flycheck](http://www.flycheck.org/en/latest/)
+* [Markdown](https://github.com/jrblevin/markdown-mode/tree/b6de08a0f8517509ca2a08b0f9351c63eed4737d)
+* [Org](https://orgmode.org/)
+
+# Programming Language Notes
 
 ## Elm
 
@@ -70,6 +82,11 @@ Packages used:
 Connect to it in Emacs with `M-x indium-connect-to-nodejs` and specify
 the IP address, port, and URL path on which the babel-node process is
 listening.
+
+## Julia
+
+* [julia-mode](https://github.com/JuliaEditorSupport/julia-emacs)
+* [julia-repl](https://github.com/tpapp/julia-repl)
 
 ## Lisp
 

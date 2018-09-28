@@ -83,11 +83,6 @@ Connect to it in Emacs with `M-x indium-connect-to-nodejs` and specify
 the IP address, port, and URL path on which the babel-node process is
 listening.
 
-## Julia
-
-* [julia-mode](https://github.com/JuliaEditorSupport/julia-emacs)
-* [julia-repl](https://github.com/tpapp/julia-repl)
-
 ## Lisp
 
 Packages used:

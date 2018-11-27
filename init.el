@@ -172,7 +172,6 @@
 ;; Elm
 (use-package elm-mode
   :ensure t
-  :pin melpa-stable
   :mode ("\\.elm\\'" . elm-mode)
   :after (company)
   :config

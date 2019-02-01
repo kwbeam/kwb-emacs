@@ -169,27 +169,6 @@
      (python . t)
      (scheme . t))))
 
-;; Elm
-(use-package elm-mode
-  :ensure t
-  :mode ("\\.elm\\'" . elm-mode)
-  :after (company)
-  :config
-  (setq elm-format-on-save t)
-  (add-to-list 'company-backends 'company-elm))
-
-;; Haskell
-(use-package haskell-mode
-  :ensure t
-  :pin melpa-stable
-  :mode ("\\.hs\\'" . haskell-mode))
-
-(use-package intero
-  :ensure t
-  :pin melpa-stable
-  :after (haskell-mode)
-  :hook haskell-mode)
-
 ;; JavaScript
 (use-package js2-mode
   :ensure t
@@ -240,12 +219,6 @@
   (when (require 'flycheck nil t)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode)))
-
-(use-package pipenv
-  :ensure t
-  :hook (python-mode . pipenv-mode)
-  :init
-  (pyvenv-mode -1))
 
 (use-package company-jedi
   :ensure t
@@ -320,8 +293,6 @@
 (mapc
  (lambda (hook) (add-hook hook 'kwb-dev-hook))
  '(emacs-lisp-mode-hook
-   elm-mode-hook
-   haskell-mode-hook
    lisp-mode-hook
    js2-mode-hook
    python-mode-hook

@@ -22,19 +22,6 @@
 
 # Programming Language Notes
 
-## Elm
-
-Packages used:
-
-* [elm-mode](https://github.com/jcollard/elm-mode)
-
-## Haskell
-
-Packages used:
-
-* [haskell-mode](https://github.com/haskell/haskell-mode)
-* [intero](https://commercialhaskell.github.io/intero/)
-
 ## JavaScript
 
 Packages used:

@@ -70,46 +70,31 @@ Connect to it in Emacs with `M-x indium-connect-to-nodejs` and specify
 the IP address, port, and URL path on which the babel-node process is
 listening.
 
-## Lisp
-
-Packages used:
-
-* [lisp](*built-in*)
-* [slime](https://common-lisp.net/project/slime/)
-* [slime-company](https://github.com/anwyn/slime-company)
-
 ## Python
 
 Packages used:
 
 * python (*built-in*)
 * [elpy](https://elpy.readthedocs.io/en/latest/index.html)
-* [pipenv](https://github.com/pwalsh/pipenv.el)
 * [company-jedi](https://github.com/syohex/emacs-company-jedi)
 * [ein](http://millejoh.github.io/emacs-ipython-notebook/)
 
-1. Install [pyenv](https://github.com/pyenv/pyenv) to manage Python installs.
+1. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html)
+   to create and manage conda environments, including Python itself.
 
-2. Install a Python:
-
-    ```
-    $ pyenv install <python version>
-    ```
-
-3. Create & setup the project:
+2. Create & setup the project:
 
     ```
     $ mkdir foo && cd foo
-    $ pyenv local <python version>
-    $ pipenv install jedi flake8
+    $ conda create -n foo python=3
+    $ conda activate foo
+    $ conda install jedi flake8
     ```
 
-## Scheme
-
-Packages used:
-
-* [scheme](*built-in*)
-* [geiser](http://www.nongnu.org/geiser/)
+3. Setup a dir-local variable to activate the conda environment. `M-x
+   add-dir-local-variable`. For `python-mode` set `pyvenv-activate` to
+   the location of the conda environment directory, typically
+   `$HOME/.conda/envs/foo`.
 
 ## TypeScript
 

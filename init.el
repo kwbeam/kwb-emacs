@@ -162,12 +162,8 @@
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((C . t)
-     (haskell . t)
-     (js . t)
-     (lisp . t)
-     (python . t)
-     (scheme . t))))
+   '((js . t)
+     (python . t))))
 
 ;; JavaScript
 (use-package js2-mode
@@ -182,30 +178,14 @@
   :ensure t
   :pin melpa-stable
   :after (js2-mode)
-  :hook js2-mode)
+  :hook (js2-mode))
 
 (use-package indium
   :ensure t
   :pin melpa-stable
-  :hook (add-node-modules-path . indium-interaction-mode))
-
-;; Lisp
-(use-package slime
-  :ensure t
-  :pin melpa-stable
-  :after lisp-mode
-  :defer t
-  :init
-  (setq slime-lisp-implementations
-      '((sbcl ("sbcl"))
-        (clisp ("clisp"))))
-  (setq slime-contribs '(slime-fancy)))
-
-(use-package slime-company
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :after (company slime))
+  :after (js2-mode)
+  :hook ((add-node-modules-path . indium-interaction-mode)
+         (js2-mode . indium-interaction-mode)))
 
 ;; Python
 (use-package elpy
@@ -234,15 +214,6 @@
   :config
   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
   (add-to-list 'company-backends 'ein:company-backend))
-
-;; Scheme
-(use-package geiser
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :after (scheme)
-  :init
-  (setq geiser-active-implementations '(mit racket)))
 
 ;; TypeScript
 (use-package typescript-mode
@@ -293,9 +264,7 @@
 (mapc
  (lambda (hook) (add-hook hook 'kwb-dev-hook))
  '(emacs-lisp-mode-hook
-   lisp-mode-hook
    js2-mode-hook
    python-mode-hook
-   scheme-mode-hook
    typescript-mode-hook
    web-mode-hook))

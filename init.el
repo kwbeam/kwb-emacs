@@ -193,12 +193,19 @@
   :pin melpa-stable
   :hook (python-mode . elpy-mode)
   :config
+  (setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i --simple-prompt")
   (setq python-indent-guess-indent-offset-verbose nil)
   ;; Don't use flymake (elpy default), use flycheck:
   ;; https://github.com/jorgenschaefer/elpy/issues/137
   (when (require 'flycheck nil t)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode)))
+
+(use-package py-autopep8
+  :ensure t
+  :pin melpa-stable
+  :hook (python-mode . py-autopep8-enable-on-save))
 
 (use-package company-jedi
   :ensure t

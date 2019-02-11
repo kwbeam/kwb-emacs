@@ -76,6 +76,7 @@ Packages used:
 
 * python (*built-in*)
 * [elpy](https://elpy.readthedocs.io/en/latest/index.html)
+* [py-autopep8](https://github.com/paetzke/py-autopep8.el)
 * [company-jedi](https://github.com/syohex/emacs-company-jedi)
 * [ein](http://millejoh.github.io/emacs-ipython-notebook/)
 
@@ -88,10 +89,10 @@ Packages used:
     $ mkdir foo && cd foo
     $ conda create -n foo python=3
     $ conda activate foo
-    $ conda install jedi flake8
+    $ conda install autopep8 flake8 ipython jedi
     ```
 
-3. Setup a dir-local variable to activate the conda environment. `M-x
+3. Add a dir-local variable to activate the conda environment. `M-x
    add-dir-local-variable`. For `python-mode` set `pyvenv-activate` to
    the location of the conda environment directory, typically
    `$HOME/.conda/envs/foo`.

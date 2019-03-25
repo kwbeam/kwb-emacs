@@ -162,8 +162,23 @@
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((js . t)
-     (python . t))))
+   '((haskell . t)
+     (js . t)
+     (lisp . t)
+     (python . t)
+     (scheme . t))))
+
+;; Haskell
+(use-package haskell-mode
+  :ensure t
+  :pin melpa-stable
+  :mode ("\\.hs\\'" . haskell-mode))
+
+(use-package intero
+  :ensure t
+  :pin melpa-stable
+  :after (haskell-mode)
+  :hook haskell-mode)
 
 ;; JavaScript
 (use-package js2-mode
@@ -186,6 +201,24 @@
   :after (js2-mode)
   :hook ((add-node-modules-path . indium-interaction-mode)
          (js2-mode . indium-interaction-mode)))
+
+;; Lisp
+(use-package slime
+  :ensure t
+  :pin melpa-stable
+  :after lisp-mode
+  :defer t
+  :init
+  (setq slime-lisp-implementations
+      '((sbcl ("sbcl"))
+        (clisp ("clisp"))))
+  (setq slime-contribs '(slime-fancy)))
+
+(use-package slime-company
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :after (company slime))
 
 ;; Python
 (use-package elpy
@@ -221,6 +254,15 @@
   :config
   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
   (add-to-list 'company-backends 'ein:company-backend))
+
+;; Scheme
+(use-package geiser
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :after (scheme)
+  :init
+  (setq geiser-active-implementations '(mit racket)))
 
 ;; TypeScript
 (use-package typescript-mode
@@ -271,7 +313,10 @@
 (mapc
  (lambda (hook) (add-hook hook 'kwb-dev-hook))
  '(emacs-lisp-mode-hook
+   haskell-mode-hook
    js2-mode-hook
+   lisp-mode-hook
    python-mode-hook
+   scheme-mode-hook
    typescript-mode-hook
    web-mode-hook))

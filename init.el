@@ -210,8 +210,7 @@
   :defer t
   :init
   (setq slime-lisp-implementations
-      '((sbcl ("sbcl"))
-        (clisp ("clisp"))))
+      '((sbcl ("sbcl"))))
   (setq slime-contribs '(slime-fancy)))
 
 (use-package slime-company
@@ -262,7 +261,7 @@
   :defer t
   :after (scheme)
   :init
-  (setq geiser-active-implementations '(mit racket)))
+  (setq geiser-active-implementations '(racket)))
 
 ;; TypeScript
 (use-package typescript-mode

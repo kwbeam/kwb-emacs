@@ -37,7 +37,7 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-(set-frame-font "Inconsolata-13")
+(set-frame-font "Hack-12")
 (setq uniquify-buffer-name-style 'forward)
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
@@ -167,6 +167,10 @@
      (lisp . t)
      (python . t)
      (scheme . t))))
+
+(use-package restclient
+  :defer t
+  :ensure t)
 
 ;; Haskell
 (use-package haskell-mode

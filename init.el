@@ -1,4 +1,9 @@
 ;; -------------------------------------
+;; Make startup faster by reducing the frequency of garbage
+;; collection.  The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 128 1000 1000))
+
+;; -------------------------------------
 ;; Bootstrap everything with package
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -89,16 +94,15 @@
 (define-key global-map (kbd "M-p") 'newline-previous)
 (define-key global-map (kbd "M-n") 'newline-next)
 
-;; Setup the exec-path based on the shell PATH
-(let ((path (shell-command-to-string ". ~/.bashrc; echo -n $PATH")))
-  (setenv "PATH" path)
-  (setq exec-path
-        (append
-         (split-string-and-unquote path ":")
-         exec-path)))
-
 ;; -------------------------------------
 ;; Define packages
+(use-package exec-path-from-shell
+  :ensure t
+  :pin melpa-stable
+  :defer 1
+  :config
+  (exec-path-from-shell-initialize))
+
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
   :pin melpa-stable
@@ -117,6 +121,7 @@
 (use-package smartparens
   :ensure t
   :pin melpa-stable
+  :defer t
   :config
   (require 'smartparens-config)
   (show-paren-mode t))
@@ -150,11 +155,13 @@
 (use-package flycheck
   :ensure t
   :pin melpa-stable
-  :init (global-flycheck-mode))
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package markdown-mode
   :ensure t
   :pin melpa-stable
+  :defer t
   :mode "\\.md\\'")
 
 (use-package org
@@ -172,10 +179,17 @@
   :defer t
   :ensure t)
 
+;; Clojure
+(use-package cider
+  :ensure t
+  :pin melpa-stable
+  :defer t)
+
 ;; JavaScript
 (use-package js2-mode
   :ensure t
   :pin melpa-stable
+  :defer t
   :mode ("\\.js\\'" . js2-mode)
   :config
   (setq-default js-indent-level 2)
@@ -184,12 +198,14 @@
 (use-package add-node-modules-path
   :ensure t
   :pin melpa-stable
+  :defer t
   :after (js2-mode)
   :hook (js2-mode))
 
 (use-package indium
   :ensure t
   :pin melpa-stable
+  :defer t
   :after (js2-mode)
   :hook ((add-node-modules-path . indium-interaction-mode)
          (js2-mode . indium-interaction-mode)))
@@ -198,6 +214,7 @@
 (use-package elpy
   :ensure t
   :pin melpa-stable
+  :defer t
   :hook (python-mode . elpy-mode)
   :config
   (setq python-shell-interpreter "ipython"
@@ -212,11 +229,13 @@
 (use-package py-autopep8
   :ensure t
   :pin melpa-stable
+  :defer t
   :hook (python-mode . py-autopep8-enable-on-save))
 
 (use-package company-jedi
   :ensure t
   :pin melpa-stable
+  :defer t
   :hook python-mod
   :config
   (add-to-list 'company-backends 'company-jedi))
@@ -233,6 +252,7 @@
 (use-package typescript-mode
   :ensure t
   :pin melpa-stable
+  :defer t
   :mode "\\.ts\\'")
 
 (defun kwb-tide-setup ()
@@ -245,12 +265,14 @@
 (use-package tide
   :ensure t
   :pin melpa-stable
+  :defer t
   :after (company flycheck typescript-mode)
   :hook (typescript-mode . kwb-tide-setup))
 
 (use-package web-mode
   :ensure t
   :pin melpa-stable
+  :defer t
   :mode "\\.tsx\\'"
   :init
   (flycheck-add-mode 'typescript-tslint 'web-mode)
@@ -282,3 +304,7 @@
    python-mode-hook
    typescript-mode-hook
    web-mode-hook))
+
+;; -------------------------------------
+;; Make gc pauses faster by decreasing the threshold.
+(setq gc-cons-threshold (* 2 1000 1000))

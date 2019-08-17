@@ -160,7 +160,7 @@
 
 (use-package markdown-mode
   :ensure t
-  :pin melpa-stable
+  :pin melpa
   :defer t
   :mode "\\.md\\'")
 
@@ -242,7 +242,7 @@
 
 (use-package ein
   :ensure t
-  :pin melpa-stable
+  :pin melpa
   :defer t
   :config
   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
@@ -269,15 +269,15 @@
   :after (company flycheck typescript-mode)
   :hook (typescript-mode . kwb-tide-setup))
 
-(use-package web-mode
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :mode "\\.tsx\\'"
-  :init
-  (flycheck-add-mode 'typescript-tslint 'web-mode)
-  :config
-  (add-hook 'web-mode-hook 'kwb-tide-setup))
+;; (use-package web-mode
+;;   :ensure t
+;;   :pin melpa-stable
+;;   :defer t
+;;   :mode "\\.tsx\\'"
+;;   :init
+;;   (flycheck-add-mode 'typescript-tslint 'web-mode)
+;;   :config
+;;   (add-hook 'web-mode-hook 'kwb-tide-setup))
 
 (use-package ts-comint
   :ensure t

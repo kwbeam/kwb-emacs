@@ -185,6 +185,10 @@
   :pin melpa-stable
   :defer t)
 
+;; Haskell
+(use-package haskell-mode
+  :ensure t)
+
 ;; JavaScript
 (use-package js2-mode
   :ensure t
@@ -209,6 +213,17 @@
   :after (js2-mode)
   :hook ((add-node-modules-path . indium-interaction-mode)
          (js2-mode . indium-interaction-mode)))
+
+;; PureScript
+(use-package purescript-mode
+  :ensure t)
+
+(use-package psc-ide
+  :ensure t
+  :hook (purescript-mode . (lambda ()
+                             (psc-ide-mode)
+                             (setq psc-ide-use-npm-bin t)
+                             (turn-on-purescript-indentation))))
 
 ;; Python
 (use-package elpy

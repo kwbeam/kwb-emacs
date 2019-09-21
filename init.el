@@ -263,6 +263,11 @@
   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
   (add-to-list 'company-backends 'ein:company-backend))
 
+;; R
+(use-package ess
+  :ensure t
+  :pin melpa-stable)
+
 ;; TypeScript
 (use-package typescript-mode
   :ensure t

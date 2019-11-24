@@ -179,12 +179,6 @@
   :defer t
   :ensure t)
 
-;; Clojure
-(use-package cider
-  :ensure t
-  :pin melpa-stable
-  :defer t)
-
 ;; Haskell
 (use-package haskell-mode
   :ensure t)
@@ -230,7 +224,8 @@
   :ensure t
   :pin melpa-stable
   :defer t
-  :hook (python-mode . elpy-mode)
+  :init
+  (advice-add 'python-mode :before 'elpy-enable)
   :config
   (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
@@ -241,17 +236,23 @@
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode)))
 
-(use-package py-autopep8
+;; (use-package py-autopep8
+;;   :ensure t
+;;   :pin melpa-stable
+;;   :defer t
+;;   :hook (python-mode . py-autopep8-enable-on-save))
+
+(use-package blacken
   :ensure t
-  :pin melpa-stable
+  :pin melpa
   :defer t
-  :hook (python-mode . py-autopep8-enable-on-save))
+  :hook (python-mode))
 
 (use-package company-jedi
   :ensure t
   :pin melpa-stable
   :defer t
-  :hook python-mod
+  :hook (python-mode)
   :config
   (add-to-list 'company-backends 'company-jedi))
 
@@ -262,11 +263,6 @@
   :config
   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
   (add-to-list 'company-backends 'ein:company-backend))
-
-;; R
-(use-package ess
-  :ensure t
-  :pin melpa-stable)
 
 ;; TypeScript
 (use-package typescript-mode
@@ -320,7 +316,9 @@
 (mapc
  (lambda (hook) (add-hook hook 'kwb-dev-hook))
  '(emacs-lisp-mode-hook
+   haskell-mode-hook
    js2-mode-hook
+   purescript-mode-hook
    python-mode-hook
    typescript-mode-hook
    web-mode-hook))

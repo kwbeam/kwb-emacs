@@ -171,157 +171,38 @@
    'org-babel-load-languages
    '((haskell . t)
      (js . t)
-     (lisp . t)
-     (python . t)
-     (scheme . t))))
+     (python . t))))
 
 (use-package restclient
   :defer t
   :ensure t)
 
-;; Haskell
-(use-package haskell-mode
-  :ensure t)
+;; -------------------------------------
+;; Language Setup
 
-;; JavaScript
-(use-package js2-mode
-  :ensure t
-  :pin melpa-stable
+(use-package lsp-mode
   :defer t
-  :mode ("\\.js\\'" . js2-mode)
+  :ensure t
+  :hook (python-mode . lsp)
+  :commands lsp)
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp)
+
+(use-package dap-mode
+  :ensure t
   :config
-  (setq-default js-indent-level 2)
-  (setq-default js2-basic-offset 2))
+  (dap-mode 1)
+  (dap-ui-mode 1)
+  (dap-tooltip-mode 1)
+  (tooltip-mode 1))
 
-(use-package add-node-modules-path
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :after (js2-mode)
-  :hook (js2-mode))
-
-(use-package indium
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :after (js2-mode)
-  :hook ((add-node-modules-path . indium-interaction-mode)
-         (js2-mode . indium-interaction-mode)))
-
-;; PureScript
-(use-package purescript-mode
-  :ensure t)
-
-(use-package psc-ide
-  :ensure t
-  :hook (purescript-mode . (lambda ()
-                             (psc-ide-mode)
-                             (setq psc-ide-use-npm-bin t)
-                             (turn-on-purescript-indentation))))
-
-;; Python
-(use-package elpy
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :init
-  (advice-add 'python-mode :before 'elpy-enable)
-  :config
-  (setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "-i --simple-prompt")
-  (setq python-indent-guess-indent-offset-verbose nil)
-  ;; Don't use flymake (elpy default), use flycheck:
-  ;; https://github.com/jorgenschaefer/elpy/issues/137
-  (when (require 'flycheck nil t)
-    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-    (add-hook 'elpy-mode-hook 'flycheck-mode)))
-
-;; (use-package py-autopep8
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :defer t
-;;   :hook (python-mode . py-autopep8-enable-on-save))
-
-(use-package blacken
-  :ensure t
-  :pin melpa
-  :defer t
-  :hook (python-mode))
-
-(use-package company-jedi
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :hook (python-mode)
-  :config
-  (add-to-list 'company-backends 'company-jedi))
-
-(use-package ein
-  :ensure t
-  :pin melpa
-  :defer t
-  :config
-  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-  (add-to-list 'company-backends 'ein:company-backend))
-
-;; TypeScript
-(use-package typescript-mode
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :mode "\\.ts\\'")
-
-(defun kwb-tide-setup ()
-  (interactive)
-  (tide-setup)
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (setq tide-tsserver-executable "node_modules/.bin/tsserver"))
-
-(use-package tide
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :after (company flycheck typescript-mode)
-  :hook (typescript-mode . kwb-tide-setup))
-
-;; (use-package web-mode
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :defer t
-;;   :mode "\\.tsx\\'"
-;;   :init
-;;   (flycheck-add-mode 'typescript-tslint 'web-mode)
-;;   :config
-;;   (add-hook 'web-mode-hook 'kwb-tide-setup))
-
-(use-package ts-comint
-  :ensure t
-  :after (tide)
-  :defer t
-  :bind (("C-x C-e" . 'ts-send-last-sexp)
-         ("C-c r" . 'ts-send-region-and-go)
-         ("C-c b" . 'ts-send-buffer)
-         ("C-M-x" . 'ts-send-last-sexp-and-go)
-         ("C-c C-b" . 'ts-send-buffer-and-go)
-         ("C-c l" . 'ts-load-file-and-go)))
-
-;; Setup all dev modes the same
-(defun kwb-dev-hook ()
-  (display-line-numbers-mode)
-  (set (make-local-variable 'comment-auto-fill-only-comments) t)
-  (auto-fill-mode t)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
-  (smartparens-mode))
-(mapc
- (lambda (hook) (add-hook hook 'kwb-dev-hook))
- '(emacs-lisp-mode-hook
-   haskell-mode-hook
-   js2-mode-hook
-   purescript-mode-hook
-   python-mode-hook
-   typescript-mode-hook
-   web-mode-hook))
+(use-package dap-python)
 
 ;; -------------------------------------
 ;; Make gc pauses faster by decreasing the threshold.

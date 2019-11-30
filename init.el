@@ -181,8 +181,8 @@
 ;; Language Setup
 
 (use-package lsp-mode
-  :defer t
   :ensure t
+  :hook (haskell-mode . lsp)
   :hook (python-mode . lsp)
   :commands lsp)
 
@@ -203,6 +203,9 @@
   (tooltip-mode 1))
 
 (use-package dap-python)
+
+(use-package lsp-haskell
+  :ensure t)
 
 ;; -------------------------------------
 ;; Make gc pauses faster by decreasing the threshold.

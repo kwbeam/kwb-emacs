@@ -1,10 +1,14 @@
 ;; -------------------------------------
 ;; Make startup faster by reducing the frequency of garbage
 ;; collection.  The default is 800 kilobytes.  Measured in bytes.
+;; -------------------------------------
+
 (setq gc-cons-threshold (* 128 1000 1000))
 
 ;; -------------------------------------
 ;; Bootstrap everything with package
+;; -------------------------------------
+
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives
@@ -27,6 +31,8 @@
 
 ;; -------------------------------------
 ;; Minimalist Emacs Configuration
+;; -------------------------------------
+
 (require 'server)
 (if (not (server-running-p))
     (server-start))
@@ -95,13 +101,8 @@
 (define-key global-map (kbd "M-n") 'newline-next)
 
 ;; -------------------------------------
-;; Define packages
-(use-package exec-path-from-shell
-  :ensure t
-  :pin melpa-stable
-  :defer 1
-  :config
-  (exec-path-from-shell-initialize))
+;; General-purpose packages
+;; -------------------------------------
 
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
@@ -109,22 +110,29 @@
   :config
   (load-theme 'sanityinc-tomorrow-bright t))
 
-(use-package multiple-cursors
+(use-package company
   :ensure t
   :pin melpa-stable
   :defer t
-  :bind (("C-S-c C-S-c" . 'mc/edit-lines)
-         ("C->" . 'mc/mark-next-like-this)
-         ("C-<" . 'mc/mark-previous-like-this)
-         ("C-c C-<" . 'mc/mark-all-like-this)))
+  :init (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-tooltip-idle-delay 0)
+  (setq company-idle-delay 0)
+  (setq company-tooltip-align-annotations t)
+  (global-set-key (kbd "<C-tab>") 'company-complete))
 
-(use-package smartparens
+(use-package exec-path-from-shell
   :ensure t
   :pin melpa-stable
   :defer t
   :config
-  (require 'smartparens-config)
-  (show-paren-mode t))
+  (exec-path-from-shell-initialize))
+
+(use-package flycheck
+  :ensure t
+  :pin melpa-stable
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package git-timemachine
   :ensure t
@@ -141,22 +149,14 @@
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setq magit-push-always-verify nil))
 
-(use-package company
+(use-package multiple-cursors
   :ensure t
   :pin melpa-stable
   :defer t
-  :init (add-hook 'after-init-hook 'global-company-mode)
-  :config
-  (setq company-tooltip-idle-delay 0)
-  (setq company-idle-delay 0)
-  (setq company-tooltip-align-annotations t)
-  (global-set-key (kbd "<C-tab>") 'company-complete))
-
-(use-package flycheck
-  :ensure t
-  :pin melpa-stable
-  :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+  :bind (("C-S-c C-S-c" . 'mc/edit-lines)
+         ("C->" . 'mc/mark-next-like-this)
+         ("C-<" . 'mc/mark-previous-like-this)
+         ("C-c C-<" . 'mc/mark-all-like-this)))
 
 (use-package markdown-mode
   :ensure t
@@ -177,13 +177,77 @@
   :defer t
   :ensure t)
 
+(use-package smartparens
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :config
+  (require 'smartparens-config)
+  (show-paren-mode t))
+
 ;; -------------------------------------
 ;; Language Setup
+;; -------------------------------------
+
+;; -------------------------------------
+;; Haskell
+(use-package haskell-mode
+  :ensure t)
+
+;; -------------------------------------
+;; JavaScript [LSP]
+(use-package js2-mode
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :mode ("\\.js\\'" . js2-mode)
+  :config
+  (setq-default js-indent-level 2)
+  (setq-default js2-basic-offset 2))
+
+(use-package add-node-modules-path
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :after (js2-mode)
+  :hook (js2-mode))
+
+;; -------------------------------------
+;; PureScript
+(use-package purescript-mode
+  :ensure t)
+
+(use-package psc-ide
+  :ensure t
+  :hook (purescript-mode . (lambda ()
+                             (psc-ide-mode)
+                             (setq psc-ide-use-npm-bin t)
+                             (turn-on-purescript-indentation))))
+
+;; -------------------------------------
+;; Python [LSP]
+;; Unknown:
+;; + pyvenv
+;; + blacken
+;; + ein
+
+;; -------------------------------------
+;; TypeScript [LSP]
+(use-package typescript-mode
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :mode "\\.ts\\'")
+
+;; -------------------------------------
+;; Language Server Protocol
+;; -------------------------------------
 
 (use-package lsp-mode
   :ensure t
-  :hook (haskell-mode . lsp)
+  :hook (js2-mode . lsp)
   :hook (python-mode . lsp)
+  :hook (typescript-mode . lsp)
   :commands lsp)
 
 (use-package lsp-ui
@@ -204,9 +268,27 @@
 
 (use-package dap-python)
 
-(use-package lsp-haskell
-  :ensure t)
+;; -------------------------------------
+;; Common dev mode setup
+;; -------------------------------------
+
+(defun kwb-dev-hook ()
+  (display-line-numbers-mode)
+  (set (make-local-variable 'comment-auto-fill-only-comments) t)
+  (auto-fill-mode t)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (smartparens-mode))
+(mapc
+ (lambda (hook) (add-hook hook 'kwb-dev-hook))
+ '(emacs-lisp-mode-hook
+   haskell-mode-hook
+   js2-mode-hook
+   purescript-mode-hook
+   python-mode-hook
+   typescript-mode-hook))
 
 ;; -------------------------------------
 ;; Make gc pauses faster by decreasing the threshold.
+;; -------------------------------------
+
 (setq gc-cons-threshold (* 2 1000 1000))

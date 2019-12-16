@@ -104,11 +104,10 @@
 ;; General-purpose packages
 ;; -------------------------------------
 
-(use-package color-theme-sanityinc-tomorrow
+(use-package base16-theme
   :ensure t
-  :pin melpa-stable
   :config
-  (load-theme 'sanityinc-tomorrow-bright t))
+  (load-theme 'base16-tomorrow-night t))
 
 (use-package company
   :ensure t

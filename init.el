@@ -189,12 +189,8 @@
 ;; -------------------------------------
 
 ;; -------------------------------------
-;; Haskell
-(use-package haskell-mode
-  :ensure t)
-
-;; -------------------------------------
-;; JavaScript [LSP]
+;; JavaScript [Indium]
+;; https://github.com/NicolasPetton/indium
 (use-package js2-mode
   :ensure t
   :pin melpa-stable
@@ -211,32 +207,44 @@
   :after (js2-mode)
   :hook (js2-mode))
 
-;; -------------------------------------
-;; PureScript
-(use-package purescript-mode
-  :ensure t)
-
-(use-package psc-ide
+(use-package indium
   :ensure t
-  :hook (purescript-mode . (lambda ()
-                             (psc-ide-mode)
-                             (setq psc-ide-use-npm-bin t)
-                             (turn-on-purescript-indentation))))
+  :pin melpa-stable
+  :defer t
+  :hook (js2-mode . indium-interaction-mode))
 
 ;; -------------------------------------
 ;; Python [LSP]
 ;; Unknown:
-;; + pyvenv
-;; + blacken
 ;; + ein
-
-;; -------------------------------------
-;; TypeScript [LSP]
-(use-package typescript-mode
+(use-package lsp-python-ms
   :ensure t
-  :pin melpa-stable
-  :defer t
-  :mode "\\.ts\\'")
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))
+
+(use-package pyvenv
+  :ensure t
+  :hook (python-mode . pyvenv-mode))
+
+(use-package blacken
+  :ensure t
+  :pin melpa
+  :hook (python-mode . blacken-mode))
+
+;; http://millejoh.github.io/emacs-ipython-notebook/
+;; (use-package ein
+;;   :ensure t
+;;   :pin melpa
+;;   :defer t
+;;   :config
+;;   (require 'ein-notebook)
+;;   (require 'ein-subpackages)
+;;   (setq ein:enable-keepalive t)
+;;   (setq ein:notebooklist-keepalive-refresh-time 0.25)
+;;   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+;;   ;;(setq ein:completion-backend 'ein:use-company-backend)
+;;   )
 
 ;; -------------------------------------
 ;; Language Server Protocol
@@ -244,9 +252,7 @@
 
 (use-package lsp-mode
   :ensure t
-  :hook (js2-mode . lsp)
   :hook (python-mode . lsp)
-  :hook (typescript-mode . lsp)
   :commands lsp)
 
 (use-package lsp-ui
@@ -280,11 +286,8 @@
 (mapc
  (lambda (hook) (add-hook hook 'kwb-dev-hook))
  '(emacs-lisp-mode-hook
-   haskell-mode-hook
    js2-mode-hook
-   purescript-mode-hook
-   python-mode-hook
-   typescript-mode-hook))
+   python-mode-hook))
 
 ;; -------------------------------------
 ;; Make gc pauses faster by decreasing the threshold.

@@ -74,11 +74,18 @@ listening.
 
 Packages used:
 
-* python (*built-in*)
-* [elpy](https://elpy.readthedocs.io/en/latest/index.html)
-* [py-autopep8](https://github.com/paetzke/py-autopep8.el)
-* [company-jedi](https://github.com/syohex/emacs-company-jedi)
-* [ein](http://millejoh.github.io/emacs-ipython-notebook/)
+* [python](*built-in*)
+* [pyvenv]()
+* [blacken]()
+* [LSP]() (see below)
+
+## Language Server Protocol (LSP)
+
+* [lsp-mode]()
+* [lsp-ui]()
+* [company-lsp]()
+* [dap-mode]()
+* [dap-python]()
 
 1. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html)
    to create and manage conda environments, including Python itself.
@@ -96,43 +103,3 @@ Packages used:
    add-dir-local-variable`. For `python-mode` set `pyvenv-activate` to
    the location of the conda environment directory, typically
    `$HOME/.conda/envs/foo`.
-
-## TypeScript
-
-Packages used:
-
-* [typescript-mode](https://github.com/ananthakumaran/typescript.el)
-* [tide](https://github.com/ananthakumaran/tide)
-* [web-mode](http://web-mode.org/)
-* [ts-comint](https://github.com/josteink/ts-comint)
-
-1. Install [nvm](https://github.com/creationix/nvm) to install and manage NodeJS versions.
-
-2. Install and use a version of Node:
-
-    ```
-    $ nvm install <version>
-    $ nvm alias default <version>
-    $ nvm use default
-    ```
-
-3. Create and setup a TypeScript project:
-
-    ```
-    $ mkdir foo && cd foo
-    $ npm init -y
-    $ npm install -D typescript ts-lint ts-node @types/node
-    $ npx tsc --init
-    ```
-
-4. To open a REPL, first add a `.dir-locals.el` file at the root of
-the project with:
-
-    ```
-    ((typescript-mode (ts-comint-program-command .
-                       "<project_dir>/node_modules/.bin/ts-node"))
-     (web-mode (ts-comint-program-command .
-                "<project_dir>/node_modules/.bin/ts-node")))
-    ```
-
-Then start the TypeScript REPL with `M-x run-ts`.

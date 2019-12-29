@@ -1,8 +1,8 @@
+init.el
+elpa*
 backups/*
 auto-save-list
 .custom.el
-elpa
 url
-elpa*
 ido.last
 transient

@@ -1,8 +1,10 @@
 init.el
 elpa*
-backups/*
 auto-save-list
+backups/*
 .custom.el
-url
 ido.last
+.lsp-session*
+mspyls
 transient
+url

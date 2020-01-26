@@ -189,6 +189,12 @@
 ;; -------------------------------------
 
 ;; -------------------------------------
+;; Haskell
+;; https://github.com/haskell/haskell-mode
+(use-package haskell-mode
+  :ensure t)
+
+;; -------------------------------------
 ;; JavaScript [Indium]
 ;; https://github.com/NicolasPetton/indium
 (use-package js2-mode
@@ -212,6 +218,40 @@
   :pin melpa-stable
   :defer t
   :hook (js2-mode . indium-interaction-mode))
+
+;; -------------------------------------
+;; Lisp
+;; https://common-lisp.net/project/slime/
+;; https://github.com/emacsmirror/slime-company
+(use-package slime
+  :ensure t
+  :pin melpa-stable
+  :after lisp-mode
+  :defer t
+  :init
+  (setq slime-lisp-implementations
+      '((sbcl ("sbcl"))))
+  (setq slime-contribs '(slime-fancy)))
+
+(use-package slime-company
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :after (company slime))
+
+;; -------------------------------------
+;; PureScript
+;; https://github.com/purescript-emacs/purescript-mode
+;; https://github.com/purescript-emacs/psc-ide-emacs
+(use-package purescript-mode
+  :ensure t)
+
+(use-package psc-ide
+  :ensure t
+  :hook (purescript-mode . (lambda ()
+                             (psc-ide-mode)
+                             (setq psc-ide-use-npm-bin t)
+                             (turn-on-purescript-indentation))))
 
 ;; -------------------------------------
 ;; Python [LSP]
@@ -245,6 +285,16 @@
 ;;   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 ;;   ;;(setq ein:completion-backend 'ein:use-company-backend)
 ;;   )
+
+;; -------------------------------------
+;; Scheme
+(use-package geiser
+  :ensure t
+  :pin melpa-stable
+  :defer t
+  :after (scheme)
+  :init
+  (setq geiser-active-implementations '(mit guile)))
 
 ;; -------------------------------------
 ;; Language Server Protocol

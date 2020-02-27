@@ -274,6 +274,14 @@
   :pin melpa
   :hook (python-mode . blacken-mode))
 
+;; (use-package company-jedi
+;;   :ensure t
+;;   :pin melpa-stable
+;;   :defer t
+;;   :hook (python-mode)
+;;   :config
+;;   (add-to-list 'company-backends 'company-jedi))
+
 ;; http://millejoh.github.io/emacs-ipython-notebook/
 (use-package ein
   :ensure t

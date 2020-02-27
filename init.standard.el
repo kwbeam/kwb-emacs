@@ -48,7 +48,7 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-(set-frame-font "Hack-10")
+(set-frame-font "Hack-12")
 (setq uniquify-buffer-name-style 'forward)
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
@@ -210,8 +210,9 @@
   :ensure t
   :pin melpa-stable
   :defer t
-  :after (js2-mode)
-  :hook (js2-mode))
+  :after (js2-mode purescript-mode)
+  :init
+  (add-hook 'js2-mode-hook #'add-node-modules-path))
 
 (use-package indium
   :ensure t
@@ -250,22 +251,23 @@
   :ensure t
   :hook (purescript-mode . (lambda ()
                              (psc-ide-mode)
+                             (add-node-modules-path)
                              (setq psc-ide-use-npm-bin t)
                              (turn-on-purescript-indentation))))
 
 ;; -------------------------------------
-;; Python [LSP]
-;; Unknown:
-;; + ein
-(use-package lsp-python-ms
+;; Python
+(use-package elpy
   :ensure t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-python-ms)
-                          (lsp))))
-
-(use-package pyvenv
-  :ensure t
-  :hook (python-mode . pyvenv-mode))
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable)
+  :config
+  (setq python-shell-interpreter "jupyter"
+        python-shell-interpreter-args "console --simple-prompt"
+        python-shell-prompt-detect-failure-warning nil)
+  (add-to-list 'python-shell-completion-native-disabled-interpreters
+               "jupyter"))
 
 (use-package blacken
   :ensure t
@@ -273,18 +275,18 @@
   :hook (python-mode . blacken-mode))
 
 ;; http://millejoh.github.io/emacs-ipython-notebook/
-;; (use-package ein
-;;   :ensure t
-;;   :pin melpa
-;;   :defer t
-;;   :config
-;;   (require 'ein-notebook)
-;;   (require 'ein-subpackages)
-;;   (setq ein:enable-keepalive t)
-;;   (setq ein:notebooklist-keepalive-refresh-time 0.25)
-;;   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-;;   ;;(setq ein:completion-backend 'ein:use-company-backend)
-;;   )
+(use-package ein
+  :ensure t
+  :pin melpa
+  :defer t
+  :config
+  (require 'ein-notebook)
+  (require 'ein-subpackages)
+  (setq ein:enable-keepalive t)
+  (setq ein:notebooklist-keepalive-refresh-time 0.25)
+  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+  ;;(setq ein:completion-backend 'ein:use-company-backend)
+  )
 
 ;; -------------------------------------
 ;; Scheme
@@ -295,33 +297,6 @@
   :after (scheme)
   :init
   (setq geiser-active-implementations '(mit guile)))
-
-;; -------------------------------------
-;; Language Server Protocol
-;; -------------------------------------
-
-(use-package lsp-mode
-  :ensure t
-  :hook (python-mode . lsp)
-  :commands lsp)
-
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode)
-
-(use-package company-lsp
-  :ensure t
-  :commands company-lsp)
-
-(use-package dap-mode
-  :ensure t
-  :config
-  (dap-mode 1)
-  (dap-ui-mode 1)
-  (dap-tooltip-mode 1)
-  (tooltip-mode 1))
-
-(use-package dap-python)
 
 ;; -------------------------------------
 ;; Common dev mode setup

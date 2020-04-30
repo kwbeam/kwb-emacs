@@ -1,4 +1,4 @@
-;;; foo --- basic set of foo
+;;; init --- Emacs init file
 ;;; Commentary:
 ;;; Code:
 
@@ -42,4 +42,4 @@
 
 (setq gc-cons-threshold (* 2 1000 1000))
 
-;;; init.standard.el ends here
+;;; init.el ends here

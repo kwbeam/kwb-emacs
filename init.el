@@ -30,12 +30,14 @@
 
 (require 'basics)
 (require 'packages)
+(require 'clojure)
 (require 'haskell)
 (require 'lisp)
 (require 'javascript)
 (require 'purescript)
 (require 'python)
 (require 'scheme)
+(require 'typescript)
 (require 'dev)
 
 (setq gc-cons-threshold (* 2 1000 1000))

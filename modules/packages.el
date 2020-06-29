@@ -23,7 +23,7 @@
 ;; https://github.com/purcell/exec-path-from-shell
 (use-package exec-path-from-shell
   :ensure t
-  :pin melpa-stable
+  :pin melpa
   :defer t
   :config
   (exec-path-from-shell-initialize))

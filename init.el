@@ -35,7 +35,7 @@
 (require 'lisp)
 (require 'javascript)
 (require 'purescript)
-(require 'python)
+(require 'py)
 (require 'scheme)
 (require 'typescript)
 (require 'dev)

@@ -1,4 +1,4 @@
-;;; python --- basic set of python
+;;; py --- basic set of python
 ;;; Commentary:
 ;;; Code:
 
@@ -61,6 +61,6 @@
   ;;(setq ein:completion-backend 'ein:use-company-backend)
   )
 
-(provide 'python)
+(provide 'py)
 
-;;; python.el ends here
+;;; py.el ends here

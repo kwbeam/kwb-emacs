@@ -33,11 +33,10 @@
 (require 'clojure)
 (require 'haskell)
 (require 'lisp)
-(require 'javascript)
+(require 'js-ts)
 (require 'purescript)
 (require 'py)
 (require 'scheme)
-(require 'typescript)
 (require 'lsp)
 (require 'dev)
 

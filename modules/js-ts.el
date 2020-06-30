@@ -1,4 +1,4 @@
-;;; javascript --- basic set of javascript
+;;; js-ts --- basic set of javascript
 ;;; Commentary:
 ;;; Code:
 
@@ -21,9 +21,7 @@
 ;;     $ npx eslint --init
 ;;     ```
 
-;; 4. To open a REPL, `M-x indium-run-node`.
-
-;; 5. (Optional) Create and setup an ES.next project:
+;; 4. (Optional) Create and setup an ES.next project:
 
 ;;     ```
 ;;     $ # ES5 steps above, and:
@@ -32,18 +30,6 @@
 ;;     $ npm install -S babel-polyfill
 ;;     ```
 
-;; 6. To open a REPL:
-
-;;     ```
-;;     $ npx babel-node --inspect
-;;     ```
-
-;; Connect to it in Emacs with `M-x indium-connect-to-nodejs` and specify
-;; the IP address, port, and URL path on which the babel-node process is
-;; listening.
-
-;; -------------------------------------
-;; JavaScript [Indium]
 ;; https://github.com/mooz/js2-mode/
 (use-package js2-mode
   :ensure t
@@ -63,14 +49,10 @@
   :init
   (add-hook 'js2-mode-hook #'add-node-modules-path))
 
-;; https://github.com/NicolasPetton/indium
-;; https://indium.readthedocs.io/en/latest/index.html
-;; (use-package indium
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :defer t
-;;   :hook (js2-mode . indium-interaction-mode))
+;; https://github.com/emacs-typescript/typescript.el
+(use-package typescript-mode
+  :ensure t)
 
-(provide 'javascript)
+(provide 'js-ts)
 
-;;; javascript.el ends here
+;;; js-ts.el ends here

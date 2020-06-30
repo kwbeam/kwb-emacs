@@ -59,17 +59,17 @@
   :ensure t
   :pin melpa-stable
   :defer t
-  :after (js2-mode purescript-mode)
+  :after (javascript-mode js2-mode purescript-mode typescript-mode)
   :init
   (add-hook 'js2-mode-hook #'add-node-modules-path))
 
 ;; https://github.com/NicolasPetton/indium
 ;; https://indium.readthedocs.io/en/latest/index.html
-(use-package indium
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :hook (js2-mode . indium-interaction-mode))
+;; (use-package indium
+;;   :ensure t
+;;   :pin melpa-stable
+;;   :defer t
+;;   :hook (js2-mode . indium-interaction-mode))
 
 (provide 'javascript)
 

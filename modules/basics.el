@@ -79,6 +79,13 @@
      (js . t)
      (python . t))))
 
+;; https://github.com/bbatsov/projectile
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+
 ;; https://github.com/pashky/restclient.el
 (use-package restclient
   :defer t

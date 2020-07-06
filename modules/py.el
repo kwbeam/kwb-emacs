@@ -20,46 +20,12 @@
 ;;    add-dir-local-variable`. For `python-mode` set `pyvenv-activate` to
 ;;    the name of the virtualenv.
 
-;; -------------------------------------
-;; Python
-(use-package elpy
+(use-package lsp-python-ms
   :ensure t
-  :defer t
-  :init
-  (advice-add 'python-mode :before 'elpy-enable)
-  :config
-  (setq python-shell-interpreter "jupyter"
-        python-shell-interpreter-args "console --simple-prompt"
-        python-shell-prompt-detect-failure-warning nil)
-  (add-to-list 'python-shell-completion-native-disabled-interpreters
-               "jupyter"))
-
-(use-package blacken
-  :ensure t
-  :pin melpa
-  :hook (python-mode . blacken-mode))
-
-;; (use-package company-jedi
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :defer t
-;;   :hook (python-mode)
-;;   :config
-;;   (add-to-list 'company-backends 'company-jedi))
-
-;; http://millejoh.github.io/emacs-ipython-notebook/
-(use-package ein
-  :ensure t
-  :pin melpa
-  :defer t
-  :config
-  (require 'ein-notebook)
-  (require 'ein-subpackages)
-  (setq ein:enable-keepalive t)
-  (setq ein:notebooklist-keepalive-refresh-time 0.25)
-  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-  ;;(setq ein:completion-backend 'ein:use-company-backend)
-  )
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))
 
 (provide 'py)
 

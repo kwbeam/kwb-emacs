@@ -10,3 +10,5 @@ url
 elpy
 eshell
 .mc-lists.el
+.cache
+projectile-bookmarks.eld

@@ -35,10 +35,14 @@
   :ensure t
   :pin melpa-stable
   :defer t
-  :mode ("\\.js\\'" . js2-mode)
-  :config
-  (setq-default js-indent-level 2)
-  (setq-default js2-basic-offset 2))
+  :mode ("\\.js\\'" . js2-mode))
+  ;; :config
+  ;; (setq-default js-indent-level 2)
+  ;; (setq-default js2-basic-offset 2))
+
+;; https://github.com/emacs-typescript/typescript.el
+(use-package typescript-mode
+  :ensure t)
 
 ;; https://github.com/codesuki/add-node-modules-path
 (use-package add-node-modules-path
@@ -48,10 +52,6 @@
   :after (javascript-mode js2-mode purescript-mode typescript-mode)
   :init
   (add-hook 'js2-mode-hook #'add-node-modules-path))
-
-;; https://github.com/emacs-typescript/typescript.el
-(use-package typescript-mode
-  :ensure t)
 
 (provide 'js-ts)
 

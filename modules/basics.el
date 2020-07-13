@@ -31,7 +31,7 @@
 ;; http://www.flycheck.org/en/latest/
 (use-package flycheck
   :ensure t
-  :pin melpa-stable
+  :pin melpa
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 

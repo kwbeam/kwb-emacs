@@ -15,9 +15,9 @@
   :config
   (setq read-process-output-max (* 1024 1024)))
 
-;; (use-package lsp-ui
-;;   :ensure t
-;;   :commands lsp-ui-mode)
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
 ;; (use-package dap-mode
 ;;   :ensure t)
 ;; (use-package dap-javascript

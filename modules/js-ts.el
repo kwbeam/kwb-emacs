@@ -29,6 +29,11 @@
 ;;     $ echo "{'presets': ['env']}" > .babelrc
 ;;     $ npm install -S babel-polyfill
 ;;     ```
+;; Language Servers
+;; Theia-ide (Preferred): https://github.com/theia-ide/typescript-language-server
+;;   `$ npm i -D typescript-language-server`
+;; Sourcegraph: https://github.com/sourcegraph/javascript-typescript-langserver
+;;   `$ npm i -D javascript-typescript-langserver`
 
 ;; https://github.com/mooz/js2-mode/
 (use-package js2-mode

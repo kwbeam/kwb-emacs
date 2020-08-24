@@ -13,19 +13,35 @@
 ;;     $ mkdir foo && cd foo
 ;;     $ pyenv virtualenv 3.7.3 foo
 ;;     $ pyenv activate foo
-;;     $ pip install autopep8 flake8 ipython jedi
+;;     $ pip install autopep8 flake8 ipython jedi ptvsd>=4.2
 ;;     ```
 
 ;; 3. Add a dir-local variable to activate the virtualenv. `M-x
 ;;    add-dir-local-variable`. For `python-mode` set `pyvenv-activate` to
 ;;    the name of the virtualenv.
 
-(use-package lsp-python-ms
+;; Language servers:
+;; Palantir: https://github.com/palantir/python-language-server
+;; Microsoft Pyright: https://emacs-lsp.github.io/lsp-pyright/
+;; Microsoft Old: https://emacs-lsp.github.io/lsp-python-ms/
+
+;; Palantir
+;; pip install ‘python-language-server[all]’
+
+;; Microsoft New
+(use-package lsp-pyright
   :ensure t
-  :init (setq lsp-python-ms-auto-install-server t)
   :hook (python-mode . (lambda ()
-                          (require 'lsp-python-ms)
-                          (lsp))))
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
+
+;; Microsoft Old
+;; (use-package lsp-python-ms
+;;   :ensure t
+;;   :init (setq lsp-python-ms-auto-install-server t)
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-python-ms)
+;;                           (lsp))))
 
 (provide 'py)
 

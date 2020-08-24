@@ -30,13 +30,8 @@
 
 (require 'defaults)
 (require 'basics)
-(require 'clojure)
-(require 'haskell)
-(require 'lisp)
 (require 'js-ts)
-(require 'purescript)
 (require 'py)
-(require 'scheme)
 (require 'lsp)
 (require 'dev)
 

@@ -1,4 +1,4 @@
-;;; py --- basic set of python
+;;; py --- basic setup for python development
 ;;; Commentary:
 ;;; Code:
 
@@ -9,39 +9,29 @@
 
 ;; 2. Create & setup the project:
 
-;;     ```
-;;     $ mkdir foo && cd foo
-;;     $ pyenv virtualenv 3.7.3 foo
-;;     $ pyenv activate foo
-;;     $ pip install autopep8 flake8 ipython jedi ptvsd>=4.2
-;;     ```
+;;      $ mkdir foo && cd foo
+;;      $ pyenv virtualenv 3.7.3 foo
+;;      $ pyenv activate foo
+;;      $ pip install autopep8 flake8 ipython jedi "ptvsd>=4.2"
 
-;; 3. Add a dir-local variable to activate the virtualenv. `M-x
+;; 3. Install the Palantir Python Language Server:
+;;
+;;      $ pip install python-language-server
+;;
+;;    and optionally:
+;;
+;;      $ pip install pyls-mypy
+;;      $ pip install pyls-isort
+;;      $ pip install pyls-black
+
+;; 4. Add a dir-local variable to activate the virtualenv. `M-x
 ;;    add-dir-local-variable`. For `python-mode` set `pyvenv-activate` to
-;;    the name of the virtualenv.
+;;    the name of the virtualenv. E.g., in the root of your project,
+;;    there will be a .dir-locals.el with:
+;;
+;;      ((python-mode
+;;        (pyvenv-activate . "/home/kbeam/.pyenv/versions/py-lab")))
 
-;; Language servers:
-;; Palantir: https://github.com/palantir/python-language-server
-;; Microsoft Pyright: https://emacs-lsp.github.io/lsp-pyright/
-;; Microsoft Old: https://emacs-lsp.github.io/lsp-python-ms/
-
-;; Palantir
-;; pip install ‘python-language-server[all]’
-
-;; Microsoft New
-(use-package lsp-pyright
-  :ensure t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp))))  ; or lsp-deferred
-
-;; Microsoft Old
-;; (use-package lsp-python-ms
-;;   :ensure t
-;;   :init (setq lsp-python-ms-auto-install-server t)
-;;   :hook (python-mode . (lambda ()
-;;                           (require 'lsp-python-ms)
-;;                           (lsp))))
 
 (provide 'py)
 

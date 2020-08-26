@@ -58,6 +58,20 @@
   :init
   (add-hook 'js2-mode-hook #'add-node-modules-path))
 
+(defun nodejs-repl-config ()
+  (define-key typescript-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
+  (define-key typescript-mode-map (kbd "C-c C-j") 'nodejs-repl-send-line)
+  (define-key typescript-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
+  (define-key typescript-mode-map (kbd "C-c C-c") 'nodejs-repl-send-buffer)
+  (define-key typescript-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
+  (define-key typescript-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl))
+
+(use-package nodejs-repl
+  :ensure t
+  :hook ((typescript-mode) . nodejs-repl-config)
+  :init
+  (setq nodejs-repl-command "npx ts-node"))
+
 (provide 'js-ts)
 
 ;;; js-ts.el ends here

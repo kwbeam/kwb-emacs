@@ -12,3 +12,4 @@ eshell
 .mc-lists.el
 .cache
 projectile-bookmarks.eld
+.dap-breakpoints

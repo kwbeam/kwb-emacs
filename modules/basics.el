@@ -107,6 +107,9 @@
   (which-key-mode)
   (which-key-setup-side-window-right))
 
+(use-package yaml-mode
+  :ensure t)
+
 (provide 'basics)
 
 ;;; basics.el ends here

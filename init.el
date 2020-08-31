@@ -32,7 +32,7 @@
 (require 'basics)
 (require 'js-ts)
 (require 'py)
-(require 'lsp)
+(require 'lsp-eglot)
 (require 'dev)
 
 (setq gc-cons-threshold (* 2 1024 1024))

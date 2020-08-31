@@ -35,28 +35,20 @@
 ;; Sourcegraph: https://github.com/sourcegraph/javascript-typescript-langserver
 ;;   `$ npm i -D javascript-typescript-langserver`
 
+;; TODO
+;;(setq nodejs-repl-command "npx ts-node"))
+
 ;; https://github.com/mooz/js2-mode/
 (use-package js2-mode
   :ensure t
   :pin melpa-stable
-  :defer t
-  :mode ("\\.js\\'" . js2-mode))
-  ;; :config
-  ;; (setq-default js-indent-level 2)
-  ;; (setq-default js2-basic-offset 2))
-
-;; https://github.com/emacs-typescript/typescript.el
-(use-package typescript-mode
-  :ensure t)
+  :hook (js-mode . js2-minor-mode))
 
 ;; https://github.com/codesuki/add-node-modules-path
 (use-package add-node-modules-path
   :ensure t
   :pin melpa-stable
-  :defer t
-  :after (javascript-mode js2-mode purescript-mode typescript-mode)
-  :init
-  (add-hook 'js2-mode-hook #'add-node-modules-path))
+  :hook (js-mode typescript-mode))
 
 (defun nodejs-repl-config ()
   (define-key typescript-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
@@ -66,11 +58,14 @@
   (define-key typescript-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
   (define-key typescript-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl))
 
-(use-package nodejs-repl
-  :ensure t
-  :hook ((typescript-mode) . nodejs-repl-config)
-  :init
-  (setq nodejs-repl-command "npx ts-node"))
+;; (use-package nodejs-repl
+;;   :ensure t
+;;   :hook (js-mode typescript-mode)
+;;   :config (nodejs-repl-config))
+
+;; https://github.com/emacs-typescript/typescript.el
+(use-package typescript-mode
+  :ensure t)
 
 (provide 'js-ts)
 

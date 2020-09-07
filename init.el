@@ -28,8 +28,8 @@
   (expand-file-name  "modules" (file-name-directory load-file-name)))
 (add-to-list 'load-path modules-dir)
 
-(require 'defaults)
 (require 'basics)
+(require 'packages)
 (require 'clojure)
 (require 'haskell)
 (require 'lisp)
@@ -38,9 +38,8 @@
 (require 'py)
 (require 'scheme)
 (require 'typescript)
-(require 'lsp)
 (require 'dev)
 
-(setq gc-cons-threshold (* 2 1024 1024))
+(setq gc-cons-threshold (* 2 1000 1000))
 
 ;;; init.el ends here

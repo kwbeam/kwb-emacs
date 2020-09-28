@@ -30,13 +30,8 @@
 
 (require 'basics)
 (require 'packages)
-(require 'clojure)
-(require 'haskell)
-(require 'lisp)
 (require 'javascript)
-(require 'purescript)
 (require 'py)
-(require 'scheme)
 (require 'typescript)
 (require 'dev)
 

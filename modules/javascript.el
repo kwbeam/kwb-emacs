@@ -45,31 +45,40 @@
 ;; -------------------------------------
 ;; JavaScript [Indium]
 ;; https://github.com/mooz/js2-mode/
-(use-package js2-mode
-  :ensure t
-  :pin melpa-stable
-  :defer t
-  :mode ("\\.js\\'" . js2-mode)
-  :config
-  (setq-default js-indent-level 2)
-  (setq-default js2-basic-offset 2))
+; (use-package js2-mode
+;   :ensure t
+;   :pin melpa-stable
+;   :mode ("\\.js\\'" . js2-mode)
+;   :config
+;   (setq-default js-indent-level 2)
+;   (setq-default js2-basic-offset 2))
 
 ;; https://github.com/codesuki/add-node-modules-path
 (use-package add-node-modules-path
   :ensure t
   :pin melpa-stable
-  :defer t
-  :after (js2-mode purescript-mode)
+  :after (js-mode)
   :init
-  (add-hook 'js2-mode-hook #'add-node-modules-path))
+  (add-hook 'js-mode-hook #'add-node-modules-path))
 
 ;; https://github.com/NicolasPetton/indium
 ;; https://indium.readthedocs.io/en/latest/index.html
 (use-package indium
   :ensure t
   :pin melpa-stable
-  :defer t
-  :hook (js2-mode . indium-interaction-mode))
+  :hook (js-mode . indium-interaction-mode))
+
+;; https://github.com/emacs-typescript/typescript.el
+(use-package typescript-mode
+  :ensure t)
+
+;; https://github.com/ananthakumaran/tide
+(use-package tide
+  :ensure t
+  :after (typescript-mode)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
 
 (provide 'javascript)
 

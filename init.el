@@ -7,12 +7,10 @@
 
 ;; Bootstrap everything with package
 (require 'package)
-(setq package-enable-at-startup nil)
-(setq package-archives
-      `(("gnu" . "https://elpa.gnu.org/packages/")
-        ("melpa-stable" . "https://stable.melpa.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")))
-(package-initialize)
+(add-to-list 'package-archives
+	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
 
 ;; Now use-package for all other packages
 (unless (package-installed-p 'use-package)
@@ -21,20 +19,12 @@
 (eval-when-compile
   (require 'use-package))
 
-;; time your emacs init: M-x benchmark-init/...
-(use-package benchmark-init :ensure t)
-
-(defvar modules-dir
-  (expand-file-name  "modules" (file-name-directory load-file-name)))
-(add-to-list 'load-path modules-dir)
-
+(push (expand-file-name "modules" user-emacs-directory) load-path)
 (require 'basics)
 (require 'packages)
 (require 'javascript)
 (require 'py)
-(require 'typescript)
-(require 'dev)
 
-(setq gc-cons-threshold (* 2 1000 1000))
+(setq gc-cons-threshold (* 32 1024 1024))
 
 ;;; init.el ends here

@@ -24,7 +24,6 @@
 ;; Python
 (use-package elpy
   :ensure t
-  :defer t
   :init
   (advice-add 'python-mode :before 'elpy-enable)
   :config
@@ -34,32 +33,30 @@
   (add-to-list 'python-shell-completion-native-disabled-interpreters
                "jupyter"))
 
-(use-package blacken
-  :ensure t
-  :pin melpa
-  :hook (python-mode . blacken-mode))
+; (use-package blacken
+;   :ensure t
+;   :pin melpa
+;   :hook (python-mode . blacken-mode))
 
 ;; (use-package company-jedi
 ;;   :ensure t
 ;;   :pin melpa-stable
-;;   :defer t
 ;;   :hook (python-mode)
 ;;   :config
 ;;   (add-to-list 'company-backends 'company-jedi))
 
 ;; http://millejoh.github.io/emacs-ipython-notebook/
-(use-package ein
-  :ensure t
-  :pin melpa
-  :defer t
-  :config
-  (require 'ein-notebook)
-  (require 'ein-subpackages)
-  (setq ein:enable-keepalive t)
-  (setq ein:notebooklist-keepalive-refresh-time 0.25)
-  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-  ;;(setq ein:completion-backend 'ein:use-company-backend)
-  )
+;(use-package ein
+;  :ensure t
+;  :pin melpa
+;  :config
+;  (require 'ein-notebook)
+;  (require 'ein-subpackages)
+;  (setq ein:enable-keepalive t)
+;  (setq ein:notebooklist-keepalive-refresh-time 0.25)
+;  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+;  ;;(setq ein:completion-backend 'ein:use-company-backend)
+;  )
 
 (provide 'py)
 

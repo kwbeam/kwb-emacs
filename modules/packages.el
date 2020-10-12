@@ -45,7 +45,7 @@
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setq magit-push-always-verify nil))
 
-https://github.com/magnars/multiple-cursors.el
+;; https://github.com/magnars/multiple-cursors.el
 (use-package multiple-cursors
   :ensure t
   :pin melpa-stable

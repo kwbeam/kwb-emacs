@@ -2,6 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
+;; https://github.com/abo-abo/ace-window
+(use-package ace-window
+  :ensure t
+  :init
+  (bind-key "M-o" 'ace-window)
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+
 ;; https://github.com/belak/base16-emacs
 (use-package base16-theme
   :ensure t

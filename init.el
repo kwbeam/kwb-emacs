@@ -19,7 +19,6 @@
 (eval-when-compile
   (require 'use-package))
 
-(push (expand-file-name "modules" user-emacs-directory) load-path)
 (require 'basics)
 (require 'packages)
 (require 'javascript)

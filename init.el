@@ -21,8 +21,8 @@
 
 (require 'basics)
 (require 'packages)
-(require 'javascript)
-(require 'py)
+(require 'dev-trad)
+;; (require 'dev-lsp)
 
 (setq gc-cons-threshold (* 32 1024 1024))
 

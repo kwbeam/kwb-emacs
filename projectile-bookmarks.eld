@@ -1,1 +1,0 @@
-("~/projects/kwb-emacs/" "~/projects/emacs-lsp/")

@@ -75,9 +75,20 @@
 (use-package smartparens
   :ensure t
   :pin melpa-stable
-  :hook (prog-mode . smartparens-mode)
+  :defer t
   :config
-  (require 'smartparens-config))
+  (require 'smartparens-config)
+  (show-paren-mode t))
+
+;; https://github.com/justbur/emacs-which-key/
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode)
+  (which-key-setup-side-window-right))
+
+(use-package yaml-mode
+  :ensure t)
 
 (provide 'packages)
 

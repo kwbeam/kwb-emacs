@@ -19,6 +19,8 @@
 (eval-when-compile
   (require 'use-package))
 
+(push (expand-file-name "modules" user-emacs-directory) load-path)
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'basics)
 (require 'packages)
 (require 'dev-trad)

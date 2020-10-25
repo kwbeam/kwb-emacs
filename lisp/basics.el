@@ -54,6 +54,9 @@
 	    (auto-fill-mode t)
 	    (add-hook 'before-save-hook 'delete-trailing-whitespace)))
 
+(use-package no-littering
+  :ensure t)
+
 (provide 'basics)
 
 ;;; basics.el ends here

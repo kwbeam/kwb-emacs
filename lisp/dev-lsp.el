@@ -11,12 +11,12 @@
   :config
   (add-to-list 'eglot-server-programs '((js-mode typescript-mode) . ("typescript-language-server" "--stdio"))))
 
-;; set prefix for lsp-command-keymap
-(setq lsp-keymap-prefix "C-c l")
-
 ;; ----------------------------------------------------------
 ;; LSP - lsp-mode
 ;; ----------------------------------------------------------
+;; set prefix for lsp-command-keymap
+(setq lsp-keymap-prefix "C-c l")
+
 (use-package lsp-mode
   :ensure t
   :init

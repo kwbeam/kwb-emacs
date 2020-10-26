@@ -31,6 +31,15 @@
   :bind (("M-p" . crux-smart-open-line-above)
          ("M-n" . crux-smart-open-line)))
 
+(use-package docker
+  :ensure t)
+
+(use-package dockerfile-mode
+  :ensure t)
+
+(use-package docker-compose-mode
+  :ensure t)
+
 ;; http://www.flycheck.org/en/latest/
 (use-package flycheck
   :ensure t)
@@ -39,6 +48,16 @@
 (use-package git-timemachine
   :ensure t
   :pin melpa-stable)
+
+(use-package k8s-mode
+  :ensure t)
+
+(use-package kubectx-mode
+  :ensure t)
+
+(use-package kubernetes
+  :ensure t
+  :commands (kubernetes-overview))
 
 ;; https://magit.vc/
 (use-package magit
@@ -84,6 +103,12 @@
   :config
   (require 'smartparens-config)
   (show-paren-mode t))
+
+(use-package terraform-doc
+  :ensure t)
+
+(use-package terraform-mode
+  :ensure t)
 
 ;; https://github.com/justbur/emacs-which-key/
 (use-package which-key

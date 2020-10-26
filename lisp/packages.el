@@ -33,9 +33,7 @@
 
 ;; http://www.flycheck.org/en/latest/
 (use-package flycheck
-  :ensure t
-  :pin melpa-stable
-  :init (global-flycheck-mode))
+  :ensure t)
 
 ;; https://gitlab.com/pidu/git-timemachine
 (use-package git-timemachine

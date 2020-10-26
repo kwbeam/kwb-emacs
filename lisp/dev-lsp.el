@@ -8,6 +8,8 @@
 (use-package lsp-mode
   :ensure t
   :hook ((python-mode . lsp)
+         (js-mode . lsp)
+         (typescript-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
   :config
@@ -40,46 +42,29 @@
   :ensure t
   :config
   (setq dap-python-debugger 'debugpy)
-  (require 'dap-python))
-  ;; (require 'dap-firefox)
-  ;; (require 'dap-node)
+  (require 'dap-python)
+  (require 'dap-chrome)
+  (require 'dap-firefox)
+  (require 'dap-node))
 
 ;; ----------------------------------------------------------
 ;; JavaScript & TypeScript
 ;; ----------------------------------------------------------
 ;; https://github.com/mooz/js2-mode/
-;; (use-package js2-mode
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :hook (js-mode . js2-minor-mode))
+(use-package js2-mode
+  :ensure t
+  :pin melpa-stable
+  :hook (js-mode . js2-minor-mode))
 
 ;; https://github.com/codesuki/add-node-modules-path
-;; (use-package add-node-modules-path
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :hook (js-mode typescript-mode))
-
-;; (defun nodejs-repl-config ()
-;;   (define-key typescript-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
-;;   (define-key typescript-mode-map (kbd "C-c C-j") 'nodejs-repl-send-line)
-;;   (define-key typescript-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
-;;   (define-key typescript-mode-map (kbd "C-c C-c") 'nodejs-repl-send-buffer)
-;;   (define-key typescript-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
-;;   (define-key typescript-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl))
-
-;; (use-package nodejs-repl
-;;   :ensure t
-;;   :hook (js-mode typescript-mode)
-;;   :config (nodejs-repl-config))
+(use-package add-node-modules-path
+  :ensure t
+  :pin melpa-stable
+  :hook (js-mode typescript-mode))
 
 ;; https://github.com/emacs-typescript/typescript.el
-;; (use-package typescript-mode
-;;   :ensure t)
-
-;; ----------------------------------------------------------
-;; Python
-;; ----------------------------------------------------------
-;; None
+(use-package typescript-mode
+  :ensure t)
 
 (provide 'dev-lsp)
 

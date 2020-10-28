@@ -51,10 +51,10 @@
 ;; JavaScript & TypeScript
 ;; ----------------------------------------------------------
 ;; https://github.com/mooz/js2-mode/
-(use-package js2-mode
-  :ensure t
-  :pin melpa-stable
-  :hook (js-mode . js2-minor-mode))
+;; (use-package js2-mode
+;;   :ensure t
+;;   :pin melpa-stable
+;;   :hook (js-mode . js2-minor-mode))
 
 ;; https://github.com/codesuki/add-node-modules-path
 (use-package add-node-modules-path

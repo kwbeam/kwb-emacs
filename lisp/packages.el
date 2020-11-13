@@ -110,6 +110,9 @@
 (use-package terraform-mode
   :ensure t)
 
+(use-package vterm
+  :ensure t)
+
 ;; https://github.com/justbur/emacs-which-key/
 (use-package which-key
   :ensure t

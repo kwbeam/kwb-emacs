@@ -9,11 +9,10 @@
   (bind-key "M-o" 'ace-window)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
-;; https://github.com/belak/base16-emacs
-;; (use-package base16-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'base16-tomorrow-night t))
+;; https://github.com/jtbm37/all-the-icons-dired
+(use-package all-the-icons-dired
+  :ensure t
+  :hook dired-mode)
 
 ;; https://company-mode.github.io/
 (use-package company

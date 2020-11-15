@@ -10,10 +10,10 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 ;; https://github.com/belak/base16-emacs
-(use-package base16-theme
-  :ensure t
-  :config
-  (load-theme 'base16-tomorrow-night t))
+;; (use-package base16-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'base16-tomorrow-night t))
 
 ;; https://company-mode.github.io/
 (use-package company
@@ -31,14 +31,41 @@
   :bind (("M-p" . crux-smart-open-line-above)
          ("M-n" . crux-smart-open-line)))
 
+;; https://github.com/purcell/default-text-scale
+(use-package default-text-scale
+  :ensure t)
+
+;; https://github.com/Silex/docker.el
 (use-package docker
   :ensure t)
 
+;; https://github.com/spotify/dockerfile-mode
 (use-package dockerfile-mode
   :ensure t)
 
+;; https://github.com/meqif/docker-compose-mode
 (use-package docker-compose-mode
   :ensure t)
+
+;; https://github.com/seagle0128/doom-modeline
+;; Post-install:
+;; M-x all-the-icons-install-fonts
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :config
+  (setq doom-modeline-github t)
+  (setq doom-modeline-github-interval (* 15 30)))
+
+;; https://github.com/hlissner/emacs-doom-themes
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-tomorrow-night t)
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 ;; http://www.flycheck.org/en/latest/
 (use-package flycheck
@@ -49,12 +76,7 @@
   :ensure t
   :pin melpa-stable)
 
-(use-package k8s-mode
-  :ensure t)
-
-(use-package kubectx-mode
-  :ensure t)
-
+;; https://github.com/chrisbarrett/kubernetes-el
 (use-package kubernetes
   :ensure t
   :commands (kubernetes-overview))
@@ -84,6 +106,7 @@
   :pin melpa
   :mode "\\.md\\'")
 
+;; https://github.com/bbatsov/projectile
 (use-package projectile
   :ensure t
   :pin melpa-stable
@@ -104,12 +127,15 @@
   (require 'smartparens-config)
   (show-paren-mode t))
 
+;; https://github.com/TxGVNN/terraform-doc
 (use-package terraform-doc
   :ensure t)
 
+;; https://github.com/emacsorphanage/terraform-mode
 (use-package terraform-mode
   :ensure t)
 
+;; https://github.com/akermu/emacs-libvterm
 (use-package vterm
   :ensure t)
 
@@ -120,6 +146,7 @@
   (which-key-mode)
   (which-key-setup-side-window-right))
 
+;; https://github.com/yaml/yaml-mode
 (use-package yaml-mode
   :ensure t)
 

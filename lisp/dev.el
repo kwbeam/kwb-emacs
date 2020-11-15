@@ -50,6 +50,7 @@
 ;; ----------------------------------------------------------
 ;; Haskell
 ;; ----------------------------------------------------------
+;; https://github.com/haskell/haskell-mode
 (use-package haskell-mode
   :ensure t)
 
@@ -65,6 +66,19 @@
 ;; https://github.com/emacs-typescript/typescript.el
 (use-package typescript-mode
   :ensure t)
+
+;; ----------------------------------------------------------
+;; Python
+;; ----------------------------------------------------------
+;; Built-in python mode
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i")
+
+;; http://millejoh.github.io/emacs-ipython-notebook/
+(use-package ein
+ :ensure t
+ :config
+ (require 'ein-notebook))
 
 (provide 'dev-lsp)
 

@@ -22,8 +22,7 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'basics)
 (require 'packages)
-;; (require 'dev-trad)
-(require 'dev-lsp)
+(require 'dev)
 
 (setq gc-cons-threshold (* 32 1024 1024))
 

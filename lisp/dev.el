@@ -80,6 +80,6 @@
  :config
  (require 'ein-notebook))
 
-(provide 'dev-lsp)
+(provide 'dev)
 
 ;;; dev-lsp.el ends here

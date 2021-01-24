@@ -55,11 +55,7 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-tomorrow-night t)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+  (load-theme 'doom-tomorrow-night t))
 
 ;; http://www.flycheck.org/en/latest/
 (use-package flycheck
@@ -116,7 +112,6 @@
 (use-package smartparens
   :ensure t
   :pin melpa-stable
-  :defer t
   :config
   (require 'smartparens-config)
   (show-paren-mode t))
@@ -131,7 +126,9 @@
 
 ;; https://github.com/akermu/emacs-libvterm
 (use-package vterm
-  :ensure t)
+  :ensure t
+  :config
+  (setq vterm-max-scrollback (* 32 1024)))
 
 ;; https://github.com/justbur/emacs-which-key/
 (use-package which-key

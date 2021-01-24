@@ -20,7 +20,11 @@
 (prefer-coding-system 'utf-8)
 (random t)
 
-(set-frame-font "Hack-12")
+(if (display-graphic-p)
+    (progn
+      (set-frame-font "Hack-14")
+      (set-frame-size (selected-frame) 120 40)))
+
 (setq uniquify-buffer-name-style 'forward)
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))

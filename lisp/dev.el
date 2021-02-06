@@ -53,7 +53,8 @@
 ;; ----------------------------------------------------------
 ;; https://github.com/haskell/haskell-mode
 (use-package haskell-mode
-  :ensure t)
+  :ensure t
+  :hook ((haskell-mode . interactive-haskell-mode)))
 
 ;; ----------------------------------------------------------
 ;; JavaScript & TypeScript

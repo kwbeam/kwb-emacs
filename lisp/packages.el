@@ -97,6 +97,8 @@
   :pin melpa
   :mode "\\.md\\'")
 
+;; TODO: org, org-babel, org-restclient
+
 ;; https://github.com/bbatsov/projectile
 (use-package projectile
   :ensure t
@@ -128,8 +130,11 @@
 ;; https://github.com/akermu/emacs-libvterm
 (use-package vterm
   :ensure t
+  :bind ("C-c t" . vterm)
   :config
   (setq vterm-max-scrollback (* 32 1024)))
+
+;; TODO: vterm-toggle
 
 ;; https://github.com/justbur/emacs-which-key/
 (use-package which-key

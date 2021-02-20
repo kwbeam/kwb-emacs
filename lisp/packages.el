@@ -27,7 +27,8 @@
 
 ;; https://github.com/purcell/default-text-scale
 (use-package default-text-scale
-  :ensure t)
+  :ensure t
+  :config (default-text-scale-mode))
 
 ;; https://github.com/Silex/docker.el
 (use-package docker

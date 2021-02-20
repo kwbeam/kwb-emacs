@@ -88,7 +88,9 @@
 
 ;; https://github.com/wbolster/emacs-python-pytest
 (use-package python-pytest
-  :ensure t)
+  :ensure t
+  :commands (python-pytest-dispatch)
+  :bind ("C-c u" . python-pytest-dispatch))
 
 ;; https://github.com/nnicandro/emacs-jupyter
 (use-package jupyter
